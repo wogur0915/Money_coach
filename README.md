@@ -1,2 +1,2 @@
 # OSS-Basic-Project
-Developer: 문희범, 
+Developer: 문희범, 임재혁
