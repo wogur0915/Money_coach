@@ -12,6 +12,7 @@ dates = []
 money = []
 types = []
 otherDetails =[]
+i = 0
 
 # 가계부 내역 추가 버튼
 def incomeWindow() :
@@ -28,6 +29,8 @@ def incomeWindow() :
         money.append(getIncome)
         types.append(getType)
         otherDetails.append(getInputOthers)
+        textarea.insert(INSERT, dates[i], INSERT, " "*10, INSERT, money[i], INSERT, " "*10, INSERT, types[i], INSERT, " "*10, INSERT, otherDetails[i], INSERT, "/n")
+        i = i+1
 
     incomeWindow = Tk()
     incomeWindow.title("수입")
@@ -52,7 +55,7 @@ def incomeWindow() :
     incomeType.grid(row=5, column=1)
     inputOthers.grid(row=7, column=1)
     incomeInputBtn = Button(incomeWindow, text = "확인", command = incomeInputVal)
-    incomeInputBtn.grid(row=8, column=1)
+    incomeInputBtn.grid(row=8, column=1, padx=10, pady=10)
 
 def test() :
     print("=" * 10, "내역 출력", "="*10)
@@ -63,6 +66,7 @@ def test() :
             print(dates[i], money[i], types[i], otherDetails[i])
 
 textarea.config(width = 250, height = 20)
+textarea.insert(INSERT, "날짜", INSERT, " "*10, INSERT, "금액", INSERT, " "*10, INSERT, "카테고리", INSERT, " "*10, INSERT, "비고")
 incomeBtn = Button(root, text = "+", font="나눔고딕 10", command = incomeWindow)
 incomeBtn.config(width = 5, height = 5)
 deleteBtn = Button(root, text = "삭제", font="나눔고딕 10")
