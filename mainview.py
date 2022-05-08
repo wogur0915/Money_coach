@@ -25,6 +25,7 @@ def show_frame(frame):
 
 test=PhotoImage(file='1pixel.png')
 
+# Main Page And Frames
 lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=800, height=446, compound="c")
 lobbyLogo.grid(row=1, column=0, columnspan=4)
 
@@ -38,15 +39,9 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
 
+# Statistics Page
 typeLogo = Label(statisticsFrame, image=test, text="소비 성향", width=804, height=204, compound="c")
 typeLogo.place(x=10, y=55)
-
-# MHB's Part
-for frameName in (statisticsFrame, assetsFrame):
-    weekButton = Button(frameName, image=test, text="주간", width=50, height=20, compound="c")
-    weekButton.place(x=695, y=65)
-    monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
-    monthButton.place(x=755, y=65)
 
 Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c")
 Graph.place(x=10, y=274)
@@ -85,6 +80,13 @@ fifthCatagory = Label(statisticsFrame, image=test, text="카테고리명", width
 fifthCatagory.place(x=281, y=456)
 fifthSum = Label(statisticsFrame, image=test, text="금액", width=166, height=25, compound="c")
 fifthSum.place(x=647, y=456)
+
+# Assets Page
+assetsSum = Label(assetsFrame, image=test, text="합계", width=804, height=80, compound="c", background='grey')
+assetsSum.place(x=10, y=55)
+
+assetsPlus = Label(assetsFrame, image=test, text="수입", width=396, height=80, compound="c", background='grey')
+assetsPlus.place(x=10, y=147)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
