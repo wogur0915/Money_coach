@@ -5,7 +5,7 @@ from tkinter.ttk import Combobox
 root = Tk()
 textarea = Text(root)
 root.title("내역")
-root.geometry("300x300")
+root.geometry("832x500")
 
 # DB 구성을 위한 Global List 변수 선언
 dates = []
@@ -29,11 +29,17 @@ def incomeWindow() :
         money.append(getIncome)
         types.append(getType)
         otherDetails.append(getInputOthers)
-        textarea.insert(INSERT, dates[i], INSERT, " "*10, INSERT, money[i], INSERT, " "*10, INSERT, types[i], INSERT, " "*10, INSERT, otherDetails[i], INSERT, "/n")
+        textarea.insert(END, dates[i], END, " "*20, END, money[i], END, " "*20, END, types[i], END, " "*20, END, otherDetails[i], END, "\n")
         i = i+1
 
+        # 데이터 추가 후 Clean
+        inputDate.delete(0,END)
+        inputIncome.delete(0,END)
+        inputOthers.delete(0,END)
+        incomeType.delete(0,END)
+
     incomeWindow = Tk()
-    incomeWindow.title("수입")
+    incomeWindow.title("가계부 추가")
     incomeWindow.geometry("300x300")
 
     # 입력창
@@ -41,15 +47,15 @@ def incomeWindow() :
     incomeLb2 = Label(incomeWindow, text="금액", font="나눔고딕 15")
     incomeLb3 = Label(incomeWindow, text="카테고리", font="나눔고딕 15")
     incomeLb4 = Label(incomeWindow, text="비고", font="나눔고딕 15")
-    incomeLb1.grid(row=0, column=1, padx=20, pady=5)
-    incomeLb2.grid(row=2, column=1, padx=20, pady=5)
-    incomeLb3.grid(row=4, column=1, padx=20, pady=5)
-    incomeLb4.grid(row=6, column=1, padx=20, pady=5)
+    incomeLb1.grid(row=0, column=1, padx=110, pady=7)
+    incomeLb2.grid(row=2, column=1, padx=110, pady=7)
+    incomeLb3.grid(row=4, column=1, padx=110, pady=7)
+    incomeLb4.grid(row=6, column=1, padx=110, pady=7)
     inputDate = Entry(incomeWindow)
     inputIncome = Entry(incomeWindow)
-    inputOthers = Entry(incomeWindow)
     types = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','경조사/회비','공과금','월급','기타']
     incomeType = Combobox(incomeWindow, height=10, values=types)
+    inputOthers = Entry(incomeWindow)
     inputDate.grid(row=1, column=1)
     inputIncome.grid(row=3, column=1)
     incomeType.grid(row=5, column=1)
@@ -65,14 +71,14 @@ def test() :
         for i in range(0,len(dates)) :
             print(dates[i], money[i], types[i], otherDetails[i])
 
-textarea.config(width = 250, height = 20)
-textarea.insert(INSERT, "날짜", INSERT, " "*10, INSERT, "금액", INSERT, " "*10, INSERT, "카테고리", INSERT, " "*10, INSERT, "비고")
+textarea.config(width = 250, height = 30)
+textarea.insert(INSERT, "날짜", INSERT, " "*20, INSERT, "금액", INSERT, " "*20, INSERT, "카테고리", INSERT, " "*20, INSERT, "비고", INSERT, "\n")
 incomeBtn = Button(root, text = "+", font="나눔고딕 10", command = incomeWindow)
 incomeBtn.config(width = 5, height = 5)
 deleteBtn = Button(root, text = "삭제", font="나눔고딕 10")
 deleteBtn.config(width = 5, height = 5)
 expenseBtn = Button(root, text = "내역출력", font="나눔고딕 10", command = test)
-expenseBtn.config(width = 5, height = 5)
+expenseBtn.config(width = 10, height = 5)
 textarea.pack(side='top')
 incomeBtn.pack(side='right')
 deleteBtn.pack(side='right')
