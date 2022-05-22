@@ -1,4 +1,5 @@
 from function import *
+from data import *
 
 # Default Windows Setting
 main = Tk()
@@ -39,18 +40,6 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     settingButton.grid(row=0, column=3)
 
 # History Page
-
-# Global List Value For History DB
-dates = []
-money = []
-types = []
-otherDetails = []
-expOrInc = []
-
-treelist=[]
-i = 0
-
-# History Page UI
 treeview=tkinter.ttk.Treeview(historyFrame, columns=["one", "two", "three","four"])
 treeview.config(height = 18)
 treeview.column("#0", width=150, anchor="center")
@@ -64,7 +53,7 @@ treeview.heading("three", text="카테고리", anchor="center")
 treeview.column("#4", width=300, anchor="center")
 treeview.heading("four", text="비고", anchor="center")
 
-addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command = addList)
+addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
 addBtn.config(width = 5, height = 5)
 deleteBtn = Button(historyFrame, text = "삭제", font="나눔고딕 10", anchor="center")
 deleteBtn.config(width = 5, height = 5)

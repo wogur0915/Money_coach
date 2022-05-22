@@ -1,13 +1,14 @@
 from tkinter import *
 import tkinter
 from tkinter.ttk import Combobox
+from data import *
 
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
     
 # History Add Button Function
-def addList() :
+def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
