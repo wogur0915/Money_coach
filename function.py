@@ -19,21 +19,25 @@ def addList(treeview) :
         getInputOthers = inputOthers.get()
         getType = tegType.get()
 
-        dates.append(getDate)
-        expOrInc.append(getExpOrInc)
-        money.append(getMoney)
-        types.append(getType)
-        otherDetails.append(getInputOthers)
-        
-        treeview.insert('', 'end', text=dates[i], values=[expOrInc[i], money[i], types[i], otherDetails[i]], iid=str(i))
-        i = i+1
+        if getDate or getExpOrInc or getMoney or getInputOthers or getType == None :
+            dates.append(getDate)
+            expOrInc.append(getExpOrInc)
+            money.append(getMoney)
+            types.append(getType)
+            otherDetails.append(getInputOthers)
 
-        # Clean After Data Add
-        inputDate.delete(0,END)
-        inputExpOrInc.delete(0,END)
-        inputMoney.delete(0,END)
-        inputOthers.delete(0,END)
-        tegType.delete(0,END)
+            treeview.insert('', 'end', text=dates[i], values=[expOrInc[i], money[i], types[i], otherDetails[i]], iid=str(i))
+            i = i+1
+
+            # Clean After Data Add
+            inputDate.delete(0,END)
+            inputExpOrInc.delete(0,END)
+            inputMoney.delete(0,END)
+            inputOthers.delete(0,END)
+            tegType.delete(0,END)
+
+        else :
+            warning = messagebox.askretrycancel("경고!", "입력되지 않은 정보가 있습니다!")
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
