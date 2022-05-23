@@ -7,6 +7,11 @@ from data import *
 def show_frame(frame):
     frame.tkraise()
     
+def show_statistics_frame(frame, typeLogo, image):
+    if typeLogoNum == 0:
+        typeLogo.config(image=image, text="0")
+    frame.tkraise()
+    
 # History Add Button Function
 def addList(treeview) :
 

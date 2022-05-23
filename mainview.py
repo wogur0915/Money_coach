@@ -32,7 +32,7 @@ lobbyLogo.grid(row=1, column=0, columnspan=4)
 for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
     historyButton = Button(frameName, image=test, text="내역", width=200, height=40, compound="c", command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
-    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_frame(statisticsFrame)])
+    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
     statisticsButton.grid(row=0, column=1)
     assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_frame(assetsFrame)])
     assetsButton.grid(row=0, column=2)
