@@ -34,7 +34,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_frame(assetsFrame)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, test)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
@@ -110,8 +110,9 @@ assetsPlus = Label(assetsFrame, image=test, text="수입", width=396, height=80,
 assetsPlus.place(x=10, y=147)
 assetsMinus = Label(assetsFrame, image=test, text="지출", width=396, height=80, compound="c", background='grey')
 assetsMinus.place(x=418, y=147)
-assetsComments = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
-assetsComments.place(x=10, y=239)
+
+commentsLogo = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
+commentsLogo.place(x=10, y=239)
 
 # Statistics and Assets Page Button
 for frameName in (statisticsFrame, assetsFrame):

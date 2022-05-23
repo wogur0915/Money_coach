@@ -12,6 +12,11 @@ def show_statistics_frame(frame, typeLogo, image):
         typeLogo.config(image=image, text="0")
     frame.tkraise()
     
+def show_assets_frame(frame, commentsLogo, image):
+    if commentsLogoNum == 0:
+        commentsLogo.config(image=image, text="0")
+    frame.tkraise()
+    
 # History Add Button Function
 def addList(treeview) :
 
