@@ -10,11 +10,15 @@ def show_frame(frame):
 def show_statistics_frame(frame, typeLogo, image):
     if typeLogoNum == 0:
         typeLogo.config(image=image, text="0")
+    elif typeLogoNum == 1:
+        typeLogo.config(image=image, text="1")
     frame.tkraise()
     
 def show_assets_frame(frame, commentsLogo, image):
     if commentsLogoNum == 0:
         commentsLogo.config(image=image, text="0")
+    elif commentsLogoNum == 1:
+        commentsLogo.config(image=image, text="1")
     frame.tkraise()
     
 # History Add Button Function
