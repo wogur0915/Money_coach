@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter
 from tkinter.ttk import Combobox
+from tkinter import messagebox
 from data import *
 
 # Raise Frame Function
@@ -19,7 +20,7 @@ def addList(treeview) :
         getInputOthers = inputOthers.get()
         getType = tegType.get()
 
-        if getDate or getExpOrInc or getMoney or getInputOthers or getType == None :
+        if getDate and getExpOrInc and getMoney and getType :
             dates.append(getDate)
             expOrInc.append(getExpOrInc)
             money.append(getMoney)
