@@ -13,7 +13,7 @@ def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
-        global dates, money, types, otherDetails, i
+        global dates, money, types, otherDetails, columns
         value = [
             inputDate.get(),
             inputExpOrInc.get(),
@@ -38,8 +38,8 @@ def addList(treeview) :
             types.append(value[3])
             otherDetails.append(value[4])
 
-            treeview.insert('', 'end', text=dates[i], values=[expOrInc[i], money[i], types[i], otherDetails[i]], iid=str(i))
-            i = i+1
+            treeview.insert('', 'end', text=dates[columns], values=[expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+            columns = columns+1
 
             # Clean After Data Add
             inputDate.delete(0,END)
@@ -50,7 +50,8 @@ def addList(treeview) :
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
-    addListWin.geometry("300x350")
+    addListWin.geometry("300x350+942+190")
+    # addListWin.wm_attributes("-topmost", 1)  #창을 항상 맨위에 표시
 
     # Enter Window
     dateLb = Label(addListWin, text="날짜", font="나눔고딕 13")
