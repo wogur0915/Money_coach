@@ -6,4 +6,4 @@ otherDetails = []
 expOrInc = []
 
 treelist=[]
-i = 0
+colums = 0
