@@ -23,7 +23,7 @@ assetsFrame.grid(row=0, column=0, sticky="nsew")
 settingFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
-test=PhotoImage(file='1pixel.png')
+test=PhotoImage(file='src/1pixel.png')
 
 # Main Page And Frames
 lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=832, height=446, compound="c", background='grey')
