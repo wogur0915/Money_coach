@@ -109,12 +109,12 @@ pmBack = PhotoImage(file='src/plusminus.png')
 assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
 assetsPlus = Label(assetsFrame, image=pmBack, text="수입", width=396, height=60, compound="c")
-assetsPlus.place(x=10, y=127)
+assetsPlus.place(x=10, y=123)
 assetsMinus = Label(assetsFrame, image=pmBack, text="지출", width=396, height=60, compound="c")
-assetsMinus.place(x=418, y=127)
+assetsMinus.place(x=418, y=123)
 
-commentsLogo = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
-commentsLogo.place(x=10, y=239)
+commentsLogo = Label(assetsFrame, image=test, text="Logo", width=800, height=288, compound="c", background='grey')
+commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
 for frameName in (statisticsFrame, assetsFrame):
