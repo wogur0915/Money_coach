@@ -5,7 +5,7 @@ from data import *
 main = Tk()
 main.title("House-hold Account Book System")
 main.resizable(width = False, height = False)
-main.geometry('832x500')
+main.geometry('832x500+96+144')
 #main.iconbitmap('c:/...')
 
 # Default Frame Setting
