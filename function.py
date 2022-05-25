@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter
 from tkinter.ttk import Combobox
+from tkinter import messagebox
 from data import *
 
 # Raise Frame Function
@@ -26,32 +27,45 @@ def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
-        global dates, money, types, otherDetails, i
-        getDate = inputDate.get()
-        getExpOrInc = inputExpOrInc.get()
-        getMoney = inputMoney.get()
-        getInputOthers = inputOthers.get()
-        getType = tegType.get()
+        global dates, money, types, otherDetails, columns
+        value = [
+            inputDate.get(),
+            inputExpOrInc.get(),
+            inputMoney.get(),
+            tegType.get(),
+            inputOthers.get()
+            ]
 
-        dates.append(getDate)
-        expOrInc.append(getExpOrInc)
-        money.append(getMoney)
-        types.append(getType)
-        otherDetails.append(getInputOthers)
+        isOK = True
+        for item in value[:4] :
+            # if empyty spaces exist
+            if not(item):
+                warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
+                isOK = False
+                break
+            # no empty then
         
-        treeview.insert('', 'end', text=dates[i], values=[expOrInc[i], money[i], types[i], otherDetails[i]], iid=str(i))
-        i = i+1
+        if isOK:
+            dates.append(value[0])
+            expOrInc.append(value[1])
+            money.append(value[2])
+            types.append(value[3])
+            otherDetails.append(value[4])
 
-        # Clean After Data Add
-        inputDate.delete(0,END)
-        inputExpOrInc.delete(0,END)
-        inputMoney.delete(0,END)
-        inputOthers.delete(0,END)
-        tegType.delete(0,END)
+            treeview.insert('', 'end', text=dates[columns], values=[expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+            columns = columns+1
+
+            # Clean After Data Add
+            inputDate.delete(0,END)
+            inputExpOrInc.delete(0,END)
+            inputMoney.delete(0,END)
+            inputOthers.delete(0,END)
+            tegType.delete(0,END)
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
-    addListWin.geometry("300x350")
+    addListWin.geometry("300x350+942+190")
+    # addListWin.wm_attributes("-topmost", 1)  #창을 항상 맨위에 표시
 
     # Enter Window
     dateLb = Label(addListWin, text="날짜", font="나눔고딕 13")
