@@ -105,11 +105,12 @@ fifthSum.place(x=647, y=456)
 
 # Assets Page
 sumBack = PhotoImage(file='src/sum.png')
+pmBack = PhotoImage(file='src/plusminus.png')
 assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
-assetsPlus = Label(assetsFrame, image=test, text="수입", width=396, height=60, compound="c", background='grey')
+assetsPlus = Label(assetsFrame, image=pmBack, text="수입", width=396, height=60, compound="c")
 assetsPlus.place(x=10, y=127)
-assetsMinus = Label(assetsFrame, image=test, text="지출", width=396, height=60, compound="c", background='grey')
+assetsMinus = Label(assetsFrame, image=pmBack, text="지출", width=396, height=60, compound="c")
 assetsMinus.place(x=418, y=127)
 
 commentsLogo = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
