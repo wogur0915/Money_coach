@@ -124,6 +124,11 @@ def delList(treeview) :
         if isOK:
             if dates.index(value[0]) == expOrInc.index(value[1]) == money.index(value[2]) == types.index(value[3]) :
                 indexNum = dates.index(value[0])
+                dates.pop(indexNum)
+                expOrInc.pop(indexNum)
+                money.pop(indexNum)
+                types.pop(indexNum)
+                otherDetails.pop(indexNum)
                 treeview.delete(str(indexNum))
 
             # Clean After Data Add
