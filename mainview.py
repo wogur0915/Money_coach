@@ -55,7 +55,7 @@ treeview.heading("four", text="비고", anchor="center")
 
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
 addBtn.config(width = 5, height = 5)
-deleteBtn = Button(historyFrame, text = "삭제", font="나눔고딕 10", anchor="center")
+deleteBtn = Button(historyFrame, text = "삭제", font="나눔고딕 10", anchor="center", command=lambda:[delList(treeview)])
 deleteBtn.config(width = 5, height = 5)
 treeview.grid(row=1, column=0, columnspan=4)
 deleteBtn.grid(row=2, column=2)
