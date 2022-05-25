@@ -104,7 +104,8 @@ fifthSum = Label(statisticsFrame, image=test, text="금액", width=166, height=2
 fifthSum.place(x=647, y=456)
 
 # Assets Page
-assetsSum = Label(assetsFrame, image=test, text="합계", width=804, height=80, compound="c", background='grey')
+sumBack = PhotoImage(file='src/sum.png')
+assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
 assetsPlus = Label(assetsFrame, image=test, text="수입", width=396, height=80, compound="c", background='grey')
 assetsPlus.place(x=10, y=147)
