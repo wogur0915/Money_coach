@@ -26,7 +26,7 @@ settingFrame.grid(row=0, column=0, sticky="nsew")
 test=PhotoImage(file='1pixel.png')
 
 # Main Page And Frames
-lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=800, height=446, compound="c")
+lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=832, height=446, compound="c", background='grey')
 lobbyLogo.grid(row=1, column=0, columnspan=4)
 
 for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
@@ -34,7 +34,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, test)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, plan1)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
@@ -106,6 +106,8 @@ fifthSum.place(x=647, y=456)
 # Assets Page
 sumBack = PhotoImage(file='src/sum.png')
 pmBack = PhotoImage(file='src/plusminus.png')
+plan1 = PhotoImage(file='src/plan1.png')
+
 assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
 assetsPlus = Label(assetsFrame, image=pmBack, text="수입", width=396, height=60, compound="c")
@@ -113,7 +115,7 @@ assetsPlus.place(x=10, y=123)
 assetsMinus = Label(assetsFrame, image=pmBack, text="지출", width=396, height=60, compound="c")
 assetsMinus.place(x=418, y=123)
 
-commentsLogo = Label(assetsFrame, image=test, text="Logo", width=800, height=288, compound="c", background='grey')
+commentsLogo = Label(assetsFrame, image=plan1, text="Logo", width=800, height=288, compound="c")
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
