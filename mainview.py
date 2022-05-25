@@ -117,9 +117,9 @@ commentsLogo.place(x=10, y=239)
 # Statistics and Assets Page Button
 for frameName in (statisticsFrame, assetsFrame):
     weekButton = Button(frameName, image=test, text="주간", width=50, height=20, compound="c")
-    weekButton.place(x=695, y=65)
+    weekButton.place(x=757, y=61)
     monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
-    monthButton.place(x=755, y=65)
+    monthButton.place(x=757, y=89)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
