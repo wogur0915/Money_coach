@@ -6,7 +6,7 @@ otherDetails = []
 expOrInc = []
 
 treelist=[]
-colums = 0
+columns = 0
 
 # Global Value For Statistics Page Logo
 typeLogoNum = 0
