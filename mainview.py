@@ -15,6 +15,9 @@ statisticsFrame = Frame(main)
 assetsFrame = Frame(main)
 settingFrame = Frame(main)
 
+# Image Load
+load_image()
+
 # Frame Place
 lobbyFrame.grid(row=0, column=0, sticky="nsew")
 historyFrame.grid(row=0, column=0, sticky="nsew")
@@ -34,7 +37,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, plan0)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
@@ -106,7 +109,6 @@ fifthSum.place(x=647, y=456)
 # Assets Page
 sumBack = PhotoImage(file='src/sum.png')
 pmBack = PhotoImage(file='src/plusminus.png')
-plan0 = PhotoImage(file='src/plan0.png')
 
 assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
@@ -115,7 +117,7 @@ assetsPlus.place(x=10, y=123)
 assetsMinus = Label(assetsFrame, image=pmBack, text="지출", width=396, height=60, compound="c")
 assetsMinus.place(x=418, y=123)
 
-commentsLogo = Label(assetsFrame, image=plan0, width=800, height=288)
+commentsLogo = Label(assetsFrame, image=test, width=800, height=288)
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button

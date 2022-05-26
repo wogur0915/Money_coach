@@ -8,6 +8,10 @@ from data import *
 def show_frame(frame):
     frame.tkraise()
     
+def load_image():
+    global plan0
+    plan0 = PhotoImage(file='src/plan0.png')
+    
 def show_statistics_frame(frame, typeLogo, image):
     if typeLogoNum == 0:
         typeLogo.config(image=image, text="0")
@@ -15,11 +19,11 @@ def show_statistics_frame(frame, typeLogo, image):
         typeLogo.config(image=image, text="1")
     frame.tkraise()
     
-def show_assets_frame(frame, commentsLogo, image):
+def show_assets_frame(frame, commentsLogo):
     if commentsLogoNum == 0:
-        commentsLogo.config(image=image)
+        commentsLogo.config(image=plan0)
     elif commentsLogoNum == 1:
-        commentsLogo.config(image=image)
+        commentsLogo.config(image=test)
     frame.tkraise()
     
 # History Add Button Function
