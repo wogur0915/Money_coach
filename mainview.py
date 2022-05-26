@@ -109,24 +109,26 @@ fifthSum.place(x=647, y=456)
 # Assets Page
 sumBack = PhotoImage(file='src/sum.png')
 plusBack = PhotoImage(file='src/plus.png')
-pmBack = PhotoImage(file='src/plusminus.png')
+minusBack = PhotoImage(file='src/minus.png')
 
 assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
 assetsSum.place(x=10, y=55)
 assetsPlus = Label(assetsFrame, image=plusBack, text="수입", width=396, height=60, compound="c")
 assetsPlus.place(x=10, y=123)
-assetsMinus = Label(assetsFrame, image=pmBack, text="지출", width=396, height=60, compound="c")
+assetsMinus = Label(assetsFrame, image=minusBack, text="지출", width=396, height=60, compound="c")
 assetsMinus.place(x=418, y=123)
 
 commentsLogo = Label(assetsFrame, image=test, width=800, height=288)
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
+week = PhotoImage(file='src/week.png')
+
 for frameName in (statisticsFrame, assetsFrame):
-    weekButton = Button(frameName, image=test, text="주간", width=50, height=20, compound="c")
-    weekButton.place(x=757, y=61)
-    monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
-    monthButton.place(x=757, y=89)
+    weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
+    weekButton.place(x=757, y=59)
+    monthButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
+    monthButton.place(x=757, y=90)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
