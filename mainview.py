@@ -123,11 +123,12 @@ commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
 week = PhotoImage(file='src/week.png')
+month = PhotoImage(file='src/month.png')
 
 for frameName in (statisticsFrame, assetsFrame):
     weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
     weekButton.place(x=757, y=59)
-    monthButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
+    monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
     monthButton.place(x=757, y=90)
 
 # Main Roop & Set First Frame
