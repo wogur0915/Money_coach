@@ -81,12 +81,13 @@ def addList(treeview) :
     memoLb.grid(row=8, column=1, padx=100, pady=7)
 
     expOrIncTyp = ['수입', '지출']
-    types = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','경조사/회비','공과금','월급','기타']
+    expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
+    incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(addListWin, justify = "center")
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
     inputMoney = Entry(addListWin, justify = "center")
-    tegType = Combobox(addListWin, width=17, height=10, values=types, justify = "center")
+    tegType = Combobox(addListWin, width=17, height=10, values=expTypes, justify = "center")
     inputOthers = Entry(addListWin, justify = "center")
     confirmBtn = Button(addListWin, text = "확인", command = incomeInputVal)
 
@@ -141,32 +142,33 @@ def delList(treeview) :
             inputOthers.delete(0,END)
             tegType.delete(0,END)
 
-    addListWin = Tk()
-    addListWin.title("가계부 삭제")
-    addListWin.geometry("300x350+942+190")
-    # addListWin.wm_attributes("-topmost", 1) # window on first
+    delListWin = Tk()
+    delListWin.title("가계부 삭제")
+    delListWin.geometry("300x350+942+190")
+    # addListWin.wm_attributes("-topmost", 1)  # window on first
 
-    # Enter Window
-    dateLb = Label(addListWin, text="날짜", font="나눔고딕 13")
-    inoutLb = Label(addListWin, text="수입/지출", font="나눔고딕 13")
-    moneyLb = Label(addListWin, text="금액", font="나눔고딕 13")
-    tegLb = Label(addListWin, text="카테고리", font="나눔고딕 13")
-    memoLb = Label(addListWin, text="비고", font="나눔고딕 13")
+    # 입력창
+    dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
+    inoutLb = Label(delListWin, text="수입/지출", font="나눔고딕 13")
+    moneyLb = Label(delListWin, text="금액", font="나눔고딕 13")
+    tegLb = Label(delListWin, text="카테고리", font="나눔고딕 13")
+    memoLb = Label(delListWin, text="비고", font="나눔고딕 13")
     dateLb.grid(row=0, column=1, padx=100, pady=7)
     inoutLb.grid(row=2, column=1, padx=100, pady=7)
     moneyLb.grid(row=4, column=1, padx=100, pady=7)
     tegLb.grid(row=6, column=1, padx=100, pady=7)
     memoLb.grid(row=8, column=1, padx=100, pady=7)
 
-    expOrIncTyp = ['수입', '지출']
-    expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','경조사/회비','공과금','월급','기타']
+    expOrIncTyp = ['지출', '수입']   
+    expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
+    incTypes = ['경조사/회비','공과금','월급','기타']
 
-    inputDate = Entry(addListWin, justify = "center")
-    inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
-    inputMoney = Entry(addListWin, justify = "center")
-    tegType = Combobox(addListWin, width=17, height=10, values=expTypes, justify = "center")
-    inputOthers = Entry(addListWin, justify = "center")
-    confirmBtn = Button(addListWin, text = "확인", command = deleteInputVal)
+    inputDate = Entry(delListWin, justify = "center")
+    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
+    inputMoney = Entry(delListWin, justify = "center")
+    tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center")
+    inputOthers = Entry(delListWin, justify = "center")
+    confirmBtn = Button(delListWin, text = "확인", command = deleteInputVal)
 
     inputDate.grid(row=1, column=1)
     inputExpOrInc.grid(row=3, column=1)
