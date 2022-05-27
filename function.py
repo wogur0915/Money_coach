@@ -62,6 +62,14 @@ def addList(treeview) :
             inputMoney.delete(0,END)
             inputOthers.delete(0,END)
             tegType.delete(0,END)
+            
+    # event function
+    # combo box selection 
+    def selectCombo():
+        if inputExpOrInc.get()=="수입" :
+            tegType["values"]=incTypes
+        else :
+            tegType["values"]=expTypes
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
@@ -83,7 +91,7 @@ def addList(treeview) :
     expOrIncTyp = ['수입', '지출']
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
-
+    
     inputDate = Entry(addListWin, justify = "center")
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
     inputMoney = Entry(addListWin, justify = "center")
