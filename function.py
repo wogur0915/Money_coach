@@ -93,9 +93,11 @@ def addList(treeview) :
     incTypes = ['경조사/회비','공과금','월급','기타']
     
     inputDate = Entry(addListWin, justify = "center")
-    inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
+    inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
     inputMoney = Entry(addListWin, justify = "center")
-    tegType = Combobox(addListWin, width=17, height=10, values=expTypes, justify = "center")
+    inputExpOrInc.current(0)    
+    tegType = Combobox(addListWin, width=17, height=10, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
+    tegType.current(0)
     inputOthers = Entry(addListWin, justify = "center")
     confirmBtn = Button(addListWin, text = "확인", command = incomeInputVal)
 
