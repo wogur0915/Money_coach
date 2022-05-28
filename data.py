@@ -8,6 +8,9 @@ expOrInc = []
 treelist=[]
 columns = 0
 
+historySum = 0;
+historySumStr = str(historySum)
+
 # Global Value For Statistics Page Logo
 typeLogoNum = 0
 
