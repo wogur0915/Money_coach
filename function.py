@@ -65,6 +65,11 @@ def addList(treeview) :
             inputOthers.delete(0,END)
             tegType.delete(0,END)
             
+            # # for debug
+            # print(dates, expOrInc, types, money, otherDetails)
+            # totalMoney = totalMoney + int(money[-1])
+            # print("합계 테스트 : ", totalMoney)    
+            
     # event function
     # combo box selection 
     def selectCombo():
@@ -237,6 +242,7 @@ def dbclickDelList(event, treeview):
 
             selected_item = treeview.selection()[0]
             treeview.delete(selected_item)
+            delListWin.destroy()
 
             # destroy data
             dates[int(curItem)] = None
@@ -244,7 +250,13 @@ def dbclickDelList(event, treeview):
             money[int(curItem)] = None
             types[int(curItem)] = None
             otherDetails[int(curItem)] = None
-            print(dates, expOrInc, types, money, otherDetails)
+
+            # # for debug
+            # print(dates, expOrInc, types, money, otherDetails)
+            # print("합계 테스트 : ", totalMoney)
+            
+            def delAsk() :
+                response = messagebox.showwarning("확인/취소", "선택하신 내역 정보를 삭제하시겠습니까?")
 
         # Entered window
         dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
@@ -272,7 +284,7 @@ def dbclickDelList(event, treeview):
         tegType.set( treeview.item(curItem).get("values")[2] )
         inputOthers = Entry(delListWin, justify = "center")
         inputOthers.insert( 0, treeview.item(curItem).get("values")[3] )
-        confirmBtn = Button(delListWin, text = "확인", command = deleteContent)
+        confirmBtn = Button(delListWin, text = "확인", command = delAsk)
 
         # Read Only delete popup window
         inputDate.configure(state='disabled')
