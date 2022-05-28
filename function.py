@@ -239,11 +239,11 @@ def dbclickDelList(event, treeview):
             treeview.delete(selected_item)
 
             # destroy data
-            dates.pop(int(curItem))
-            expOrInc.pop(int(curItem))
-            money.pop(int(curItem))
-            types.pop(int(curItem))
-            otherDetails.pop(int(curItem))
+            dates[int(curItem)] = None
+            expOrInc[int(curItem)] = None
+            money[int(curItem)] = None
+            types[int(curItem)] = None
+            otherDetails[int(curItem)] = None
             print(dates, expOrInc, types, money, otherDetails)
 
         # Entered window
