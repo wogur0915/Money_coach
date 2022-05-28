@@ -7,6 +7,11 @@ main.title("House-hold Account Book System")
 main.resizable(width = False, height = False)
 main.geometry('832x500')
 #main.iconbitmap('c:/...')
+#Theme for the program
+style = ttk.Style(main)
+style.theme_names()
+current_theme = style.theme_use()
+style.theme_use("clam")
 
 # Default Frame Setting
 lobbyFrame = Frame(main)
@@ -125,9 +130,9 @@ text1 = "To contact us: andrewendlesss@gmail.com \n 희범의 email \n 재혁의
 text2 = "We are CBNU students currently majoring in computer science. \n This program is our first project that we made together."
 Help = Button(settingFrame, image=test, text="help", width=388, height=50, compound="c", fg="red", command = lambda : openNewWindow(text1))
 Help.place(x=10, y=55)
-Us = ttk.Button(settingFrame, image=test, text="About Us", width=388, height=50, compound="c", fg="dark green", command = lambda : openNewWindow(text2))
+Us = Button(settingFrame, image=test, text="About Us", width=388, height=50, compound="c", fg="dark green", command = lambda : openNewWindow(text2))
 Us.place(x=10, y=120)  
-Link = ttk.Button(settingFrame, text="This is our GitHub repository \n https://github.com/KorBasilion/OSS-Basic-Project", fg="dark green")
+Link = Button(settingFrame, text="This is our GitHub repository \n https://github.com/KorBasilion/OSS-Basic-Project", fg="dark green")
 Link.place(x=10, y=185)
 Link.bind("<Button-1>", lambda e : callback("https://github.com/KorBasilion/OSS-Basic-Project"))
 # Main Roop & Set First Frame

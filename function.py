@@ -3,11 +3,16 @@ import tkinter
 from tkinter.ttk import Combobox
 from data import *
 import webbrowser
+import tkinter as tk
+from tkinter import ttk
+
 
 # Function that opens a URL
 def openNewWindow(info):
     newWindow = Toplevel()
     newWindow.title("Help")
+    newWindow.grid
+    Label(newWindow, text = info, fg = "red").pack()
     
  # Function that opens URL links   
 def callback(url):
