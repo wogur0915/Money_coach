@@ -23,7 +23,7 @@ assetsFrame.grid(row=0, column=0, sticky="nsew")
 settingFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
-test=PhotoImage(file='1pixel.png')
+test=PhotoImage(file='KakaoTalk_Photo_2022-05-26-15-49-11.png')
 
 # Main Page And Frames
 lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=800, height=446, compound="c")
@@ -120,6 +120,11 @@ for frameName in (statisticsFrame, assetsFrame):
     monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
     monthButton.place(x=755, y=65)
 
+# Setting page    
+Help = Button(settingFrame, image=test, text="Help", width=388, height=50, compound="c", fg="red")
+Help.place(x=10, y=55)
+Us = Button(settingFrame, image=test, text="About us", width=388, height=50, compound="c", fg="dark green")
+Us.place(x=10, y=120)
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()
