@@ -56,7 +56,7 @@ def addList(treeview) :
 
             treeview.insert('', 'end', text=dates[columns], values=[expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
             columns = columns+1
-            treeview.bind("<Double-1>", lambda:[dbclickDelList(treeview)])
+            treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
 
             # Clean After Data Add
             inputDate.delete(0,END)
@@ -239,11 +239,11 @@ def dbclickDelList(event, treeview):
             treeview.delete(selected_item)
 
             # destroy data
-            dates[int(curItem)] = None
-            expOrInc[int(curItem)] = None
-            money[int(curItem)] = None
-            types[int(curItem)] = None
-            otherDetails[int(curItem)] = None
+            dates.pop(int(curItem))
+            expOrInc.pop(int(curItem))
+            money.pop(int(curItem))
+            types.pop(int(curItem))
+            otherDetails.pop(int(curItem))
             print(dates, expOrInc, types, money, otherDetails)
 
         # Entered window
