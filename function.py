@@ -70,6 +70,13 @@ def addList(treeview) :
             tegType["values"]=incTypes
         else :
             tegType["values"]=expTypes
+            
+    # change combobox smoothly
+    def changeSmooth(event):
+        if inputExpOrInc.get()=="수입":
+            tegType.set(incTypes[0])
+        else:
+            tegType.set(expTypes[0])
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
@@ -157,7 +164,7 @@ def delList(treeview) :
     delListWin.geometry("300x350+942+190")
     # addListWin.wm_attributes("-topmost", 1)  # window on first
 
-    # 입력창
+    # Enter Window
     dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
     inoutLb = Label(delListWin, text="수입/지출", font="나눔고딕 13")
     moneyLb = Label(delListWin, text="금액", font="나눔고딕 13")
