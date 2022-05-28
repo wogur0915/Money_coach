@@ -2,6 +2,16 @@ from tkinter import *
 import tkinter
 from tkinter.ttk import Combobox
 from data import *
+import webbrowser
+
+# Function that opens a URL
+def openNewWindow(info):
+    newWindow = Toplevel()
+    newWindow.title("Help")
+    
+ # Function that opens URL links   
+def callback(url):
+   webbrowser.open_new_tab(url) 
 
 # Raise Frame Function
 def show_frame(frame):
