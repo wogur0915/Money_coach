@@ -121,10 +121,12 @@ for frameName in (statisticsFrame, assetsFrame):
     monthButton.place(x=755, y=65)
 
 # Setting page    
-Help = Button(settingFrame, image=test, text="Help", width=388, height=50, compound="c", fg="red")
+text1 = "To contact us: andrewendlesss@gmail.com \n 희범의 email \n 재혁의 email"
+text2 = "We are CBNU students currently majoring in computer science. \n This program is our first project that we made together."
+Help = Button(settingFrame, image=test, text="help", width=388, height=50, compound="c", fg="red", command = lambda : openNewWindow(text1))
 Help.place(x=10, y=55)
-Us = Button(settingFrame, image=test, text="About us", width=388, height=50, compound="c", fg="dark green")
-Us.place(x=10, y=120)
+Us = ttk.Button(settingFrame, image=test, text="About Us", width=388, height=50, compound="c", fg="dark green", command = lambda : openNewWindow(text2))
+Us.place(x=10, y=120)  
 Link = ttk.Button(settingFrame, text="This is our GitHub repository \n https://github.com/KorBasilion/OSS-Basic-Project", fg="dark green")
 Link.place(x=10, y=185)
 Link.bind("<Button-1>", lambda e : callback("https://github.com/KorBasilion/OSS-Basic-Project"))
