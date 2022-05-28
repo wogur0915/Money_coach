@@ -56,6 +56,7 @@ def addList(treeview) :
 
             treeview.insert('', 'end', text=dates[columns], values=[expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
             columns = columns+1
+            treeview.bind("<Double-1>", lambda:[dbclickDelList(treeview)])
 
             # Clean After Data Add
             inputDate.delete(0,END)
@@ -217,3 +218,65 @@ def delList(treeview) :
     tegType.grid(row=7, column=1)
     inputOthers.grid(row=9, column=1)
     confirmBtn.grid(row=10, column=1, padx=10, pady=10)
+    
+#-------------------------------------------------------
+# delete with doublClick
+def dbclickDelList(event, treeview):
+
+    curItem = treeview.focus()
+    
+    if curItem : 
+        # dbclickDelList
+        delListWin = Tk()
+        delListWin.title("가계부 삭제")
+        delListWin.geometry("300x350+942+190")
+
+        # button action  
+        def deleteContent() :
+            global dates, money, types, otherDetails, expOrInc, columns
+
+            selected_item = treeview.selection()[0]
+            treeview.delete(selected_item)
+
+            # destroy data
+            dates[int(curItem)] = None
+            expOrInc[int(curItem)] = None
+            money[int(curItem)] = None
+            types[int(curItem)] = None
+            otherDetails[int(curItem)] = None
+            print(dates, expOrInc, types, money, otherDetails)
+
+        # Entered window
+        dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
+        inoutLb = Label(delListWin, text="수입/지출", font="나눔고딕 13")
+        moneyLb = Label(delListWin, text="금액", font="나눔고딕 13")
+        tegLb = Label(delListWin, text="카테고리", font="나눔고딕 13")
+        memoLb = Label(delListWin, text="비고", font="나눔고딕 13")
+        dateLb.grid(row=0, column=1, padx=100, pady=7)
+        inoutLb.grid(row=2, column=1, padx=100, pady=7)
+        moneyLb.grid(row=4, column=1, padx=100, pady=7)
+        tegLb.grid(row=6, column=1, padx=100, pady=7)
+        memoLb.grid(row=8, column=1, padx=100, pady=7)
+
+        expOrIncTyp = ['지출', '수입']   
+        expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
+        incTypes = ['경조사/회비','공과금','월급','기타']
+
+        inputDate = Entry(delListWin, justify = "center")
+        inputDate.insert( 0, treeview.item(curItem).get("text") )
+        inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
+        inputExpOrInc.set( treeview.item(curItem).get("values")[0] )
+        inputMoney = Entry(delListWin, justify = "center")
+        inputMoney.insert( 0, treeview.item(curItem).get("values")[1] )
+        tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center", state='readonly')
+        tegType.set( treeview.item(curItem).get("values")[2] )
+        inputOthers = Entry(delListWin, justify = "center")
+        inputOthers.insert( 0, treeview.item(curItem).get("values")[3] )
+        confirmBtn = Button(delListWin, text = "확인", command = deleteContent)
+
+        inputDate.grid(row=1, column=1)
+        inputExpOrInc.grid(row=3, column=1)
+        inputMoney.grid(row=5, column=1)
+        tegType.grid(row=7, column=1)
+        inputOthers.grid(row=9, column=1)
+        confirmBtn.grid(row=10, column=1, padx=10, pady=10)
