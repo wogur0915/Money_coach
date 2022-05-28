@@ -95,7 +95,7 @@ def addList(treeview) :
     tegLb.grid(row=6, column=1, padx=100, pady=7)
     memoLb.grid(row=8, column=1, padx=100, pady=7)
 
-    expOrIncTyp = ['수입', '지출']
+    expOrIncTyp = ['지출', '수입']
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
     
