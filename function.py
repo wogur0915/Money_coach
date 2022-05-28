@@ -256,7 +256,9 @@ def dbclickDelList(event, treeview):
             # print("합계 테스트 : ", totalMoney)
             
             def delAsk() :
-                response = messagebox.showwarning("확인/취소", "선택하신 내역 정보를 삭제하시겠습니까?")
+                response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
+                if response == 1 :
+                    deleteContent()
 
         # Entered window
         dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
