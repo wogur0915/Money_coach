@@ -43,6 +43,7 @@ def addList(treeview) :
             if not(item):
                 warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
                 isOK = False
+                addListWin.lift()
                 break
             # no empty then
         
@@ -124,6 +125,7 @@ def delList(treeview) :
     # Return Enter Data(Global Value) to Apply History
     def deleteInputVal() :
         global dates, money, types, otherDetails, columns
+
         value = [
             inputDate.get(),
             inputExpOrInc.get(),
@@ -131,16 +133,18 @@ def delList(treeview) :
             tegType.get(),
             inputOthers.get()
             ]
-
+       
         isOK = True
         for item in value[:4] :
             # if empyty spaces exist
             if not(item):
                 warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
                 isOK = False
+                delListWin.lift()
                 break
             # no empty then,
         
+        # Delete the column after verifying that the information entered by the user matches the information in the diary
         if isOK:
             if (value[0] in dates) and (value[1] in expOrInc) and (value[2] in money) and (value[3] in types) and (value[4] in otherDetails):
                 if dates.index(value[0]) == expOrInc.index(value[1]) == money.index(value[2]) == types.index(value[3]) :
@@ -153,8 +157,9 @@ def delList(treeview) :
                     treeview.delete(str(indexNum))
             else :
                 warning = messagebox.showwarning("경고!", "가계부에 존재하지 않는 정보입니다!")
+                delListWin.lift()
 
-            # Clean After Data Add
+            # # Clean After Data Delete
             inputDate.delete(0,END)
             inputExpOrInc.delete(0,END)
             inputMoney.delete(0,END)
