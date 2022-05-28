@@ -71,7 +71,7 @@ def addList(treeview) :
             tegType["values"]=incTypes
         else :
             tegType["values"]=expTypes
-            
+
     # change combobox smoothly
     def changeSmooth(event):
         if inputExpOrInc.get()=="수입":
@@ -102,7 +102,6 @@ def addList(treeview) :
     
     inputDate = Entry(addListWin, justify = "center")
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
-    inputMoney = Entry(addListWin, justify = "center")
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
     inputMoney = Entry(addListWin, justify = "center")
@@ -183,14 +182,32 @@ def delList(treeview) :
     tegLb.grid(row=6, column=1, padx=100, pady=7)
     memoLb.grid(row=8, column=1, padx=100, pady=7)
 
+    # event function
+    # combo box selection 
+    def selectCombo():
+        if inputExpOrInc.get()=="수입" :
+            tegType["values"]=incTypes
+        else :
+            tegType["values"]=expTypes
+
+    # change combobox smoothly
+    def changeSmooth(event):
+        if inputExpOrInc.get()=="수입":
+            tegType.set(incTypes[0])
+        else:
+            tegType.set(expTypes[0])
+
     expOrIncTyp = ['지출', '수입']   
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(delListWin, justify = "center")
-    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center")
-    inputMoney = Entry(delListWin, justify = "center")
-    tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center")
+    inputExpOrInc = Combobox(delListWin, width=17, height=2, values=expOrIncTyp, justify = "center", state='readonly')
+    inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
+    inputExpOrInc.current(0)    
+    inputMoney = Entry(delListWin, justify = "center")    
+    tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
+    tegType.current(0)    
     inputOthers = Entry(delListWin, justify = "center")
     confirmBtn = Button(delListWin, text = "확인", command = deleteInputVal)
 
