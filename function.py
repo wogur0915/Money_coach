@@ -274,6 +274,13 @@ def dbclickDelList(event, treeview):
         inputOthers.insert( 0, treeview.item(curItem).get("values")[3] )
         confirmBtn = Button(delListWin, text = "확인", command = deleteContent)
 
+        # Read Only delete popup window
+        inputDate.configure(state='disabled')
+        inputExpOrInc.configure(state='disabled')
+        inputMoney.configure(state='disabled')
+        tegType.configure(state='disabled')
+        inputOthers.configure(state='disabled')
+        
         inputDate.grid(row=1, column=1)
         inputExpOrInc.grid(row=3, column=1)
         inputMoney.grid(row=5, column=1)
