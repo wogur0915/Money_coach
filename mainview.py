@@ -125,6 +125,9 @@ Help = Button(settingFrame, image=test, text="Help", width=388, height=50, compo
 Help.place(x=10, y=55)
 Us = Button(settingFrame, image=test, text="About us", width=388, height=50, compound="c", fg="dark green")
 Us.place(x=10, y=120)
+Link = ttk.Button(settingFrame, text="This is our GitHub repository \n https://github.com/KorBasilion/OSS-Basic-Project", fg="dark green")
+Link.place(x=10, y=185)
+Link.bind("<Button-1>", lambda e : callback("https://github.com/KorBasilion/OSS-Basic-Project"))
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()
