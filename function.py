@@ -401,3 +401,12 @@ def expEtcTotal() :
         if types[i] == "기타" and expOrInc[i] == "지출" :
             etcMoney += int(money[i])
     return etcMoney
+
+# incTypes = ['경조사/회비','공과금','월급','기타']
+# Income Type Calculate
+def eventTotal() :
+    eventMoney = 0
+    for i in range(columns) :
+        if types[i] == "경조사/회비" and expOrInc[i] == "수입" :
+            eventMoney += int(money[i])
+    return eventMoney
