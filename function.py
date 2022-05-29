@@ -362,3 +362,10 @@ def eduTotal() :
         if types[i] == "교육/육아" and expOrInc[i] == "지출" :
             eduMoney += int(money[i])
     return eduMoney
+
+def carTotal() :
+    carMoney = 0
+    for i in range(columns) :
+        if types[i] == "교통/차량" and expOrInc[i] == "지출" :
+            carMoney += int(money[i])
+    return carMoney
