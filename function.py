@@ -417,3 +417,10 @@ def utilTotal() :
         if types[i] == "공과금" and expOrInc[i] == "수입" :
             utilMoney += int(money[i])
     return utilMoney
+
+def salaryTotal() :
+    salaryMoney = 0
+    for i in range(columns) :
+        if types[i] == "월급" and expOrInc[i] == "수입" :
+            salaryMoney += int(money[i])
+    return salaryMoney
