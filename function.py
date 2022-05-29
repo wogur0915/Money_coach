@@ -355,3 +355,10 @@ def cultureTotal() :
         if types[i] == "건강/문화" and expOrInc[i] == "지출" :
             cultureMoney += int(money[i])
     return cultureMoney
+
+def eduTotal() :
+    eduMoney = 0
+    for i in range(columns) :
+        if types[i] == "교육/육아" and expOrInc[i] == "지출" :
+            eduMoney += int(money[i])
+    return eduMoney
