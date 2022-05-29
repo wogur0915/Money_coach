@@ -325,3 +325,12 @@ def total() :
     global totalMoney
     totalMoney = incSum - expSum
     return totalMoney
+
+# Expend Type Calculate
+# expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
+def eatTotal() :
+    eatMoney = 0
+    for i in range(columns) :
+        if types[i] == "식비" and expOrInc[i] == "지출" :
+            eatMoney += int(money[i])
+    return eatMoney
