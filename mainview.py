@@ -129,12 +129,20 @@ for frameName in (statisticsFrame, assetsFrame):
    
 Help = Button(settingFrame, image=test, text="help", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(Email))
 Help.place(x=10, y=55)
+
 Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
 Us.place(x=10, y=120) 
+
 Version = Label(settingFrame, image=test, text= "Current version: Beta", width=260, height=30, compound="c", fg="dark green", font=("Arial", 25), bd=2, relief = RIDGE)
 Version.place(x=500, y=100) 
+Version.bind("<Enter>", lambda e: button_hover(e, Version))
+Version.bind("<Leave>", lambda e: button_hover_leave(e, Version))
+
 Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
 Link.place(x=10, y=400)
+Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
+Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
+Link.bind("<Button-1>", lambda e : callback(link))
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
