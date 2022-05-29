@@ -65,10 +65,22 @@ def addList(treeview) :
             inputOthers.delete(0,END)
             tegType.delete(0,END)
             
-            # # for debug
-            # print(dates, expOrInc, types, money, otherDetails)
+            # for debug
+            print(dates, expOrInc, types, money, otherDetails)
+
             # totalMoney = totalMoney + int(money[-1])
-            # print("합계 테스트 : ", totalMoney)    
+            print("지출 합계 테스트 : ", sumExpends())
+            print("수입 합계 테스트 : ", sumIncomes())
+            print("수입 - 지출 : ", total())
+            print("-------------------") 
+            print("식비 테스트 : ", eatTotal())
+            print("주거/통신 테스트 : ", lifeTotal())    
+            print("의복/미용 테스트 : ", beautyTotal())    
+            print("건강/문화 테스트 : ", cultureTotal())        
+            print("교육/육아 테스트 : ", eduTotal())    
+            print("교통/차량 테스트 : ", carTotal())    
+            print("지출 기타 테스트 : ", expEtcTotal())
+            print("-------------------")    
             
     # event function
     # combo box selection 
@@ -251,9 +263,22 @@ def dbclickDelList(event, treeview):
             types[int(curItem)] = None
             otherDetails[int(curItem)] = None
 
-            # # for debug
-            # print(dates, expOrInc, types, money, otherDetails)
-            # print("합계 테스트 : ", totalMoney)
+            # for debug
+            print(dates, expOrInc, types, money, otherDetails)
+
+            # totalMoney = totalMoney + int(money[-1])
+            print("지출 합계 테스트 : ", sumExpends())
+            print("수입 합계 테스트 : ", sumIncomes())
+            print("수입 - 지출 : ", total())
+            print("-------------------") 
+            print("식비 테스트 : ", eatTotal())
+            print("주거/통신 테스트 : ", lifeTotal())    
+            print("의복/미용 테스트 : ", beautyTotal())    
+            print("건강/문화 테스트 : ", cultureTotal())        
+            print("교육/육아 테스트 : ", eduTotal())    
+            print("교통/차량 테스트 : ", carTotal())    
+            print("지출 기타 테스트 : ", expEtcTotal())
+            print("-------------------")    
             
             def delAsk() :
                 response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
@@ -369,3 +394,10 @@ def carTotal() :
         if types[i] == "교통/차량" and expOrInc[i] == "지출" :
             carMoney += int(money[i])
     return carMoney
+
+def expEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if types[i] == "기타" and expOrInc[i] == "지출" :
+            etcMoney += int(money[i])
+    return etcMoney
