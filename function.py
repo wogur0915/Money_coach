@@ -341,3 +341,10 @@ def lifeTotal() :
         if types[i] == "주거/통신" and expOrInc[i] == "지출" :
             lifeMoney += int(money[i])
     return lifeMoney
+
+def beautyTotal() :
+    beautyMoney = 0
+    for i in range(columns) :
+        if types[i] == "의복/미용" and expOrInc[i] == "지출" :
+            beautyMoney += int(money[i])
+    return beautyMoney
