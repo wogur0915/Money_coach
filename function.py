@@ -334,3 +334,10 @@ def eatTotal() :
         if types[i] == "식비" and expOrInc[i] == "지출" :
             eatMoney += int(money[i])
     return eatMoney
+
+def lifeTotal() :
+    lifeMoney = 0
+    for i in range(columns) :
+        if types[i] == "주거/통신" and expOrInc[i] == "지출" :
+            lifeMoney += int(money[i])
+    return lifeMoney
