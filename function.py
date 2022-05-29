@@ -65,22 +65,26 @@ def addList(treeview) :
             inputOthers.delete(0,END)
             tegType.delete(0,END)
             
-            # for debug
-            print(dates, expOrInc, types, money, otherDetails)
-
-            # totalMoney = totalMoney + int(money[-1])
-            print("지출 합계 테스트 : ", sumExpends())
-            print("수입 합계 테스트 : ", sumIncomes())
-            print("수입 - 지출 : ", total())
-            print("-------------------") 
-            print("식비 테스트 : ", eatTotal())
-            print("주거/통신 테스트 : ", lifeTotal())    
-            print("의복/미용 테스트 : ", beautyTotal())    
-            print("건강/문화 테스트 : ", cultureTotal())        
-            print("교육/육아 테스트 : ", eduTotal())    
-            print("교통/차량 테스트 : ", carTotal())    
-            print("지출 기타 테스트 : ", expEtcTotal())
-            print("-------------------")    
+#             # for debug
+#             print(dates, expOrInc, types, money, otherDetails)
+            
+#             # totalMoney = totalMoney + int(money[-1])
+#             print("지출 합계 테스트 : ", sumExpends())
+#             print("수입 합계 테스트 : ", sumIncomes())
+#             print("수입 - 지출 : ", total())
+#             print("-------------------") 
+#             print("식비 테스트 : ", eatTotal())
+#             print("주거/통신 테스트 : ", lifeTotal())    
+#             print("의복/미용 테스트 : ", beautyTotal())    
+#             print("건강/문화 테스트 : ", cultureTotal())        
+#             print("교육/육아 테스트 : ", eduTotal())    
+#             print("교통/차량 테스트 : ", carTotal())    
+#             print("지출 기타 테스트 : ", expEtcTotal())
+#             print("-------------------")
+#             print("경조사/회비 테스트 : ", eventTotal())    
+#             print("공과금 테스트 : ", utilTotal()) 
+#             print("월급 테스트 : ", salaryTotal()) 
+#             print("수입 기타 테스트 테스트 : ", incEtcTotal())    
             
     # event function
     # combo box selection 
@@ -263,22 +267,26 @@ def dbclickDelList(event, treeview):
             types[int(curItem)] = None
             otherDetails[int(curItem)] = None
 
-            # for debug
-            print(dates, expOrInc, types, money, otherDetails)
+#             # for debug
+#             print(dates, expOrInc, types, money, otherDetails)
 
-            # totalMoney = totalMoney + int(money[-1])
-            print("지출 합계 테스트 : ", sumExpends())
-            print("수입 합계 테스트 : ", sumIncomes())
-            print("수입 - 지출 : ", total())
-            print("-------------------") 
-            print("식비 테스트 : ", eatTotal())
-            print("주거/통신 테스트 : ", lifeTotal())    
-            print("의복/미용 테스트 : ", beautyTotal())    
-            print("건강/문화 테스트 : ", cultureTotal())        
-            print("교육/육아 테스트 : ", eduTotal())    
-            print("교통/차량 테스트 : ", carTotal())    
-            print("지출 기타 테스트 : ", expEtcTotal())
-            print("-------------------")    
+#             # totalMoney = totalMoney + int(money[-1])
+#             print("지출 합계 테스트 : ", sumExpends())
+#             print("수입 합계 테스트 : ", sumIncomes())
+#             print("수입 - 지출 : ", total())
+#             print("-------------------") 
+#             print("식비 테스트 : ", eatTotal())
+#             print("주거/통신 테스트 : ", lifeTotal())    
+#             print("의복/미용 테스트 : ", beautyTotal())    
+#             print("건강/문화 테스트 : ", cultureTotal())        
+#             print("교육/육아 테스트 : ", eduTotal())    
+#             print("교통/차량 테스트 : ", carTotal())    
+#             print("지출 기타 테스트 : ", expEtcTotal())
+#             print("-------------------")
+#             print("경조사/회비 테스트 : ", eventTotal())    
+#             print("공과금 테스트 : ", utilTotal()) 
+#             print("월급 테스트 : ", salaryTotal()) 
+#             print("수입 기타 테스트 테스트 : ", incEtcTotal())    
             
             def delAsk() :
                 response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
@@ -424,3 +432,10 @@ def salaryTotal() :
         if types[i] == "월급" and expOrInc[i] == "수입" :
             salaryMoney += int(money[i])
     return salaryMoney
+
+def incEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if types[i] == "기타" and expOrInc[i] == "수입" :
+            etcMoney += int(money[i])
+    return etcMoney
