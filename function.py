@@ -348,3 +348,10 @@ def beautyTotal() :
         if types[i] == "의복/미용" and expOrInc[i] == "지출" :
             beautyMoney += int(money[i])
     return beautyMoney
+
+def cultureTotal() :
+    cultureMoney = 0
+    for i in range(columns) :
+        if types[i] == "건강/문화" and expOrInc[i] == "지출" :
+            cultureMoney += int(money[i])
+    return cultureMoney
