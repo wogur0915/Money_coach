@@ -9,9 +9,8 @@ treelist=[]
 columns = 0
 
 historySum = 0
-historySumStr = str(historySum)
 historyPlus = 1
-historyPlusStr = str(historyPlus)
+historyMinus = 2
 
 # Global Value For Statistics Page Logo
 typeLogoNum = 0
