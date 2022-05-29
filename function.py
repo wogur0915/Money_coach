@@ -54,7 +54,7 @@ def addList(treeview) :
             types.append(value[3])
             otherDetails.append(value[4])
 
-            treeview.insert('', 'end', text=dates[columns], values=[expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+            treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
             columns = columns+1
             treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
 
@@ -275,17 +275,17 @@ def dbclickDelList(event, treeview):
         expOrIncTyp = ['지출', '수입']   
         expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
         incTypes = ['경조사/회비','공과금','월급','기타']
-
+        
         inputDate = Entry(delListWin, justify = "center")
-        inputDate.insert( 0, treeview.item(curItem).get("text") )
+        inputDate.insert( 0, treeview.item(curItem).get("values")[0] )
         inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
-        inputExpOrInc.set( treeview.item(curItem).get("values")[0] )
+        inputExpOrInc.set( treeview.item(curItem).get("values")[1] )
         inputMoney = Entry(delListWin, justify = "center")
-        inputMoney.insert( 0, treeview.item(curItem).get("values")[1] )
+        inputMoney.insert( 0, treeview.item(curItem).get("values")[2] )
         tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center", state='readonly')
-        tegType.set( treeview.item(curItem).get("values")[2] )
+        tegType.set( treeview.item(curItem).get("values")[3] )
         inputOthers = Entry(delListWin, justify = "center")
-        inputOthers.insert( 0, treeview.item(curItem).get("values")[3] )
+        inputOthers.insert( 0, treeview.item(curItem).get("values")[4] )
         confirmBtn = Button(delListWin, text = "확인", command = delAsk)
 
         # Read Only delete popup window
