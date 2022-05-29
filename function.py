@@ -410,3 +410,10 @@ def eventTotal() :
         if types[i] == "경조사/회비" and expOrInc[i] == "수입" :
             eventMoney += int(money[i])
     return eventMoney
+
+def utilTotal() :
+    utilMoney = 0
+    for i in range(columns) :
+        if types[i] == "공과금" and expOrInc[i] == "수입" :
+            utilMoney += int(money[i])
+    return utilMoney
