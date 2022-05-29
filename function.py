@@ -306,20 +306,22 @@ def dbclickDelList(event, treeview):
 # Calculation
 
 def sumExpends() :
-    expList = []
+    global expSum
+    expSum = 0
     for i in range(columns) :
-        if expOrInc[i] == "지출" and money[i] != None :
-            expList.append(int(money[i]))
-    return sum(expList)
+        if expOrInc[i] == "지출" :
+            expSum += int(money[i])
+    return expSum
 
 def sumIncomes() :
-    incList = []
+    global incSum
+    incSum = 0
     for i in range(columns) :
-        if expOrInc[i] == "수입" and money[i] != None :
-            incList.append(int(money[i]))
-    return sum(incList)
+        if expOrInc[i] == "수입" :
+            incSum += int(money[i])
+    return incSum
 
 def total() :
     global totalMoney
-    totalMoney = sum(incList) - sum(expList)
+    totalMoney = incSum - expSum
     return totalMoney
