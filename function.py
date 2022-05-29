@@ -318,3 +318,8 @@ def sumIncomes() :
         if expOrInc[i] == "수입" and money[i] != None :
             incList.append(int(money[i]))
     return sum(incList)
+
+def total() :
+    global totalMoney
+    totalMoney = sum(incList) - sum(expList)
+    return totalMoney
