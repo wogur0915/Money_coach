@@ -301,3 +301,13 @@ def dbclickDelList(event, treeview):
         tegType.grid(row=7, column=1)
         inputOthers.grid(row=9, column=1)
         confirmBtn.grid(row=10, column=1, padx=10, pady=10)
+        
+#-------------------------------------------------------
+# Calculation
+
+def sumExpends() :
+    expList = []
+    for i in range(columns) :
+        if expOrInc[i] == "지출" and money[i] != None :
+            expList.append(int(money[i]))
+    return sum(expList)
