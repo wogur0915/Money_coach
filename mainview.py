@@ -135,6 +135,7 @@ Version = Label(settingFrame, image=test, text= "Current version: Beta", width=2
 Version.place(x=500, y=100) 
 Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
 Link.place(x=10, y=400)
+
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()

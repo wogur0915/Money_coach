@@ -9,9 +9,16 @@ from tkinter import ttk
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
     name["bg"] = "white"
+    
 # A function that changes the text's color when the mouse is leaving
 def button_hover_leave(e, name):
     name["bg"] = "SystemButtonFace"
+ 
+# A function that shows the user the text when the mouse is on the label    
+def label_hover(e, name, settingFrame): 
+    status_label = Label(settingFrame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
+    status_label.place(x=575, y=470)
+    name["fg"] = "green"
     
 # Function that opens a URL
 def openNewWindow(info):
