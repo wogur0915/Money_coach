@@ -311,3 +311,10 @@ def sumExpends() :
         if expOrInc[i] == "지출" and money[i] != None :
             expList.append(int(money[i]))
     return sum(expList)
+
+def sumIncomes() :
+    incList = []
+    for i in range(columns) :
+        if expOrInc[i] == "수입" and money[i] != None :
+            incList.append(int(money[i]))
+    return sum(incList)
