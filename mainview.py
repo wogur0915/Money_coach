@@ -40,18 +40,21 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     settingButton.grid(row=0, column=3)
 
 # History Page
-treeview=tkinter.ttk.Treeview(historyFrame, columns=["one", "two", "three","four"])
+treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
 treeview.config(height = 18)
-treeview.column("#0", width=150, anchor="center")
-treeview.heading("#0", text="날짜", anchor="center")
-treeview.column("#1", width=100, anchor="center")
-treeview.heading("one", text="수입/지출", anchor="center")
-treeview.column("#2", width=100, anchor="center")
-treeview.heading("two", text="금액", anchor="center")
-treeview.column("#3", width=100, anchor="center")
-treeview.heading("three", text="카테고리", anchor="center")
-treeview.column("#4", width=300, anchor="center")
-treeview.heading("four", text="비고", anchor="center")
+treeview.column("dates", width=170, anchor="e")
+treeview.heading("dates", text="날짜", anchor="center")
+treeview.column("expOrInc", width=110, anchor="center")
+treeview.heading("expOrInc", text="수입/지출", anchor="center")
+treeview.column("money", width=110, anchor="center")
+treeview.heading("money", text="금액", anchor="center")
+treeview.column("types", width=110, anchor="center")
+treeview.heading("types", text="카테고리", anchor="center")
+treeview.column("otherDetails", width=310, anchor="center")
+treeview.heading("otherDetails", text="비고", anchor="center")
+
+# Only Show column headings
+treeview["show"] = "headings"
 
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
 addBtn.config(width = 5, height = 5)
