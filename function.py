@@ -6,7 +6,13 @@ import webbrowser
 import tkinter as tk
 from tkinter import ttk
 
-
+#A function that changes the text's color when the mouse is hovering over a button/text
+def button_hover(e, name): 
+    name["bg"] = "white"
+# A function that changes the text's color when the mouse is leaving
+def button_hover_leave(e, name):
+    name["bg"] = "SystemButtonFace"
+    
 # Function that opens a URL
 def openNewWindow(info):
     newWindow = Toplevel()

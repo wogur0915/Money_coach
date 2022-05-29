@@ -125,16 +125,16 @@ for frameName in (statisticsFrame, assetsFrame):
     monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
     monthButton.place(x=755, y=65)
 
-# Setting page    
-text1 = "To contact us: andrewendlesss@gmail.com \n 희범의 email \n 재혁의 email"
-text2 = "We are CBNU students currently majoring in computer science. \n This program is our first project that we made together."
-Help = Button(settingFrame, image=test, text="help", width=388, height=50, compound="c", fg="red", command = lambda : openNewWindow(text1))
+# Setting page 
+   
+Help = Button(settingFrame, image=test, text="help", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(Email))
 Help.place(x=10, y=55)
-Us = Button(settingFrame, image=test, text="About Us", width=388, height=50, compound="c", fg="dark green", command = lambda : openNewWindow(text2))
-Us.place(x=10, y=120)  
-Link = Button(settingFrame, text="This is our GitHub repository \n https://github.com/KorBasilion/OSS-Basic-Project", fg="dark green")
-Link.place(x=10, y=185)
-Link.bind("<Button-1>", lambda e : callback("https://github.com/KorBasilion/OSS-Basic-Project"))
+Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
+Us.place(x=10, y=120) 
+Version = Label(settingFrame, image=test, text= "Current version: Beta", width=260, height=30, compound="c", fg="dark green", font=("Arial", 25), bd=2, relief = RIDGE)
+Version.place(x=500, y=100) 
+Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
+Link.place(x=10, y=400)
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()
