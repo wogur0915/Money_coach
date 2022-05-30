@@ -170,11 +170,11 @@ def delList(treeview) :
             if (value[0] in dates) and (value[1] in expOrInc) and (value[2] in money) and (value[3] in types) and (value[4] in otherDetails):
                 if dates.index(value[0]) == expOrInc.index(value[1]) == money.index(value[2]) == types.index(value[3]) :
                     indexNum = dates.index(value[0])
-                    dates.pop(indexNum)
-                    expOrInc.pop(indexNum)
-                    money.pop(indexNum)
-                    types.pop(indexNum)
-                    otherDetails.pop(indexNum)
+                    dates[indexNum] = None
+                    expOrInc[indexNum] = None
+                    money[indexNum] = None
+                    types[indexNum] = None
+                    otherDetails[indexNum] = None
                     treeview.delete(str(indexNum))
             else :
                 warning = messagebox.showwarning("경고!", "가계부에 존재하지 않는 정보입니다!")
