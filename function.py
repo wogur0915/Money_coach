@@ -51,7 +51,10 @@ def openconverter():
     # adding padding and showing it
     frame.grid(padx=10, pady=10)
     r = IntVar()
-
+    #radio buttons to show the options and execute conversion when clicked
+    Radiobutton(root, text="US", variable = r, value = 1, command = lambda : convert_button_clicked(won_to_dollar)).place(x = 220, y = 20)
+    Radiobutton(root, text="EUR", variable = r, value = 2, command = lambda : convert_button_clicked(won_to_EUR)).place(x = 220, y = 40)
+    Radiobutton(root, text="YEN", variable = r, value = 3, command = lambda : convert_button_clicked(won_to_YEN)).place(x = 220, y = 60)
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
     name["bg"] = "white"
