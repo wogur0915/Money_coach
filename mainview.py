@@ -112,17 +112,17 @@ plusBack = PhotoImage(file='src/plus.png')
 minusBack = PhotoImage(file='src/minus.png')
 sumPriceBack = PhotoImage(file='src/sumback.png')
 
-assetsSum = Label(assetsFrame, image=sumBack, text="합계", width=732, height=60, compound="c")
-assetsSum.place(x=10, y=55)
+assetsSum = Label(assetsFrame, image=sumBack, width=732, height=60)
+assetsSum.place(x=10, y=56)
 assetsSumPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historySum)+" 원"), font="나눔스퀘어 20 bold", width=566, height=48, compound="c")
-assetsSumPrice.place(x=166, y=61)
+assetsSumPrice.place(x=166, y=62)
 
-assetsPlus = Label(assetsFrame, image=plusBack, text="수입", width=396, height=60, compound="c")
+assetsPlus = Label(assetsFrame, image=plusBack, width=396, height=60)
 assetsPlus.place(x=10, y=123)
 assetsPlusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyPlus)+" 원"), font="나눔스퀘어 20 bold", width=298, height=48, compound="c")
 assetsPlusPrice.place(x=98, y=129)
 
-assetsMinus = Label(assetsFrame, image=minusBack, text="지출", width=396, height=60, compound="c")
+assetsMinus = Label(assetsFrame, image=minusBack, width=396, height=60)
 assetsMinus.place(x=418, y=123)
 assetsMinusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyMinus)+" 원"), font="나눔스퀘어 20 bold", width=298, height=48, compound="c")
 assetsMinusPrice.place(x=506, y=129)
@@ -136,9 +136,9 @@ month = PhotoImage(file='src/month.png')
 
 for frameName in (statisticsFrame, assetsFrame):
     weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
-    weekButton.place(x=757, y=59)
+    weekButton.place(x=757, y=60)
     monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
-    monthButton.place(x=757, y=90)
+    monthButton.place(x=757, y=91)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
