@@ -6,6 +6,12 @@ import webbrowser
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showerror
+#A function that opens a currency converter
+def openconverter():    
+    root = tk.Toplevel()
+    root.title('Currency Converter')
+    root.geometry('400x210')
+    root.mainloop()
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
