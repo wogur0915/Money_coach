@@ -41,6 +41,10 @@ def openconverter():
         try:
             f = float(won.get())
             c = won_to_dollar(f)
+            result = f'{f} won = {c:.2f}'
+            result_label.config(text=result)
+        except ValueError as error:
+            showerror(title='Error', message=error)
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
