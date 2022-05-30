@@ -24,6 +24,10 @@ def openconverter():
     def won_to_RUB(f):
         RUB = 0.052
         return f*RUB
+    #converts wons to YEN
+    def won_to_YEN(f):
+        YEN = 0.10
+        return f*YEN
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
