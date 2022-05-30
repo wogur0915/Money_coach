@@ -36,6 +36,11 @@ def openconverter():
     won = tk.StringVar()
     won_entry = ttk.Entry(frame, textvariable=won)
     won_entry.grid(column=1, row=0, **options)
+    # performs an operation
+    def convert_button_clicked(won_to_dollar):
+        try:
+            f = float(won.get())
+            c = won_to_dollar(f)
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
