@@ -45,6 +45,12 @@ def openconverter():
             result_label.config(text=result)
         except ValueError as error:
             showerror(title='Error', message=error)
+    # result label
+    result_label = ttk.Label(frame)
+    result_label.grid(row=1, columnspan=3, **options)
+    # adding padding and showing it
+    frame.grid(padx=10, pady=10)
+    r = IntVar()
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
