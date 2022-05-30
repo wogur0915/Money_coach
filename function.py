@@ -12,6 +12,10 @@ def openconverter():
     root.title('Currency Converter')
     root.geometry('400x210')
     root.mainloop()
+    #converts wons to dollars
+    def won_to_dollar(f):   
+        US = 0.00079
+        return f*US
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 

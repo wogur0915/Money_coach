@@ -153,7 +153,6 @@ Link.bind("<Button-1>", lambda e : callback(link))
 Converted = Button(settingFrame, image=test, text="converter",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda: openconverter())
 Converted.place(x=10, y=185) 
 
-
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()
