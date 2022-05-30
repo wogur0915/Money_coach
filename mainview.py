@@ -44,6 +44,10 @@ menubar=tkinter.Menu(main)
 
 fileMenu=tkinter.Menu(menubar, tearoff=0)
 menubar.add_cascade(label="파일", menu=fileMenu)
+fileMenu.add_command(label="불러오기")
+fileMenu.add_command(label="저장하기")
+fileMenu.add_separator()
+fileMenu.add_command(label="종료하기")
 
 main.config(menu=menubar)    
     
