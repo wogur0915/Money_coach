@@ -39,6 +39,14 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
 
+# Menu Bar
+menubar=tkinter.Menu(main)
+
+fileMenu=tkinter.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="파일", menu=fileMenu)
+
+main.config(menu=menubar)    
+    
 # History Page
 treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
 treeview.config(height = 18)
