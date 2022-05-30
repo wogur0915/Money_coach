@@ -7,14 +7,18 @@ from data import *
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
-    
+
+# Load Image Files
 def load_image():
     global plan0
-    plan0 = PhotoImage(file='src/plan0.png')
+    global type0
     
-def show_statistics_frame(frame, typeLogo, image):
+    plan0 = PhotoImage(file='src/plan0.png')
+    type0 = PhotoImage(file='src/type0.png')
+    
+def show_statistics_frame(frame, typeLogo):
     if typeLogoNum == 0:
-        typeLogo.config(image=image, text="0")
+        typeLogo.config(image=type0, text="0")
     elif typeLogoNum == 1:
         typeLogo.config(image=image, text="1")
     frame.tkraise()

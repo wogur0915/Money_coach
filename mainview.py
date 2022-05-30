@@ -35,7 +35,7 @@ lobbyLogo.grid(row=1, column=0, columnspan=4)
 for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
     historyButton = Button(frameName, image=test, text="내역", width=200, height=40, compound="c", command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
-    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
+    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo)])
     statisticsButton.grid(row=0, column=1)
     assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo)])
     assetsButton.grid(row=0, column=2)
@@ -65,7 +65,7 @@ deleteBtn.grid(row=2, column=2)
 addBtn.grid(row=2, column=3)
 
 # Statistics Page
-typeLogo = Label(statisticsFrame, image=test, text="소비 성향", width=804, height=204, compound="c", background='grey')
+typeLogo = Label(statisticsFrame, image=test, text="0", width=804, height=204, compound="c")
 typeLogo.place(x=10, y=55)
 
 Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c", background='grey')
