@@ -28,6 +28,14 @@ def openconverter():
     def won_to_YEN(f):
         YEN = 0.10
         return f*YEN
+    # This is the frame
+    frame = ttk.Frame(root)
+    # The field option(s)
+    options = {'padx': 5, 'pady': 5}
+   # converter entry
+    won = tk.StringVar()
+    won_entry = ttk.Entry(frame, textvariable=won)
+    won_entry.grid(column=1, row=0, **options)
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
