@@ -133,8 +133,11 @@ Help.place(x=10, y=55)
 Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
 Us.place(x=10, y=120) 
 
-License = Button(settingFrame, image=test, text="License", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(License))
+License = Button(settingFrame, image=test, text="License", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(license))
 License.place(x=10, y=185)
+
+Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
+Agreement.place(x=10, y=250)
 
 Version = Label(settingFrame, image=test, text= "Current version: Beta", width=260, height=30, compound="c", fg="dark green", font=("Arial", 25), bd=2, relief = RIDGE)
 Version.place(x=500, y=100) 
