@@ -16,6 +16,10 @@ def openconverter():
     def won_to_dollar(f):   
         US = 0.00079
         return f*US
+    #converts wons to Euros
+    def won_to_EUR(f):
+        EUR = 0.00074
+        return f*EUR
 
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
