@@ -93,6 +93,9 @@ def openconverter():
     def won_to_KYD(f):
         KYD = 0.00067
         return f*KYD
+    def won_to_KWD(f):
+        KWD = 4052.37
+        return f*KWD
     # This is the frame
     frame = ttk.Frame(root)
     # The field option(s)
@@ -127,7 +130,7 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_RUB)).place(x = 10, y = 140)
     Radiobutton(root, text="CAD", variable = r, value = 5, 
                 command = lambda : convert_button_clicked(won_to_CAD)).place(x = 10, y = 160)
-    Radiobutton(root, text="AUD/NZD", variable = r, value = 6, 
+    Radiobutton(root, text="AUD", variable = r, value = 6, 
                 command = lambda : convert_button_clicked(won_to_AUD)).place(x = 10, y = 180)
     Radiobutton(root, text="CHF", variable = r, value = 7, 
                 command = lambda : convert_button_clicked(won_to_CHF)).place(x = 70, y = 80)
@@ -137,8 +140,10 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_Yuan)).place(x = 70, y = 120)
     Radiobutton(root, text="ZAR", variable = r, value = 10, 
                 command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 140)
-    Radiobutton(root, text="ZAR", variable = r, value = 10, 
-                command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 160)
+    Radiobutton(root, text="KYD", variable = r, value = 11, 
+                command = lambda : convert_button_clicked(won_to_KYD)).place(x = 70, y = 160)
+    Radiobutton(root, text="KWD", variable = r, value = 12, 
+                command = lambda : convert_button_clicked(won_to_KWD)).place(x = 70, y = 180)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()
