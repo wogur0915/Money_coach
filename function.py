@@ -22,6 +22,10 @@ class Message(object):
         tw.wm_geometry("+%d+%d" % (x, y))
         
     def hide(self):
+        tw = self.tipwindow
+        self.tipwindow = None
+        if tw:
+            tw.destroy()
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
