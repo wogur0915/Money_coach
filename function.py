@@ -29,6 +29,11 @@ class Message(object):
     def __init__(self, tool):
         self.tool = tool
         self.tipwindow = 0
+        self.id = 0
+        self.x = self.y = 0
+
+def popTip(tool, text):
+    
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
