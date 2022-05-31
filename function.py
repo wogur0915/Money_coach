@@ -15,6 +15,9 @@ class Message(object):
         x, y, cx, cy = self.tool.bbox("insert")
         x = x + self.tool.winfo_rootx() + 60
         y = y + cy + self.tool.winfo_rooty() + 23
+        self.tipwindow = tw = Toplevel(self.tool)
+        message = Label(tw,borderwidth=0, text=self.text, justify=LEFT, background = "Lightgoldenrod", font=("Times", "10"), relief=SOLID)
+        message.pack(ipadx=4)
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
