@@ -90,6 +90,9 @@ def openconverter():
     def won_to_ZAR(f):
         ZAR = 0.013
         return f*ZAR
+    def won_to_KYD(f):
+        KYD = 0.00067
+        return f*KYD
     # This is the frame
     frame = ttk.Frame(root)
     # The field option(s)
@@ -134,6 +137,8 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_Yuan)).place(x = 70, y = 120)
     Radiobutton(root, text="ZAR", variable = r, value = 10, 
                 command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 140)
+    Radiobutton(root, text="ZAR", variable = r, value = 10, 
+                command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 160)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()
