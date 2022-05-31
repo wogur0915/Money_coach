@@ -50,7 +50,7 @@ def openconverter():
     root = tk.Toplevel()
     root.title('Currency Converter')
     root.resizable(FALSE, FALSE)
-    root.geometry('340x210')
+    root.geometry('440x210')
     #converts wons to dollars
     def won_to_dollar(f):   
         US = 0.00079
@@ -75,34 +75,37 @@ def openconverter():
     def won_to_AUD(f):
         AUD = 0.0011
         return f*AUD
-   #converts wons to CHF
+    #converts wons to CHF
     def won_to_CHF(f):
         CHF = 0.00077
         return f*CHF
-   #converts wons to PS
+    #converts wons to PS
     def won_to_PS(f):
         CHF = 0.00064
         return f*CHF
-       #converts wons to Yuan
+    #converts wons to Yuan
     def won_to_Yuan(f):
         Yuan = 185.96
         return f*Yuan
+    #converts wons to ZAR
     def won_to_ZAR(f):
         ZAR = 0.013
         return f*ZAR
+    #converts wons to KYD
     def won_to_KYD(f):
         KYD = 0.00067
         return f*KYD
+    #converts wons to KWD
     def won_to_KWD(f):
-        KWD = 4052.37
+        KWD = 0.00025
         return f*KWD
-    # This is the frame
+
     frame = ttk.Frame(root)
     # The field option(s)
-    options = {'padx': 5, 'pady': 5}
+    options = {'padx': 5, 'pady': 4}
    # converter entry
     won = tk.StringVar()
-    won_entry = ttk.Entry(frame, textvariable=won)
+    won_entry = Entry(frame, textvariable=won)
     won_entry.grid(column=1, row=0, **options)
     # performs an operation
     def convert_button_clicked(won_to_dollar):
@@ -144,6 +147,7 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_KYD)).place(x = 70, y = 160)
     Radiobutton(root, text="KWD", variable = r, value = 12, 
                 command = lambda : convert_button_clicked(won_to_KWD)).place(x = 70, y = 180)
+    
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()
@@ -171,7 +175,7 @@ def label_hover_leave(e, name, settingFrame):
 # Function that opens a URL
 def openNewWindow(info):
     newWindow = Toplevel()
-    newWindow.title("Help")
+    newWindow.resizable(FALSE,FALSE)
     newWindow.grid
     Label(newWindow, text = info, fg = "red").pack()
     
