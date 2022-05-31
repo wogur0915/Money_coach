@@ -26,6 +26,9 @@ class Message(object):
         self.tipwindow = None
         if tw:
             tw.destroy()
+    def __init__(self, tool):
+        self.tool = tool
+        self.tipwindow = 0
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
