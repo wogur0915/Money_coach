@@ -144,14 +144,17 @@ Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetic
 Agreement.place(x=310, y=260)
 
 Version = Label(settingFrame, image=test, text= "BETA 0.1.0", width=190, height=30, compound="c", fg="light green", font=("Arial", 15), relief = RIDGE)
-Version.place(x=600, y=320) 
+Version.place(x=10, y=60) 
 popTip(Version, text = "Program's current version")
 
 Converter = Button(settingFrame, image=test, text = "Currency Converter" , font=("Arial", 21), width=200, height=40, compound="c", command = lambda: openconverter())
 Converter.place(x=310, y=320) 
 
-Review = Label(settingFrame, image=test, text="Review", width=100, height=40, compound="c", background = "grey")
-Review.place(x=360, y=380)
+Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
+Agreement.place(x=310, y=380)
+
+Review = Label(settingFrame, image=test, text="R", width=100, height=40, compound="c", background = "grey")
+Review.place(x=10, y=100) 
 Review.bind("<Button-1>", lambda e : callback(review))
 popTip(Review, text = "Click to review our program!")
 
