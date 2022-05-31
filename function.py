@@ -100,6 +100,15 @@ def addList(treeview) :
             tegType.set(incTypes[0])
         else:
             tegType.set(expTypes[0])
+    # Clear example function
+    def clearDateEx(event):
+        if inputDate.get() == "ex) 2022-05-31" :
+            inputDate.delete(0,END)
+            inputDate.configure(foreground="#000000")
+    def clearMoneyEx(event):
+        if inputMoney.get() == "ex) 15000" :
+            inputMoney.delete(0,END)
+            inputMoney.configure(foreground="#000000")
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
@@ -123,10 +132,16 @@ def addList(treeview) :
     incTypes = ['경조사/회비','공과금','월급','기타']
     
     inputDate = Entry(addListWin, justify = "center")
+    inputDate.insert(0,"ex) 2022-05-31")
+    inputDate.configure(foreground="#747474")
+    inputDate.bind("<Button-1>", clearDateEx)
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
     inputMoney = Entry(addListWin, justify = "center")
+    inputMoney.insert(0,"ex) 15000")
+    inputMoney.configure(foreground="#747474")
+    inputMoney.bind("<Button-1>", clearMoneyEx)
     tegType = Combobox(addListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
     tegType.current(0)
     inputOthers = Entry(addListWin, justify = "center")
@@ -219,15 +234,31 @@ def delList(treeview) :
         else:
             tegType.set(expTypes[0])
 
+    # Clear example function
+    def clearDateEx(event):
+        if inputDate.get() == "ex) 2022-05-31" :
+            inputDate.delete(0,END)
+            inputDate.configure(foreground="#000000")
+    def clearMoneyEx(event):
+        if inputMoney.get() == "ex) 15000" :
+            inputMoney.delete(0,END)
+            inputMoney.configure(foreground="#000000")
+
     expOrIncTyp = ['지출', '수입']   
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(delListWin, justify = "center")
-    inputExpOrInc = Combobox(delListWin, width=17, height=2, values=expOrIncTyp, justify = "center", state='readonly')
+    inputDate.insert(0,"ex) 2022-05-31")
+    inputDate.configure(foreground="#747474")
+    inputDate.bind("<Button-1>", clearDateEx)
+    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
-    inputExpOrInc.current(0)    
-    inputMoney = Entry(delListWin, justify = "center")    
+    inputExpOrInc.current(0)
+    inputMoney = Entry(delListWin, justify = "center")
+    inputMoney.insert(0,"ex) 15000")
+    inputMoney.configure(foreground="#747474")
+    inputMoney.bind("<Button-1>", clearMoneyEx)
     tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
     tegType.current(0)    
     inputOthers = Entry(delListWin, justify = "center")
