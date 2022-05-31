@@ -112,7 +112,8 @@ def addList(treeview) :
 
     addListWin = Tk()
     addListWin.title("가계부 추가")
-    addListWin.geometry("300x350+942+190")
+    addListWin.geometry("280x350+942+190")
+    addListWin.resizable(width = False, height = False)
     # addListWin.wm_attributes("-topmost", 1)  # window on first
 
     # Enter Window
@@ -204,7 +205,8 @@ def delList(treeview) :
 
     delListWin = Tk()
     delListWin.title("가계부 삭제")
-    delListWin.geometry("300x350+942+190")
+    delListWin.geometry("280x350+942+190")
+    delListWin.resizable(width = False, height = False)
     # addListWin.wm_attributes("-topmost", 1)  # window on first
 
     # Enter Window
@@ -281,7 +283,8 @@ def dbclickDelList(event, treeview):
         # dbclickDelList
         delListWin = Tk()
         delListWin.title("가계부 삭제")
-        delListWin.geometry("300x350+942+190")
+        delListWin.geometry("280x350+942+190")
+        delListWin.resizable(width = False, height = False)
 
         # button action  
         def deleteContent() :
