@@ -10,8 +10,8 @@ from tkinter.messagebox import showerror
 def openconverter():    
     root = tk.Toplevel()
     root.title('Currency Converter')
+    root.resizable(FALSE, FALSE)
     root.geometry('400x210')
-    root.mainloop()
     #converts wons to dollars
     def won_to_dollar(f):   
         US = 0.00079
@@ -52,10 +52,14 @@ def openconverter():
     frame.grid(padx=10, pady=10)
     r = IntVar()
     #radio buttons to show the options and execute conversion when clicked
-    Radiobutton(root, text="US", variable = r, value = 1, command = lambda : convert_button_clicked(won_to_dollar)).place(x = 220, y = 20)
-    Radiobutton(root, text="EUR", variable = r, value = 2, command = lambda : convert_button_clicked(won_to_EUR)).place(x = 220, y = 40)
-    Radiobutton(root, text="YEN", variable = r, value = 3, command = lambda : convert_button_clicked(won_to_YEN)).place(x = 220, y = 60)
-    Radiobutton(root, text="RUB", variable = r, value = 4, command = lambda : convert_button_clicked(won_to_RUB)).place(x = 220, y = 80)
+    Radiobutton(root, text="US", variable = r, value = 1, 
+                command = lambda : convert_button_clicked(won_to_dollar)).place(x = 220, y = 20)
+    Radiobutton(root, text="EUR", variable = r, value = 2, 
+                command = lambda : convert_button_clicked(won_to_EUR)).place(x = 220, y = 40)
+    Radiobutton(root, text="YEN", variable = r, value = 3, 
+                command = lambda : convert_button_clicked(won_to_YEN)).place(x = 220, y = 60)
+    Radiobutton(root, text="RUB", variable = r, value = 4, 
+                command = lambda : convert_button_clicked(won_to_RUB)).place(x = 220, y = 80)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()

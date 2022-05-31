@@ -1,5 +1,6 @@
 from function import *
 from data import *
+import time
 
 # Default Windows Setting
 main = Tk()
@@ -28,7 +29,7 @@ assetsFrame.grid(row=0, column=0, sticky="nsew")
 settingFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
-test=PhotoImage(file='KakaoTalk_Photo_2022-05-26-15-49-11.png')
+test=PhotoImage(file='or.png')
 
 # Main Page And Frames
 lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=800, height=446, compound="c")
@@ -124,34 +125,37 @@ for frameName in (statisticsFrame, assetsFrame):
     weekButton.place(x=695, y=65)
     monthButton = Button(frameName, image=test, text="월간", width=50, height=20, compound="c")
     monthButton.place(x=755, y=65)
-
+    
 # Setting page 
+
+design = Label(settingFrame, bg = "light grey", image=test, width=300, height=380, compound="c", fg="dark green", font=("Arial", 15), bd=10, relief = RIDGE)
+design.place(x=235, y=50) 
    
-Help = Button(settingFrame, image=test, text="help", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(Email))
-Help.place(x=10, y=55)
+Help = Button(settingFrame, image=test, text="Help", font = ("Helvetica", 15), width=200, height=40, compound="c", activeforeground = "green",  command = lambda : openNewWindow(Email))
+Help.place(x=310, y=80)
 
-Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
-Us.place(x=10, y=120) 
+Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 15), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
+Us.place(x=310, y=140) 
 
-License = Button(settingFrame, image=test, text="License", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(license))
-License.place(x=10, y=185)
+License = Button(settingFrame, image=test, text="License", font = ("Helvetica", 15), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(license))
+License.place(x=310, y=200)
 
-Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
-License.place(x=10, y=300)
+Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 15), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
+Agreement.place(x=310, y=260)
 
-Version = Label(settingFrame, image=test, text= "Current version: Beta", width=260, height=30, compound="c", fg="dark green", font=("Arial", 25), bd=2, relief = RIDGE)
-Version.place(x=500, y=100) 
+Version = Label(settingFrame, image=test, text= "Beta 0.1.0", width=190, height=30, compound="c", fg="dark green", font=("Arial", 15), relief = RIDGE)
+Version.place(x=600, y=320) 
 Version.bind("<Enter>", lambda e: button_hover(e, Version))
 Version.bind("<Leave>", lambda e: button_hover_leave(e, Version))
 
+Converted = Button(settingFrame, image=test, text = "Currency Converter" , width=200, height=40, compound="c", command = lambda: openconverter())
+Converted.place(x=310, y=380) 
+
 Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
-Link.place(x=10, y=400)
+Link.place(x=310, y=460)
 Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
 Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
 Link.bind("<Button-1>", lambda e : callback(link))
-
-Converted = Button(settingFrame, image=test, text="converter",font = ("Helvetica", 15), width=388, height=50, compound="c", activeforeground = "green", command = lambda: openconverter())
-Converted.place(x=10, y=185) 
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
