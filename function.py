@@ -36,7 +36,12 @@ class Message(object):
 def popTip(tool, text):
     toolTip = Message(tool)
     def enter(event):
-    time.sleep(0.5)
+        time.sleep(0.5)
+    toolTip.show(text)
+    def leave(event):
+        toolTip.hide()
+    tool.bind('<Enter>', enter)
+    tool.bind('<Leave>', leave)
     
 #A function that opens a currency converter
 def openconverter():    
