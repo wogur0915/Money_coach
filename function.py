@@ -11,6 +11,10 @@ class Message(object):
     def show(self, text):
         self.text = text
         if self.tipwindow or not self.text:
+                return
+        x, y, cx, cy = self.tool.bbox("insert")
+        x = x + self.tool.winfo_rootx() + 60
+        y = y + cy + self.tool.winfo_rooty() + 23
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
