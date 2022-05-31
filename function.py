@@ -9,10 +9,11 @@ from tkinter.messagebox import showerror
 import time
 #declaring a class Message
 class Message(object):
+
     def show(self, text):
         self.text = text
         if self.tipwindow or not self.text:
-                return
+            return
         x, y, cx, cy = self.tool.bbox("insert")
         x = x + self.tool.winfo_rootx() + 60
         y = y + cy + self.tool.winfo_rooty() + 23
@@ -27,6 +28,7 @@ class Message(object):
         self.tipwindow = None
         if tw:
             tw.destroy()
+        
     def __init__(self, tool):
         self.tool = tool
         self.tipwindow = 0
@@ -37,7 +39,7 @@ def popTip(tool, text):
     toolTip = Message(tool)
     def enter(event):
         time.sleep(0.5)
-    toolTip.show(text)
+        toolTip.show(text)
     def leave(event):
         toolTip.hide()
     tool.bind('<Enter>', enter)
@@ -48,7 +50,7 @@ def openconverter():
     root = tk.Toplevel()
     root.title('Currency Converter')
     root.resizable(FALSE, FALSE)
-    root.geometry('400x210')
+    root.geometry('340x210')
     #converts wons to dollars
     def won_to_dollar(f):   
         US = 0.00079
@@ -65,6 +67,10 @@ def openconverter():
     def won_to_YEN(f):
         YEN = 0.10
         return f*YEN
+        #converts wons to CAD
+    def won_to_CAD(f):
+        CAD = 0.0010
+        return f*CAD
     # This is the frame
     frame = ttk.Frame(root)
     # The field option(s)
@@ -97,6 +103,8 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_YEN)).place(x = 220, y = 60)
     Radiobutton(root, text="RUB", variable = r, value = 4, 
                 command = lambda : convert_button_clicked(won_to_RUB)).place(x = 220, y = 80)
+    Radiobutton(root, text="CAD", variable = r, value = 5, 
+                command = lambda : convert_button_clicked(won_to_CAD)).place(x = 220, y = 100)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()

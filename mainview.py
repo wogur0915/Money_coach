@@ -129,7 +129,7 @@ for frameName in (statisticsFrame, assetsFrame):
 # Setting page 
 
 design = Label(settingFrame, bg = "light grey", image=test, width=300, height=380, compound="c", fg="dark green", font=("Arial", 15), bd=10, relief = RIDGE)
-design.place(x=235, y=50) 
+design.place(x=238, y=50) 
    
 Help = Button(settingFrame, image=test, text="Help", font = ("Helvetica", 15), width=200, height=40, compound="c", activeforeground = "green",  command = lambda : openNewWindow(Email))
 Help.place(x=310, y=80)
@@ -147,6 +147,7 @@ Version = Label(settingFrame, image=test, text= "Beta 0.1.0", width=190, height=
 Version.place(x=600, y=320) 
 Version.bind("<Enter>", lambda e: button_hover(e, Version))
 Version.bind("<Leave>", lambda e: button_hover_leave(e, Version))
+popTip(Version, text = "Program's current version")
 
 Converted = Button(settingFrame, image=test, text = "Currency Converter" , width=200, height=40, compound="c", command = lambda: openconverter())
 Converted.place(x=310, y=380) 
