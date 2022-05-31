@@ -18,6 +18,10 @@ class Message(object):
         self.tipwindow = tw = Toplevel(self.tool)
         message = Label(tw,borderwidth=0, text=self.text, justify=LEFT, background = "Lightgoldenrod", font=("Times", "10"), relief=SOLID)
         message.pack(ipadx=4)
+        tw.wm_overrideredirect(1)
+        tw.wm_geometry("+%d+%d" % (x, y))
+        
+    def hide(self):
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
