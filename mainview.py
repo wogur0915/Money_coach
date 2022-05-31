@@ -53,8 +53,8 @@ main.config(menu=menubar)
     
 # History Page
 treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
-treeview.config(height = 18)
-treeview.column("dates", width=170, anchor="e")
+treeview.config(height = 20)
+treeview.column("dates", width=165, anchor="e")
 treeview.heading("dates", text="날짜", anchor="center")
 treeview.column("expOrInc", width=110, anchor="center")
 treeview.heading("expOrInc", text="수입/지출", anchor="center")
@@ -68,13 +68,20 @@ treeview.heading("otherDetails", text="비고", anchor="center")
 # Only Show column headings
 treeview["show"] = "headings"
 
+# For dividing section
+blankLabel = Label(historyFrame, image=test, height=5, width=20, compound='c')
+blankLabel.grid(row=1, column=0)
+
+# Buttons on historyFrame
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
-addBtn.config(width = 5, height = 5)
-deleteBtn = Button(historyFrame, text = "삭제", font="나눔고딕 10", anchor="center", command=lambda:[delList(treeview)])
-deleteBtn.config(width = 5, height = 5)
-treeview.grid(row=1, column=0, columnspan=4)
+addBtn.config(width = 3, height = 1)
+deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[delList(treeview)])
+deleteBtn.config(width = 3, height = 1)
+treeview.grid(row=2, column=0, columnspan=4)
 deleteBtn.grid(row=2, column=2)
 addBtn.grid(row=2, column=3)
+addBtn.place(x=25, y=100)
+deleteBtn.place(x=25, y=130)
 
 # Statistics Page
 typeLogo = Label(statisticsFrame, image=test, text="소비 성향", width=804, height=204, compound="c", background='grey')
