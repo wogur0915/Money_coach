@@ -6,6 +6,11 @@ import webbrowser
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showerror
+#declaring a class Message
+class Message(object):
+    def show(self, text):
+        self.text = text
+        if self.tipwindow or not self.text:
 #A function that opens a currency converter
 def openconverter():    
     root = tk.Toplevel()
