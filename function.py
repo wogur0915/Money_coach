@@ -38,7 +38,7 @@ class Message(object):
 def popTip(tool, text):
     toolTip = Message(tool)
     def enter(event):
-        time.sleep(0.5)
+        time.sleep(0.4)
         toolTip.show(text)
     def leave(event):
         toolTip.hide()

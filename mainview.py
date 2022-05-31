@@ -143,14 +143,17 @@ License.place(x=310, y=200)
 Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
 Agreement.place(x=310, y=260)
 
-Version = Label(settingFrame, image=test, text= "Beta 0.1.0", width=190, height=30, compound="c", fg="dark green", font=("Arial", 15), relief = RIDGE)
+Version = Label(settingFrame, image=test, text= "BETA 0.1.0", width=190, height=30, compound="c", fg="light green", font=("Arial", 15), relief = RIDGE)
 Version.place(x=600, y=320) 
 popTip(Version, text = "Program's current version")
 
-Review = Label(settingFrame, image=test, text="Review", font=("Arial", 25), width=200, height=40, compound="c", background = "grey")
+Converter = Button(settingFrame, image=test, text = "Currency Converter" , font=("Arial", 21), width=200, height=40, compound="c", command = lambda: openconverter())
+Converter.place(x=310, y=320) 
 
-Converter = Button(settingFrame, image=test, text = "Currency Converter" , width=200, height=40, compound="c", command = lambda: openconverter())
-Converter.place(x=310, y=380) 
+Review = Label(settingFrame, image=test, text="Review", width=100, height=40, compound="c", background = "grey")
+Review.place(x=360, y=380)
+Review.bind("<Button-1>", lambda e : callback(review))
+popTip(Review, text = "Click to review our program!")
 
 Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
 Link.place(x=315, y=460)
