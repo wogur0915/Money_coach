@@ -6,6 +6,7 @@ import webbrowser
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showerror
+import time
 #declaring a class Message
 class Message(object):
     def show(self, text):
@@ -33,6 +34,9 @@ class Message(object):
         self.x = self.y = 0
 
 def popTip(tool, text):
+    toolTip = Message(tool)
+    def enter(event):
+    time.sleep(0.5)
     
 #A function that opens a currency converter
 def openconverter():    
