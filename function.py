@@ -83,10 +83,13 @@ def openconverter():
     def won_to_PS(f):
         CHF = 0.00064
         return f*CHF
-       #converts wons to PS
+       #converts wons to Yuan
     def won_to_Yuan(f):
         Yuan = 185.96
         return f*Yuan
+    def won_to_ZAR(f):
+        ZAR = 0.013
+        return f*ZAR
     # This is the frame
     frame = ttk.Frame(root)
     # The field option(s)
@@ -112,23 +115,25 @@ def openconverter():
     r = IntVar()
     #radio buttons to show the options and execute conversion when clicked
     Radiobutton(root, text="US", variable = r, value = 1, 
-                command = lambda : convert_button_clicked(won_to_dollar)).place(x = 220, y = 20)
+                command = lambda : convert_button_clicked(won_to_dollar)).place(x = 10, y = 80)
     Radiobutton(root, text="EUR", variable = r, value = 2, 
-                command = lambda : convert_button_clicked(won_to_EUR)).place(x = 220, y = 40)
+                command = lambda : convert_button_clicked(won_to_EUR)).place(x = 10, y = 100)
     Radiobutton(root, text="YEN", variable = r, value = 3, 
-                command = lambda : convert_button_clicked(won_to_YEN)).place(x = 220, y = 60)
+                command = lambda : convert_button_clicked(won_to_YEN)).place(x = 10, y = 120)
     Radiobutton(root, text="RUB", variable = r, value = 4, 
-                command = lambda : convert_button_clicked(won_to_RUB)).place(x = 220, y = 80)
+                command = lambda : convert_button_clicked(won_to_RUB)).place(x = 10, y = 140)
     Radiobutton(root, text="CAD", variable = r, value = 5, 
-                command = lambda : convert_button_clicked(won_to_CAD)).place(x = 220, y = 100)
-    Radiobutton(root, text="CAD", variable = r, value = 6, 
-                command = lambda : convert_button_clicked(won_to_AUD)).place(x = 220, y = 120)
+                command = lambda : convert_button_clicked(won_to_CAD)).place(x = 10, y = 160)
+    Radiobutton(root, text="AUD/NZD", variable = r, value = 6, 
+                command = lambda : convert_button_clicked(won_to_AUD)).place(x = 10, y = 180)
     Radiobutton(root, text="CHF", variable = r, value = 7, 
-                command = lambda : convert_button_clicked(won_to_CHF)).place(x = 220, y = 140)
-    Radiobutton(root, text="GBPS", variable = r, value = 8, 
-                command = lambda : convert_button_clicked(won_to_PS)).place(x = 220, y = 160)
+                command = lambda : convert_button_clicked(won_to_CHF)).place(x = 70, y = 80)
+    Radiobutton(root, text="GBP", variable = r, value = 8, 
+                command = lambda : convert_button_clicked(won_to_PS)).place(x = 70, y = 100)
     Radiobutton(root, text="Yuan", variable = r, value = 9, 
-                command = lambda : convert_button_clicked(won_to_Yuan)).place(x = 220, y = 180)
+                command = lambda : convert_button_clicked(won_to_Yuan)).place(x = 70, y = 120)
+    Radiobutton(root, text="ZAR", variable = r, value = 10, 
+                command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 140)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()
