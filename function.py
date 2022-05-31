@@ -75,6 +75,10 @@ def openconverter():
     def won_to_AUD(f):
         AUD = 0.0011
         return f*AUD
+        #converts wons to CHF
+    def won_to_CHF(f):
+        CHF = 0.00077
+        return f*CHF
     # This is the frame
     frame = ttk.Frame(root)
     # The field option(s)
@@ -111,6 +115,8 @@ def openconverter():
                 command = lambda : convert_button_clicked(won_to_CAD)).place(x = 220, y = 100)
     Radiobutton(root, text="CAD", variable = r, value = 6, 
                 command = lambda : convert_button_clicked(won_to_AUD)).place(x = 220, y = 120)
+    Radiobutton(root, text="CHF", variable = r, value = 7, 
+                command = lambda : convert_button_clicked(won_to_AUD)).place(x = 220, y = 140)
     myLabel = Label(root, text = r.get())
     myLabel.grid
     root.mainloop()
