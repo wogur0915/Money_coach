@@ -41,14 +41,8 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
 
 # Menu Bar
 menubar=tkinter.Menu(main)
-
-fileMenu=tkinter.Menu(menubar, tearoff=0)
-menubar.add_cascade(label="파일", menu=fileMenu)
-fileMenu.add_command(label="불러오기", command=lambda:[loadFile(main, treeview)])
-fileMenu.add_command(label="저장하기", command=lambda:[saveFile()])
-fileMenu.add_separator()
-fileMenu.add_command(label="종료하기")
-
+menubar.add_cascade(label="저장하기", command=lambda:[saveFile()])
+menubar.add_cascade(label="불러오기", command=lambda:[loadFile(main, treeview)])
 main.config(menu=menubar)    
     
 # History Page
@@ -64,6 +58,12 @@ treeview.column("types", width=110, anchor="center")
 treeview.heading("types", text="카테고리", anchor="center")
 treeview.column("otherDetails", width=310, anchor="center")
 treeview.heading("otherDetails", text="비고", anchor="center")
+
+# Style of treeview
+style = tkinter.ttk.Style()
+style.theme_use('clam')
+style.configure("Treeview.Heading", font=("나눔스퀘어 bold", 12), rowheight=20, background = "#E5CCFF")
+style.configure("Treeview", font=("나눔스퀘어 bold", 9), rowheight=20)
 
 # Only Show column headings
 treeview["show"] = "headings"
