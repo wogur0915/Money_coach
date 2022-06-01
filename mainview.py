@@ -65,18 +65,20 @@ deleteBtn.grid(row=2, column=2)
 addBtn.grid(row=2, column=3)
 
 # Statistics Page
+trophy1 = PhotoImage(file='src/goldtrophy.png')
+
 typeLogo = Label(statisticsFrame, image=test, text="0", width=804, height=204, compound="c")
 typeLogo.place(x=10, y=55)
 
 Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c", background='grey')
 Graph.place(x=10, y=274)
 
-firstColor = Label(statisticsFrame, image=test, text="color", width=25, height=25, compound="c", background='grey')
-firstColor.place(x=238, y=276)
-firstCatagory = Label(statisticsFrame, image=test, text="카테고리명", width=350, height=25, compound="c", background='grey')
-firstCatagory.place(x=281, y=276)
-firstSum = Label(statisticsFrame, image=test, text="금액", width=166, height=25, compound="c", background='grey')
-firstSum.place(x=647, y=276)
+firstColor = Label(statisticsFrame, image=trophy1, text="", width=48, height=25, compound="c")
+firstColor.place(x=230, y=276)
+firstCatagory = Label(statisticsFrame, image=test, text="카테고리명", width=150, height=25, compound="c", background='grey')
+firstCatagory.place(x=283, y=276)
+firstSum = Label(statisticsFrame, image=test, text="금액", width=366, height=25, compound="c", background='grey')
+firstSum.place(x=447, y=276)
 
 secondColor = Label(statisticsFrame, image=test, text="color", width=25, height=25, compound="c", background='grey')
 secondColor.place(x=238, y=321)
