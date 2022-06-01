@@ -16,7 +16,7 @@ def load_image():
     plan0 = PhotoImage(file='src/plan0.png')
     type0 = PhotoImage(file='src/type0.png')
     
-def show_statistics_frame(frame, typeLogo):
+def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum):
     if typeLogoNum == 0:
         typeLogo.config(image=type0, text="0")
     elif typeLogoNum == 1:

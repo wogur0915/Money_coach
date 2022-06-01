@@ -35,7 +35,7 @@ lobbyLogo.grid(row=1, column=0, columnspan=4)
 for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
     historyButton = Button(frameName, image=test, text="내역", width=200, height=40, compound="c", command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
-    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo)])
+    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
     statisticsButton.grid(row=0, column=1)
     assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo)])
     assetsButton.grid(row=0, column=2)
@@ -79,6 +79,9 @@ typeLogo.place(x=10, y=55)
 
 Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c", background='grey')
 Graph.place(x=10, y=274)
+
+firstGraph = Label(statisticsFrame, image=test, text="응애", width=210, height=25, compound="c", background='white')
+firstGraph.place(x=10, y=276)
 
 firstColor = Label(statisticsFrame, image=trophy1, width=48, height=25)
 firstColor.place(x=230, y=276)
