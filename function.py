@@ -172,12 +172,17 @@ def label_hover_leave(e, name, settingFrame):
     status_label.place(x=575, y=470)
     name["fg"] = "black"
     
-# Function that opens a URL
+# Function that opens a window
 def openNewWindow(info):
     newWindow = Toplevel()
     newWindow.resizable(FALSE,FALSE)
     newWindow.grid
     Label(newWindow, text = info, fg = "red").pack()
+    
+# Function that opens a window with choices
+def openMwindow(info):
+    newWindow = Toplevel()
+    newWindow.resizable(FALSE,FALSE)
     
  # Function that opens URL links   
 def callback(url):
