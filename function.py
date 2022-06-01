@@ -67,26 +67,6 @@ def addList(treeview) :
             inputOthers.delete(0,END)
             tegType.delete(0,END)
             
-#             # for debug
-#             print(dates, expOrInc, types, money, otherDetails)
-            
-#             # totalMoney = totalMoney + int(money[-1])
-#             print("지출 합계 테스트 : ", sumExpends())
-#             print("수입 합계 테스트 : ", sumIncomes())
-#             print("수입 - 지출 : ", total())
-#             print("-------------------") 
-#             print("식비 테스트 : ", eatTotal())
-#             print("주거/통신 테스트 : ", lifeTotal())    
-#             print("의복/미용 테스트 : ", beautyTotal())    
-#             print("건강/문화 테스트 : ", cultureTotal())        
-#             print("교육/육아 테스트 : ", eduTotal())    
-#             print("교통/차량 테스트 : ", carTotal())    
-#             print("지출 기타 테스트 : ", expEtcTotal())
-#             print("-------------------")
-#             print("경조사/회비 테스트 : ", eventTotal())    
-#             print("공과금 테스트 : ", utilTotal()) 
-#             print("월급 테스트 : ", salaryTotal()) 
-#             print("수입 기타 테스트 테스트 : ", incEtcTotal())    
             
     # event function
     # combo box selection 
@@ -161,146 +141,18 @@ def addList(treeview) :
     confirmBtn.grid(row=10, column=1, padx=10, pady=10)
 
 # ------------------------------------------------------------------------------------------
-# History Delete Button Function
-def delList(treeview) :
-    
-    # Return Enter Data(Global Value) to Apply History
-    def deleteInputVal() :
-        global dates, money, types, otherDetails, columns
-
-        value = [
-            inputDate.get(),
-            inputExpOrInc.get(),
-            inputMoney.get(),
-            tegType.get(),
-            inputOthers.get()
-            ]
-       
-        isOK = True
-        for item in value[:4] :
-            # if empyty spaces exist
-            if not(item):
-                warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
-                isOK = False
-                delListWin.lift()
-                break
-            # no empty then,
-        
-        # Delete the column after verifying that the information entered by the user matches the information in the diary
-        if isOK:
-            if (value[0] in dates) and (value[1] in expOrInc) and (value[2] in money) and (value[3] in types) and (value[4] in otherDetails):
-                if dates.index(value[0]) == expOrInc.index(value[1]) == money.index(value[2]) == types.index(value[3]) :
-                    indexNum = dates.index(value[0])
-                    dates[indexNum] = None
-                    expOrInc[indexNum] = None
-                    money[indexNum] = None
-                    types[indexNum] = None
-                    otherDetails[indexNum] = None
-                    treeview.delete(str(indexNum))
-            else :
-                warning = messagebox.showwarning("경고!", "가계부에 존재하지 않는 정보입니다!")
-                delListWin.lift()
-
-            # # Clean After Data Delete
-            inputDate.delete(0,END)
-            inputExpOrInc.delete(0,END)
-            inputMoney.delete(0,END)
-            inputOthers.delete(0,END)
-            tegType.delete(0,END)
-
-    delListWin = Tk()
-    delListWin.title("가계부 삭제")
-    delListWin.geometry("280x350+942+190")
-    delListWin.resizable(width = False, height = False)
-    # addListWin.wm_attributes("-topmost", 1)  # window on first
-
-    # Enter Window
-    dateLb = Label(delListWin, text="날짜", font=("나눔스퀘어 bold", 13))
-    inoutLb = Label(delListWin, text="수입/지출", font=("나눔스퀘어 bold", 13))
-    moneyLb = Label(delListWin, text="금액", font=("나눔스퀘어 bold", 13))
-    tegLb = Label(delListWin, text="카테고리", font=("나눔스퀘어 bold", 13))
-    memoLb = Label(delListWin, text="비고", font=("나눔스퀘어 bold", 13))
-    dateLb.grid(row=0, column=1, padx=100, pady=7)
-    inoutLb.grid(row=2, column=1, padx=100, pady=7)
-    moneyLb.grid(row=4, column=1, padx=100, pady=7)
-    tegLb.grid(row=6, column=1, padx=100, pady=7)
-    memoLb.grid(row=8, column=1, padx=100, pady=7)
-
-    # event function
-    # combo box selection 
-    def selectCombo():
-        if inputExpOrInc.get()=="수입" :
-            tegType["values"]=incTypes
-        else :
-            tegType["values"]=expTypes
-
-    # change combobox smoothly
-    def changeSmooth(event):
-        if inputExpOrInc.get()=="수입":
-            tegType.set(incTypes[0])
-        else:
-            tegType.set(expTypes[0])
-
-    # Clear example function
-    def clearDateEx(event):
-        if inputDate.get() == "yyyy-mm-dd" :
-            inputDate.delete(0,END)
-            inputDate.configure(foreground="#000000")
-    def clearMoneyEx(event):
-        if inputMoney.get() == "숫자만 입력해주세요" :
-            inputMoney.delete(0,END)
-            inputMoney.configure(foreground="#000000")
-
-
-    expOrIncTyp = ['지출', '수입']   
-    expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
-    incTypes = ['경조사/회비','공과금','월급','기타']
-
-    inputDate = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
-    inputDate.insert(0,"yyyy-mm-dd")
-    inputDate.configure(foreground="#747474")
-    inputDate.bind("<Button-1>", clearDateEx)
-    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
-    inputExpOrInc.option_add('*TCombobox*Listbox.Justify', 'center')        
-    inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
-    inputExpOrInc.current(0)
-    inputMoney = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
-    inputMoney.insert(0,"숫자만 입력해주세요")
-    inputMoney.configure(foreground="#747474")
-    inputMoney.bind("<Button-1>", clearMoneyEx)
-    tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
-    tegType.option_add('*TCombobox*Listbox.Justify', 'center')     
-    tegType.current(0)
-    inputOthers = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
-    confirmBtn = Button(delListWin, text = "확인", font=("나눔스퀘어 bold", 10), command = deleteInputVal)
-
-    inputDate.grid(row=1, column=1)
-    inputExpOrInc.grid(row=3, column=1)
-    inputMoney.grid(row=5, column=1)
-    tegType.grid(row=7, column=1)
-    inputOthers.grid(row=9, column=1)
-    confirmBtn.grid(row=10, column=1, padx=10, pady=10)
-    
-#-------------------------------------------------------
-# delete with doublClick
+# History delete with doublClick
 def dbclickDelList(event, treeview):
 
     curItem = treeview.focus()
     
     if curItem : 
-        # dbclickDelList
-        delListWin = Tk()
-        delListWin.title("가계부 삭제")
-        delListWin.geometry("280x350+942+190")
-        delListWin.resizable(width = False, height = False)
-
-        # button action  
+        # button action 
         def deleteContent() :
-            global dates, money, types, otherDetails, expOrInc, columns
+            global dates, money, types, otherDetails, expOrInc
 
             selected_item = treeview.selection()[0]
             treeview.delete(selected_item)
-            delListWin.destroy()
 
             # destroy data
             dates[int(curItem)] = None
@@ -309,75 +161,34 @@ def dbclickDelList(event, treeview):
             types[int(curItem)] = None
             otherDetails[int(curItem)] = None
 
-#             # for debug
-#             print(dates, expOrInc, types, money, otherDetails)
+        response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
+        if response == 1 :
+            deleteContent()
+    
+#-------------------------------------------------------
+# History Delete Button Function
+def clickDelButton(treeview):
 
-#             # totalMoney = totalMoney + int(money[-1])
-#             print("지출 합계 테스트 : ", sumExpends())
-#             print("수입 합계 테스트 : ", sumIncomes())
-#             print("수입 - 지출 : ", total())
-#             print("-------------------") 
-#             print("식비 테스트 : ", eatTotal())
-#             print("주거/통신 테스트 : ", lifeTotal())    
-#             print("의복/미용 테스트 : ", beautyTotal())    
-#             print("건강/문화 테스트 : ", cultureTotal())        
-#             print("교육/육아 테스트 : ", eduTotal())    
-#             print("교통/차량 테스트 : ", carTotal())    
-#             print("지출 기타 테스트 : ", expEtcTotal())
-#             print("-------------------")
-#             print("경조사/회비 테스트 : ", eventTotal())    
-#             print("공과금 테스트 : ", utilTotal()) 
-#             print("월급 테스트 : ", salaryTotal()) 
-#             print("수입 기타 테스트 테스트 : ", incEtcTotal())    
+    curItem = treeview.focus()
+    
+    if curItem : 
+        # button action 
+        def deleteContent() :
+            global dates, money, types, otherDetails, expOrInc
+
+            selected_item = treeview.selection()[0]
+            treeview.delete(selected_item)
+
+            # destroy data
+            dates[int(curItem)] = None
+            expOrInc[int(curItem)] = None
+            money[int(curItem)] = None
+            types[int(curItem)] = None
+            otherDetails[int(curItem)] = None
             
-            def delAsk() :
-                response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
-                if response == 1 :
-                    deleteContent()
-
-        # Entered window
-        dateLb = Label(delListWin, text="날짜", font=("나눔스퀘어 bold", 13))
-        inoutLb = Label(delListWin, text="수입/지출", font=("나눔스퀘어 bold", 13))
-        moneyLb = Label(delListWin, text="금액", font=("나눔스퀘어 bold", 13))
-        tegLb = Label(delListWin, text="카테고리", font=("나눔스퀘어 bold", 13))
-        memoLb = Label(delListWin, text="비고", font=("나눔스퀘어 bold", 13))
-        dateLb.grid(row=0, column=1, padx=100, pady=7)
-        inoutLb.grid(row=2, column=1, padx=100, pady=7)
-        moneyLb.grid(row=4, column=1, padx=100, pady=7)
-        tegLb.grid(row=6, column=1, padx=100, pady=7)
-        memoLb.grid(row=8, column=1, padx=100, pady=7)
-
-        expOrIncTyp = ['지출', '수입']   
-        expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
-        incTypes = ['경조사/회비','공과금','월급','기타']
-        
-        inputDate = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
-        inputDate.insert( 0, treeview.item(curItem).get("values")[0] )
-        inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
-        inputExpOrInc.option_add('*TCombobox*Listbox.Justify', 'center') 
-        inputExpOrInc.set( treeview.item(curItem).get("values")[1] )
-        inputMoney = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
-        inputMoney.insert( 0, treeview.item(curItem).get("values")[2] )
-        tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
-        tegType.option_add('*TCombobox*Listbox.Justify', 'center') 
-        tegType.set( treeview.item(curItem).get("values")[3] )
-        inputOthers = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
-        inputOthers.insert( 0, treeview.item(curItem).get("values")[4] )
-        confirmBtn = Button(delListWin, text = "확인", command = delAsk, font=("나눔스퀘어 bold", 10))
-
-        # Read Only delete popup window
-        inputDate.configure(state='disabled')
-        inputExpOrInc.configure(state='disabled')
-        inputMoney.configure(state='disabled')
-        tegType.configure(state='disabled')
-        inputOthers.configure(state='disabled')
-        
-        inputDate.grid(row=1, column=1)
-        inputExpOrInc.grid(row=3, column=1)
-        inputMoney.grid(row=5, column=1)
-        tegType.grid(row=7, column=1)
-        inputOthers.grid(row=9, column=1)
-        confirmBtn.grid(row=10, column=1, padx=10, pady=10)
+        response = messagebox.askokcancel("가계부 삭제 경고", "선택하신 내역 정보를 삭제하시겠습니까?")
+        if response == 1 :
+            deleteContent()
         
 #-------------------------------------------------------
 # Calculation
@@ -404,7 +215,6 @@ def total() :
     return totalMoney
 
 # Expend Type Calculate
-# expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
 def eatTotal() :
     eatMoney = 0
     for i in range(columns) :
@@ -454,7 +264,6 @@ def expEtcTotal() :
             etcMoney += int(money[i])
     return etcMoney
 
-# incTypes = ['경조사/회비','공과금','월급','기타']
 # Income Type Calculate
 def eventTotal() :
     eventMoney = 0
