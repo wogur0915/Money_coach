@@ -104,14 +104,14 @@ def addList(treeview) :
             tegType.set(expTypes[0])
     # Clear example function
     def clearDateEx(event):
-        if inputDate.get() == "ex) 2022-05-31" :
+        if inputDate.get() == "yyyy-mm-dd" :
             inputDate.delete(0,END)
             inputDate.configure(foreground="#000000")
     def clearMoneyEx(event):
-        if inputMoney.get() == "ex) 15000" :
+        if inputMoney.get() == "숫자만 입력해주세요" :
             inputMoney.delete(0,END)
             inputMoney.configure(foreground="#000000")
-
+            
     addListWin = Tk()
     addListWin.title("가계부 추가")
     addListWin.geometry("280x350+942+190")
@@ -129,20 +129,20 @@ def addList(treeview) :
     moneyLb.grid(row=4, column=1, padx=100, pady=7)
     tegLb.grid(row=6, column=1, padx=100, pady=7)
     memoLb.grid(row=8, column=1, padx=100, pady=7)
-
-    expOrIncTyp = ['지출', '수입']
+    
+    expOrIncTyp = ['지출', '수입']   
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
-    
+
     inputDate = Entry(addListWin, justify = "center")
-    inputDate.insert(0,"ex) 2022-05-31")
+    inputDate.insert(0,"yyyy-mm-dd")
     inputDate.configure(foreground="#747474")
     inputDate.bind("<Button-1>", clearDateEx)
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
     inputMoney = Entry(addListWin, justify = "center")
-    inputMoney.insert(0,"ex) 15000")
+    inputMoney.insert(0,"숫자만 입력해주세요")
     inputMoney.configure(foreground="#747474")
     inputMoney.bind("<Button-1>", clearMoneyEx)
     tegType = Combobox(addListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
@@ -240,11 +240,11 @@ def delList(treeview) :
 
     # Clear example function
     def clearDateEx(event):
-        if inputDate.get() == "ex) 2022-05-31" :
+        if inputDate.get() == "yyyy-mm-dd" :
             inputDate.delete(0,END)
             inputDate.configure(foreground="#000000")
     def clearMoneyEx(event):
-        if inputMoney.get() == "ex) 15000" :
+        if inputMoney.get() == "숫자만 입력해주세요." :
             inputMoney.delete(0,END)
             inputMoney.configure(foreground="#000000")
 
@@ -253,14 +253,14 @@ def delList(treeview) :
     incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(delListWin, justify = "center")
-    inputDate.insert(0,"ex) 2022-05-31")
+    inputDate.insert(0,"yyyy-mm-dd")
     inputDate.configure(foreground="#747474")
     inputDate.bind("<Button-1>", clearDateEx)
     inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
     inputMoney = Entry(delListWin, justify = "center")
-    inputMoney.insert(0,"ex) 15000")
+    inputMoney.insert(0,"숫자만 입력해주세요")
     inputMoney.configure(foreground="#747474")
     inputMoney.bind("<Button-1>", clearMoneyEx)
     tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
