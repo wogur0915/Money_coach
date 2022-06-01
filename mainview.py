@@ -47,23 +47,24 @@ main.config(menu=menubar)
     
 # History Page
 treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
-treeview.config(height = 20)
+treeview.config(height = 16)
 treeview.column("dates", width=165, anchor="center")
 treeview.heading("dates", text="날짜", anchor="center")
 treeview.column("expOrInc", width=110, anchor="center")
 treeview.heading("expOrInc", text="수입/지출", anchor="center")
 treeview.column("money", width=110, anchor="center")
 treeview.heading("money", text="금액", anchor="center")
-treeview.column("types", width=110, anchor="center")
+treeview.column("types", width=115, anchor="center")
 treeview.heading("types", text="카테고리", anchor="center")
-treeview.column("otherDetails", width=310, anchor="center")
+treeview.column("otherDetails", width=305, anchor="center")
 treeview.heading("otherDetails", text="비고", anchor="center")
 
 # Style of treeview
 style = tkinter.ttk.Style()
-style.theme_use('clam')
-style.configure("Treeview.Heading", font=("나눔스퀘어 bold", 12), rowheight=20, background = "#E5CCFF")
-style.configure("Treeview", font=("나눔스퀘어 bold", 9), rowheight=20)
+style.theme_use('alt')
+style.configure("Treeview.Heading", font=("나눔스퀘어 bold", 13), rowheight=20, background = "#87B3FC")
+style.configure("Treeview", font=("나눔스퀘어 bold", 11), rowheight=25)
+style.map("Treeview", background=[('selected', "#BEC6D5")], foreground=[('selected', "black")])
 
 # Only Show column headings
 treeview["show"] = "headings"
