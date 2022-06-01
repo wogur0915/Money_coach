@@ -12,6 +12,11 @@ historySum = 0
 historyPlus = 1
 historyMinus = 2
 
+class catagory:
+    name = []
+    sum = 0
+rank = []
+
 # Global Value For Statistics Page Logo
 typeLogoNum = 0
 
