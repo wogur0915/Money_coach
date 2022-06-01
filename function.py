@@ -3,7 +3,7 @@ import tkinter
 from tkinter.ttk import Combobox
 from tkinter import messagebox
 from data import *
-from tkinter.filedialog import asksaveasfile, SaveAs
+from tkinter.filedialog import asksaveasfile, askopenfilename, SaveAs
 import csv
 
 # Raise Frame Function
@@ -495,3 +495,28 @@ def saveFile():
         if dates[i] != None :
             wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
     f.close()
+
+def loadFile(main, treeview):
+    global dates, money, types, otherDetails, expOrInc, columns
+    columns = 0
+    temp = []
+    del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
+
+    file = askopenfilename(initialdir="/desktop", title="가계부 데이터 파일 선택", filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
+    f = open(file,"r")
+    rd = csv.reader(f)
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    for i in rd :
+        temp.append(i)
+    if len(temp) > 1 :
+        for j in range(1, len(temp)) :
+            dates.append(temp[j][0])
+            expOrInc.append(temp[j][1])
+            money.append(temp[j][2])
+            types.append(temp[j][3])
+            otherDetails.append(temp[j][4])
+            treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+            columns = columns + 1
+    f.close()
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
