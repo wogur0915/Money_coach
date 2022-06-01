@@ -3,7 +3,7 @@ import tkinter
 from tkinter.ttk import Combobox
 from tkinter import messagebox
 from data import *
-from tkinter.filedialog import *
+from tkinter.filedialog import asksaveasfile, SaveAs
 import csv
 
 # Raise Frame Function
@@ -478,6 +478,12 @@ def incEtcTotal() :
 
 #----------------------------------------------------
 # file save by using CSV
+
+def asksaveasfile(mode = "w", **options):
+    filename = SaveAs(**options).show()
+    if filename:
+        return open(filename, mode, newline="")
+    return None
 
 def saveFile():
     f = asksaveasfile(mode="w", defaultextension=".csv",initialfile="house_hold_data.csv" , filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
