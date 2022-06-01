@@ -1,5 +1,3 @@
-from multiprocessing.context import assert_spawning
-from statistics import StatisticsError
 from tkinter import *
 import tkinter
 from tkinter.ttk import Combobox
@@ -180,6 +178,9 @@ def openNewWindow(info):
     newWindow.resizable(FALSE,FALSE)
     newWindow.grid
     Label(newWindow, text = info, fg = "red").pack()
+    statistics = Button(newWindow, text = "통계").pack()
+    assets = Button(newWindow, text = "자산").pack()
+    setting = Button(newWindow, text = "설정").pack()
     
 # Function that opens a window with choices
 def openMwindow():
@@ -188,9 +189,6 @@ def openMwindow():
     newWindow.geometry = "500x500"
     Label(newWindow, fg = "red", text = "Welcome").pack()
     history = Button(newWindow, text = "내역").pack()
-    statistics = Button(newWindow, text = "통계").pack()
-    assets = Button(newWindow, text = "자산").pack()
-    setting = Button(newWindow, text = "설정").pack()
     
     
  # Function that opens URL links   
