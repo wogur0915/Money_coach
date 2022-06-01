@@ -4,7 +4,6 @@ from tkinter.ttk import Combobox
 from tkinter import messagebox
 from data import *
 from tkinter.filedialog import *
-import os
 import csv
 
 # Raise Frame Function
@@ -481,22 +480,12 @@ def incEtcTotal() :
 # file save by using CSV
 
 def saveFile():
-    if not os.path.exists("C:/Users/house_hold_file/"):
-        os.mkdir('C:/Users/house_hold_file/')
-        f = open('C:/Users/house_hold_file/house_hold_data.csv', 'w', encoding='utf-8', newline='')
-        wr = csv.writer(f)
-        wr.writerow(["날짜", "수입/지출", "금액", "카테고리", "비고"])
-        for i in range(len(dates)) :
-            if dates[i] != None :
-                wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
-        f.close()
-        dialog = messagebox.showinfo("알림", "가계부 데이터가 저장되었습니다. 경로는 C:/Users/house_hold_file/ 입니다.")        
-    else :
-        f = open('C:/Users/house_hold_file/house_hold_data.csv', 'w', encoding='utf-8', newline='')
-        wr = csv.writer(f)
-        wr.writerow(["날짜", "수입/지출", "금액", "카테고리", "비고"])
-        for i in range(len(dates)) :
-            if dates[i] != None :
-                wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
-        f.close()
-        dialog = messagebox.showinfo("알림", "가계부 데이터가 저장되었습니다. 경로는 C:/house_hold_file/house_hold_data.csv 입니다.")
+    f = asksaveasfile(mode="w", defaultextension=".csv",initialfile="house_hold_data.csv" , filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
+    if f is None:
+        return
+    wr = csv.writer(f)
+    wr.writerow(["날짜", "수입/지출", "금액", "카테고리", "비고"])
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+    f.close()
