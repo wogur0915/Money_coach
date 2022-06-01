@@ -116,17 +116,17 @@ sumPriceBack = PhotoImage(file='src/sumback.png')
 
 assetsSum = Label(assetsFrame, image=sumBack, width=732, height=60)
 assetsSum.place(x=10, y=56)
-assetsSumPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historySum)+" 원"), font="나눔스퀘어 20 bold", width=566, height=48, compound="c")
+assetsSumPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historySum)+" 원"), font="나눔스퀘어 18 bold", width=566, height=48, compound="c")
 assetsSumPrice.place(x=166, y=62)
 
 assetsPlus = Label(assetsFrame, image=plusBack, width=396, height=60)
 assetsPlus.place(x=10, y=123)
-assetsPlusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyPlus)+" 원"), font="나눔스퀘어 20 bold", width=298, height=48, compound="c")
+assetsPlusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyPlus)+" 원"), font="나눔스퀘어 18 bold", width=298, height=48, compound="c")
 assetsPlusPrice.place(x=98, y=129)
 
 assetsMinus = Label(assetsFrame, image=minusBack, width=396, height=60)
 assetsMinus.place(x=418, y=123)
-assetsMinusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyMinus)+" 원"), font="나눔스퀘어 20 bold", width=298, height=48, compound="c")
+assetsMinusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyMinus)+" 원"), font="나눔스퀘어 18 bold", width=298, height=48, compound="c")
 assetsMinusPrice.place(x=506, y=129)
 
 commentsLogo = Label(assetsFrame, image=test, width=800, height=288)
