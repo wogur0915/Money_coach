@@ -30,7 +30,7 @@ def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
-        global dates, money, types, otherDetails, columns
+        global dates, money, types, otherDetails, expOrInc, columns
         value = [
             inputDate.get(),
             inputExpOrInc.get(),
@@ -118,37 +118,38 @@ def addList(treeview) :
     addListWin.resizable(width = False, height = False)
     # addListWin.wm_attributes("-topmost", 1)  # window on first
 
-    # Enter Window
-    dateLb = Label(addListWin, text="날짜", font="나눔고딕 13")
-    inoutLb = Label(addListWin, text="수입/지출", font="나눔고딕 13")
-    moneyLb = Label(addListWin, text="금액", font="나눔고딕 13")
-    tegLb = Label(addListWin, text="카테고리", font="나눔고딕 13")
-    memoLb = Label(addListWin, text="비고", font="나눔고딕 13")
+   # Enter Window
+    dateLb = Label(addListWin, text="날짜", font=("나눔스퀘어 bold", 13))
+    inoutLb = Label(addListWin, text="수입/지출", font=("나눔스퀘어 bold", 13))
+    moneyLb = Label(addListWin, text="금액", font=("나눔스퀘어 bold", 13))
+    tegLb = Label(addListWin, text="카테고리", font=("나눔스퀘어 bold", 13))
+    memoLb = Label(addListWin, text="비고", font=("나눔스퀘어 bold", 13))
     dateLb.grid(row=0, column=1, padx=100, pady=7)
     inoutLb.grid(row=2, column=1, padx=100, pady=7)
     moneyLb.grid(row=4, column=1, padx=100, pady=7)
     tegLb.grid(row=6, column=1, padx=100, pady=7)
     memoLb.grid(row=8, column=1, padx=100, pady=7)
-    
+
     expOrIncTyp = ['지출', '수입']   
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
 
-    inputDate = Entry(addListWin, justify = "center")
+    inputDate = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
     inputDate.insert(0,"yyyy-mm-dd")
     inputDate.configure(foreground="#747474")
     inputDate.bind("<Button-1>", clearDateEx)
-    inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
+    inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
-    inputMoney = Entry(addListWin, justify = "center")
+    inputMoney = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
     inputMoney.insert(0,"숫자만 입력해주세요")
     inputMoney.configure(foreground="#747474")
     inputMoney.bind("<Button-1>", clearMoneyEx)
-    tegType = Combobox(addListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
+    tegType = Combobox(addListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
     tegType.current(0)
-    inputOthers = Entry(addListWin, justify = "center")
-    confirmBtn = Button(addListWin, text = "확인", command = incomeInputVal)
+    inputOthers = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
+    confirmBtn = Button(addListWin, text = "확인", font=("나눔스퀘어 bold", 10), command = incomeInputVal)
+
 
     inputDate.grid(row=1, column=1)
     inputExpOrInc.grid(row=3, column=1)
@@ -212,11 +213,11 @@ def delList(treeview) :
     # addListWin.wm_attributes("-topmost", 1)  # window on first
 
     # Enter Window
-    dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
-    inoutLb = Label(delListWin, text="수입/지출", font="나눔고딕 13")
-    moneyLb = Label(delListWin, text="금액", font="나눔고딕 13")
-    tegLb = Label(delListWin, text="카테고리", font="나눔고딕 13")
-    memoLb = Label(delListWin, text="비고", font="나눔고딕 13")
+    dateLb = Label(delListWin, text="날짜", font=("나눔스퀘어 bold", 13))
+    inoutLb = Label(delListWin, text="수입/지출", font=("나눔스퀘어 bold", 13))
+    moneyLb = Label(delListWin, text="금액", font=("나눔스퀘어 bold", 13))
+    tegLb = Label(delListWin, text="카테고리", font=("나눔스퀘어 bold", 13))
+    memoLb = Label(delListWin, text="비고", font=("나눔스퀘어 bold", 13))
     dateLb.grid(row=0, column=1, padx=100, pady=7)
     inoutLb.grid(row=2, column=1, padx=100, pady=7)
     moneyLb.grid(row=4, column=1, padx=100, pady=7)
@@ -244,29 +245,30 @@ def delList(treeview) :
             inputDate.delete(0,END)
             inputDate.configure(foreground="#000000")
     def clearMoneyEx(event):
-        if inputMoney.get() == "숫자만 입력해주세요." :
+        if inputMoney.get() == "숫자만 입력해주세요" :
             inputMoney.delete(0,END)
             inputMoney.configure(foreground="#000000")
+
 
     expOrIncTyp = ['지출', '수입']   
     expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
     incTypes = ['경조사/회비','공과금','월급','기타']
 
-    inputDate = Entry(delListWin, justify = "center")
+    inputDate = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
     inputDate.insert(0,"yyyy-mm-dd")
     inputDate.configure(foreground="#747474")
     inputDate.bind("<Button-1>", clearDateEx)
-    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
+    inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
     inputExpOrInc.current(0)
-    inputMoney = Entry(delListWin, justify = "center")
+    inputMoney = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
     inputMoney.insert(0,"숫자만 입력해주세요")
     inputMoney.configure(foreground="#747474")
     inputMoney.bind("<Button-1>", clearMoneyEx)
-    tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", state='readonly')
-    tegType.current(0)    
-    inputOthers = Entry(delListWin, justify = "center")
-    confirmBtn = Button(delListWin, text = "확인", command = deleteInputVal)
+    tegType = Combobox(delListWin, width=17, height=7, values=expTypes, postcommand = selectCombo, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
+    tegType.current(0)
+    inputOthers = Entry(delListWin, font=("나눔스퀘어 bold", 10), justify = "center")
+    confirmBtn = Button(delListWin, text = "확인", font=("나눔스퀘어 bold", 10), command = deleteInputVal)
 
     inputDate.grid(row=1, column=1)
     inputExpOrInc.grid(row=3, column=1)
@@ -330,11 +332,11 @@ def dbclickDelList(event, treeview):
                     deleteContent()
 
         # Entered window
-        dateLb = Label(delListWin, text="날짜", font="나눔고딕 13")
-        inoutLb = Label(delListWin, text="수입/지출", font="나눔고딕 13")
-        moneyLb = Label(delListWin, text="금액", font="나눔고딕 13")
-        tegLb = Label(delListWin, text="카테고리", font="나눔고딕 13")
-        memoLb = Label(delListWin, text="비고", font="나눔고딕 13")
+        dateLb = Label(delListWin, text="날짜", font=("나눔스퀘어 bold", 13))
+        inoutLb = Label(delListWin, text="수입/지출", font=("나눔스퀘어 bold", 13))
+        moneyLb = Label(delListWin, text="금액", font=("나눔스퀘어 bold", 13))
+        tegLb = Label(delListWin, text="카테고리", font=("나눔스퀘어 bold", 13))
+        memoLb = Label(delListWin, text="비고", font=("나눔스퀘어 bold", 13))
         dateLb.grid(row=0, column=1, padx=100, pady=7)
         inoutLb.grid(row=2, column=1, padx=100, pady=7)
         moneyLb.grid(row=4, column=1, padx=100, pady=7)
@@ -345,17 +347,17 @@ def dbclickDelList(event, treeview):
         expTypes = ['식비','주거/통신','의복/미용','건강/문화','교육/육아','교통/차량','기타']
         incTypes = ['경조사/회비','공과금','월급','기타']
         
-        inputDate = Entry(delListWin, justify = "center")
+        inputDate = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
         inputDate.insert( 0, treeview.item(curItem).get("values")[0] )
-        inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", state='readonly')
+        inputExpOrInc = Combobox(delListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
         inputExpOrInc.set( treeview.item(curItem).get("values")[1] )
-        inputMoney = Entry(delListWin, justify = "center")
+        inputMoney = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
         inputMoney.insert( 0, treeview.item(curItem).get("values")[2] )
-        tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center", state='readonly')
+        tegType = Combobox(delListWin, width=17, height=10, values=expTypes, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
         tegType.set( treeview.item(curItem).get("values")[3] )
-        inputOthers = Entry(delListWin, justify = "center")
+        inputOthers = Entry(delListWin, justify = "center", font=("나눔스퀘어 bold", 10))
         inputOthers.insert( 0, treeview.item(curItem).get("values")[4] )
-        confirmBtn = Button(delListWin, text = "확인", command = delAsk)
+        confirmBtn = Button(delListWin, text = "확인", command = delAsk, font=("나눔스퀘어 bold", 10))
 
         # Read Only delete popup window
         inputDate.configure(state='disabled')
