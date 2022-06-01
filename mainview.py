@@ -67,6 +67,7 @@ addBtn.grid(row=2, column=3)
 # Statistics Page
 trophy1 = PhotoImage(file='src/goldtrophy.png')
 trophy2 = PhotoImage(file='src/silvertrophy.png')
+trophy3 = PhotoImage(file='src/bronzetrophy.png')
 
 catagory = PhotoImage(file='src/catagory.png')
 price = PhotoImage(file='src/price.png')
@@ -91,8 +92,8 @@ secondCatagory.place(x=281, y=321)
 secondSum = Label(statisticsFrame, image=test, text="금액", width=166, height=25, compound="c", background='grey')
 secondSum.place(x=647, y=321)
 
-thridColor = Label(statisticsFrame, image=test, text="color", width=25, height=25, compound="c", background='grey')
-thridColor.place(x=238, y=366)
+thridColor = Label(statisticsFrame, image=trophy3, width=48, height=25)
+thridColor.place(x=230, y=366)
 thridCatagory = Label(statisticsFrame, image=test, text="카테고리명", width=350, height=25, compound="c", background='grey')
 thridCatagory.place(x=281, y=366)
 thridSum = Label(statisticsFrame, image=test, text="금액", width=166, height=25, compound="c", background='grey')
