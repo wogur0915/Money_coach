@@ -128,33 +128,23 @@ for frameName in (statisticsFrame, assetsFrame):
     
 # Setting page 
 
-design = Label(settingFrame, image=test, width=300, height=370, compound="c", bd=10, relief = RIDGE)
-design.place(x=238, y=60) 
+design = Label(settingFrame, image=test, width=740, height=300, compound="c", bd=10, relief = RIDGE)
+design.place(x=20, y=60) 
    
-Help = Button(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green",  command = lambda : openMwindow())
+Help = Label(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green")
 Help.place(x=310, y=115)
 
-Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
-Us.place(x=310, y=175) 
+Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 25), width=350, height=80, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
+Us.place(x=30, y=400) 
 
-License = Button(settingFrame, image=test, text="License", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(license))
-License.place(x=310, y=235)
-
-Agreement = Button(settingFrame, image=test, text="Agreement", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(agreement))
-Agreement.place(x=310, y=295)
+License = Label(settingFrame, image=test, text="License: ", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green")
+License.place(x=500, y=450)
 
 Version = Label(settingFrame, image=test, text= "BETA 0.1.0", width=190, height=30, compound="c", fg="light green", font=("Arial", 15), relief = RIDGE)
-Version.place(x=10, y=60) 
+Version.place(x=500, y=400) 
 
-Converter = Button(settingFrame, image=test, text = "Currency Converter" , font=("Arial", 21), width=200, height=40, compound="c", command = lambda: openconverter())
-Converter.place(x=310, y=355) 
-
-Review = Label(settingFrame, image=test, text="R", width=100, height=40, compound="c", background = "light green")
-Review.place(x=10, y=100) 
-Review.bind("<Button-1>", lambda e : callback(review))
-
-Link = Label(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
-Link.place(x=315, y=460)
+Link = Button(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
+Link.place(x=315, y=340)
 Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
 Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
 Link.bind("<Button-1>", lambda e : callback(link))

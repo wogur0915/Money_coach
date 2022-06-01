@@ -163,13 +163,13 @@ def button_hover_leave(e, name):
 # A function that shows the user the text when the mouse is on the label    
 def label_hover(e, name, settingFrame): 
     status_label = Label(settingFrame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
-    status_label.place(x=575, y=470)
+    status_label.place(x=20, y=470)
     name["fg"] = "green"
 
 # A function that makes the text dissappear once the mouse leaves the label      
 def label_hover_leave(e, name, settingFrame):
     status_label = Label(settingFrame, text="                                                                           ")
-    status_label.place(x=575, y=470)
+    status_label.place(x=20, y=470)
     name["fg"] = "black"
     
 # Function that opens a window
