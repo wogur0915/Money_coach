@@ -78,10 +78,8 @@ addBtn.config(width = 3, height = 1)
 deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[delList(treeview)])
 deleteBtn.config(width = 3, height = 1)
 treeview.grid(row=2, column=0, columnspan=4)
-deleteBtn.grid(row=2, column=2)
-addBtn.grid(row=2, column=3)
-addBtn.place(x=25, y=100)
-deleteBtn.place(x=25, y=130)
+addBtn.place(x=780, y=410)
+deleteBtn.place(x=780, y=440)
 
 # Statistics Page
 typeLogo = Label(statisticsFrame, image=test, text="소비 성향", width=804, height=204, compound="c", background='grey')
