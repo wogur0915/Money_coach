@@ -473,3 +473,14 @@ def incEtcTotal() :
         if types[i] == "기타" and expOrInc[i] == "수입" :
             etcMoney += int(money[i])
     return etcMoney
+
+#----------------------------------------------------
+# file save by using CSV
+
+def saveFile():
+    f = open('house_hold_file.csv', 'w', encoding='utf-8', newline='')
+    wr.writerow(["날짜", "수입/지출", "금액", "카테고리", "비고"])
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+    f.close()
