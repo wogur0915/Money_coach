@@ -178,17 +178,17 @@ def openNewWindow(info):
     newWindow.resizable(FALSE,FALSE)
     newWindow.grid
     Label(newWindow, text = info, fg = "red").pack()
-    statistics = Button(newWindow, text = "통계").pack()
-    assets = Button(newWindow, text = "자산").pack()
-    setting = Button(newWindow, text = "설정").pack()
     
 # Function that opens a window with choices
 def openMwindow():
     newWindow = Toplevel()
     newWindow.resizable(FALSE,FALSE)
     newWindow.geometry = "500x500"
-    Label(newWindow, fg = "red", text = "Welcome").pack()
-    history = Button(newWindow, text = "내역").pack()
+    Label(newWindow, fg = "red", text = "").pack()
+    history = Button(newWindow, text = "내역", command = lambda : openNewWindow(photo)).pack()
+    statistics = Button(newWindow, text = "통계", command = lambda : openNewWindow(photo)).pack()
+    assets = Button(newWindow, text = "자산", command = lambda : openNewWindow(photo)).pack()
+    setting = Button(newWindow, text = "설정", command = lambda : openNewWindow(photo)).pack()
     
     
  # Function that opens URL links   
