@@ -128,23 +128,20 @@ for frameName in (statisticsFrame, assetsFrame):
     
 # Setting page 
 
-design = Label(settingFrame, image=test, width=740, height=300, compound="c", bd=10, relief = RIDGE)
+design = Label(settingFrame, image=test, width=740, height=320, compound="c", bd=10, relief = RIDGE)
 design.place(x=20, y=60) 
    
 Help = Label(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green")
 Help.place(x=310, y=115)
 
-Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 25), width=350, height=80, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
-Us.place(x=30, y=400) 
-
-License = Label(settingFrame, image=test, text="License: ", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green")
-License.place(x=500, y=450)
+Us = Label(settingFrame, image=test, text="About Us: We are CBNU students currently majoring in computer science. \nThis program is our first project that we made together. \n To contact us: andrewendlesss@gmail.com \n 희범의 email \n 재혁의 email \n License: MIT",font = ("Helvetica", 10), width=350, height=80, compound="c")
+Us.place(x=315, y=340) 
 
 Version = Label(settingFrame, image=test, text= "BETA 0.1.0", width=190, height=30, compound="c", fg="light green", font=("Arial", 15), relief = RIDGE)
 Version.place(x=500, y=400) 
 
-Link = Button(settingFrame, text="Our GitHub repository", font=("Helvetica", 20)) 
-Link.place(x=315, y=340)
+Link = Button(settingFrame, text="Our GitHub repository", font=("Helvetica", 20),) 
+Link.place(x=30, y=430)
 Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
 Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
 Link.bind("<Button-1>", lambda e : callback(link))
