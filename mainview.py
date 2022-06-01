@@ -131,7 +131,7 @@ for frameName in (statisticsFrame, assetsFrame):
 design = Label(settingFrame, bg = "light grey", image=test, width=300, height=370, compound="c", fg="dark green", font=("Arial", 15), bd=10, relief = RIDGE)
 design.place(x=238, y=60) 
    
-Help = Button(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green",  command = lambda : openNewWindow(Email))
+Help = Button(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green",  command = lambda : openMwindow())
 Help.place(x=310, y=115)
 
 Us = Button(settingFrame, image=test, text="About Us",font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green", command = lambda : openNewWindow(About))
@@ -149,7 +149,7 @@ Version.place(x=10, y=60)
 Converter = Button(settingFrame, image=test, text = "Currency Converter" , font=("Arial", 21), width=200, height=40, compound="c", command = lambda: openconverter())
 Converter.place(x=310, y=355) 
 
-Review = Label(settingFrame, image=test, text="R", width=100, height=40, compound="c", background = "grey")
+Review = Label(settingFrame, image=test, text="R", width=100, height=40, compound="c", background = "light green")
 Review.place(x=10, y=100) 
 Review.bind("<Button-1>", lambda e : callback(review))
 
