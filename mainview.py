@@ -75,7 +75,7 @@ blankLabel.grid(row=1, column=0)
 # Buttons on historyFrame
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
 addBtn.config(width = 3, height = 1)
-deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[delList(treeview)])
+deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[clickDelButton(treeview)])
 deleteBtn.config(width = 3, height = 1)
 treeview.grid(row=2, column=0, columnspan=4)
 addBtn.place(x=780, y=410)
