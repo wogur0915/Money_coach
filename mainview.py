@@ -131,26 +131,30 @@ for frameName in (statisticsFrame, assetsFrame):
 design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
 design.place(x=20, y=60) 
    
-Help = Label(settingFrame, image=test, text="Help", font = ("Helvetica", 25), width=200, height=40, compound="c", activeforeground = "green")
-Help.place(x=310, y=115)
 
 Us = Label(settingFrame, image=test, text=" To contact the developers : \n 문희범: email@site.com \n 임재혁: email@site.com \n 최안드레이: email@site.com. \n Our License: MIT",font = ("나눔스퀘어", 10), width=170, height=80, compound="c")
 Us.place(x=600, y=420) 
 
-Link = Button(settingFrame, text="Our GitHub repository", font=("Helvetica", 15)) 
+Link = Button(settingFrame, text="Our GitHub repository", font=("나눔스퀘어", 15)) 
 Link.place(x=30, y=430)
 Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
 Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
 Link.bind("<Button-1>", lambda e : callback(link))
 
-history = Label(settingFrame, image = test, text="History", font=("Helvetica", 23), width=80, height=25, compound="c",)
-history.place(x = 45, y = 75)
-statistics = Label(settingFrame, image= test, text="Statistics", font=("Helvetica", 23), width=100, height=40, compound="c",)
-statistics.place(x = 270, y = 70)
-assets = Label(settingFrame, image= test, text="Assets", font=("Helvetica", 23), width=80, height=40, compound="c",)
-assets.place(x = 470, y = 70)
-settings = Label(settingFrame, image= test, text="Settings", font=("Helvetica", 23), width=80, height=40, compound="c",)
-settings.place(x = 670, y = 70)
+History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font=("나눔스퀘어", 18), width=120, height=65, compound="c",)
+History.place(x = 45, y = 105)
+Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Historyinfo.place(x = 190, y = 85)
+
+Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
+Statistics.place(x = 55, y = 205)
+Statisticsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Statisticsinfo.place(x = 190, y = 185)
+
+Assets = Label(settingFrame, image= test, text="자산 \n 이용 안내", font=("나눔스퀘어", 18), width=80, height=40, compound="c",)
+Assets.place(x = 65, y = 305)
+Assetsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Assetsinfo.place(x = 190, y = 275)
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
 main.mainloop()

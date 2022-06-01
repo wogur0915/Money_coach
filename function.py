@@ -122,31 +122,6 @@ def openconverter():
     # adding padding and showing it
     frame.grid(padx=10, pady=10)
     r = IntVar()
-    #radio buttons to show the options and execute conversion when clicked
-    Radiobutton(root, text="US", variable = r, value = 1, 
-                command = lambda : convert_button_clicked(won_to_dollar)).place(x = 10, y = 80)
-    Radiobutton(root, text="EUR", variable = r, value = 2, 
-                command = lambda : convert_button_clicked(won_to_EUR)).place(x = 10, y = 100)
-    Radiobutton(root, text="YEN", variable = r, value = 3, 
-                command = lambda : convert_button_clicked(won_to_YEN)).place(x = 10, y = 120)
-    Radiobutton(root, text="RUB", variable = r, value = 4, 
-                command = lambda : convert_button_clicked(won_to_RUB)).place(x = 10, y = 140)
-    Radiobutton(root, text="CAD", variable = r, value = 5, 
-                command = lambda : convert_button_clicked(won_to_CAD)).place(x = 10, y = 160)
-    Radiobutton(root, text="AUD", variable = r, value = 6, 
-                command = lambda : convert_button_clicked(won_to_AUD)).place(x = 10, y = 180)
-    Radiobutton(root, text="CHF", variable = r, value = 7, 
-                command = lambda : convert_button_clicked(won_to_CHF)).place(x = 70, y = 80)
-    Radiobutton(root, text="GBP", variable = r, value = 8, 
-                command = lambda : convert_button_clicked(won_to_PS)).place(x = 70, y = 100)
-    Radiobutton(root, text="Yuan", variable = r, value = 9, 
-                command = lambda : convert_button_clicked(won_to_Yuan)).place(x = 70, y = 120)
-    Radiobutton(root, text="ZAR", variable = r, value = 10, 
-                command = lambda : convert_button_clicked(won_to_ZAR)).place(x = 70, y = 140)
-    Radiobutton(root, text="KYD", variable = r, value = 11, 
-                command = lambda : convert_button_clicked(won_to_KYD)).place(x = 70, y = 160)
-    Radiobutton(root, text="KWD", variable = r, value = 12, 
-                command = lambda : convert_button_clicked(won_to_KWD)).place(x = 70, y = 180)
     
     myLabel = Label(root, text = r.get())
     myLabel.grid
