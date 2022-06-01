@@ -29,7 +29,7 @@ assetsFrame.grid(row=0, column=0, sticky="nsew")
 settingFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
-test=PhotoImage(file='or.png')
+test=PhotoImage(file='photoo.png')
 
 # Main Page And Frames
 lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=800, height=446, compound="c")
@@ -132,7 +132,7 @@ design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd
 design.place(x=20, y=60) 
    
 
-Us = Label(settingFrame, image=test, text=" To contact the developers : \n 문희범: email@site.com \n 임재혁: email@site.com \n 최안드레이: email@site.com. \n Our License: MIT",font = ("나눔스퀘어", 10), width=170, height=80, compound="c")
+Us = Label(settingFrame, image=test, text=" To contact the developers : \n 문희범: email@site.com \n 임재혁: email@site.com \n 최안드레이: email@site.com. \n\n Our License: MIT",font = ("나눔스퀘어", 10), width=170, height=80, compound="c")
 Us.place(x=600, y=420) 
 
 Link = Button(settingFrame, text="Our GitHub repository", font=("나눔스퀘어", 15)) 

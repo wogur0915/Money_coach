@@ -18,7 +18,7 @@ class Message(object):
         x = x + self.tool.winfo_rootx() + 60
         y = y + cy + self.tool.winfo_rooty() + 23
         self.tipwindow = tw = Toplevel(self.tool)
-        message = Label(tw,borderwidth=0, text=self.text, justify=LEFT, background = "Lightgoldenrod", font=("Times", "10"), relief=SOLID)
+        message = Label(tw,borderwidth=1, text=self.text, fg = "black", justify=LEFT, background = "white", font=("Times", "12"), relief=SOLID)
         message.pack(ipadx=4)
         tw.wm_overrideredirect(1)
         tw.wm_geometry("+%d+%d" % (x, y))
@@ -45,88 +45,6 @@ def popTip(tool, text):
     tool.bind('<Enter>', enter)
     tool.bind('<Leave>', leave)
     
-#A function that opens a currency converter
-def openconverter():    
-    root = tk.Toplevel()
-    root.title('Currency Converter')
-    root.resizable(FALSE, FALSE)
-    root.geometry('440x210')
-    #converts wons to dollars
-    def won_to_dollar(f):   
-        US = 0.00079
-        return f*US
-    #converts wons to Euros
-    def won_to_EUR(f):
-        EUR = 0.00074
-        return f*EUR
-    #converts wons to RUB
-    def won_to_RUB(f):
-        RUB = 0.052
-        return f*RUB
-    #converts wons to YEN
-    def won_to_YEN(f):
-        YEN = 0.10
-        return f*YEN
-    #converts wons to CAD
-    def won_to_CAD(f):
-        CAD = 0.0010
-        return f*CAD
-    #converts wons to AUD
-    def won_to_AUD(f):
-        AUD = 0.0011
-        return f*AUD
-    #converts wons to CHF
-    def won_to_CHF(f):
-        CHF = 0.00077
-        return f*CHF
-    #converts wons to PS
-    def won_to_PS(f):
-        CHF = 0.00064
-        return f*CHF
-    #converts wons to Yuan
-    def won_to_Yuan(f):
-        Yuan = 185.96
-        return f*Yuan
-    #converts wons to ZAR
-    def won_to_ZAR(f):
-        ZAR = 0.013
-        return f*ZAR
-    #converts wons to KYD
-    def won_to_KYD(f):
-        KYD = 0.00067
-        return f*KYD
-    #converts wons to KWD
-    def won_to_KWD(f):
-        KWD = 0.00025
-        return f*KWD
-
-    frame = ttk.Frame(root)
-    # The field option(s)
-    options = {'padx': 5, 'pady': 4}
-   # converter entry
-    won = tk.StringVar()
-    won_entry = Entry(frame, textvariable=won)
-    won_entry.grid(column=1, row=0, **options)
-    # performs an operation
-    def convert_button_clicked(won_to_dollar):
-        try:
-            f = float(won.get())
-            c = won_to_dollar(f)
-            result = f'{f} won = {c:.2f}'
-            result_label.config(text=result)
-        except ValueError as error:
-            showerror(title='Error', message=error)
-    # result label
-    result_label = ttk.Label(frame)
-    result_label.grid(row=1, columnspan=3, **options)
-    # adding padding and showing it
-    frame.grid(padx=10, pady=10)
-    r = IntVar()
-    
-    myLabel = Label(root, text = r.get())
-    myLabel.grid
-    root.mainloop()
-    
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
     name["bg"] = "white"
@@ -136,36 +54,25 @@ def button_hover_leave(e, name):
     name["bg"] = "SystemButtonFace"
  
 # A function that shows the user the text when the mouse is on the label    
-def label_hover(e, name, settingFrame): 
-    status_label = Label(settingFrame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
+def label_hover(e, name, Frame): 
+    status_label = Label(Frame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
     status_label.place(x=20, y=470)
     name["fg"] = "green"
 
 # A function that makes the text dissappear once the mouse leaves the label      
-def label_hover_leave(e, name, settingFrame):
-    status_label = Label(settingFrame, text="                                                                           ")
+def label_hover_leave(e, name, Frame):
+    status_label = Label(Frame, text="                                                                           ")
     status_label.place(x=20, y=470)
     name["fg"] = "black"
     
 # Function that opens a window
-def openNewWindow(info):
+def openNewWindow(info, photo):
     newWindow = Toplevel()
     newWindow.resizable(FALSE,FALSE)
+    newWindow.title("    ")
     newWindow.grid
-    Label(newWindow, text = info, fg = "red").pack()
-    
-# Function that opens a window with choices
-def openMwindow():
-    newWindow = Toplevel()
-    newWindow.resizable(FALSE,FALSE)
-    newWindow.geometry = "500x500"
-    Label(newWindow, fg = "red", text = "").pack()
-    history = Button(newWindow, text = "내역", command = lambda : openNewWindow(photo)).pack()
-    statistics = Button(newWindow, text = "통계", command = lambda : openNewWindow(photo)).pack()
-    assets = Button(newWindow, text = "자산", command = lambda : openNewWindow(photo)).pack()
-    setting = Button(newWindow, text = "설정", command = lambda : openNewWindow(photo)).pack()
-    
-    
+    Label(newWindow, image = photo, text = info, fg = "red").pack()
+           
  # Function that opens URL links   
 def callback(url):
    webbrowser.open_new_tab(url) 
