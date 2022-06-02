@@ -1,4 +1,5 @@
-from function import *
+#from function import *
+from frameswitch import *
 from data import *
 
 # Default Windows Setting
