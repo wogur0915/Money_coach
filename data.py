@@ -5,9 +5,15 @@ types = []
 otherDetails = []
 expOrInc = []
 
-treelist=[]
+# Global Money Values
+expSum = 0
+incSum = 0
+totalMoney = 0
+
+# treeview columns
 columns = 0
 
+# For Design Test
 historySum = 0
 historyPlus = 1
 historyMinus = 2
