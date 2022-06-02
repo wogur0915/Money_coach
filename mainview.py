@@ -5,7 +5,7 @@ from data import *
 main = Tk()
 main.title("House-hold Account Book System")
 main.resizable(width = False, height = False)
-main.geometry('832x500')
+main.geometry('832x500+96+144')
 #main.iconbitmap('c:/...')
 
 # Default Frame Setting
@@ -32,34 +32,55 @@ lobbyLogo.grid(row=1, column=0, columnspan=4)
 for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
     historyButton = Button(frameName, image=test, text="내역", width=200, height=40, compound="c", command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
-    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_frame(statisticsFrame)])
+    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, test)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_frame(assetsFrame)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, test)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
 
+# Menu Bar
+menubar=tkinter.Menu(main)
+menubar.add_cascade(label="저장하기", command=lambda:[saveFile()])
+menubar.add_cascade(label="불러오기", command=lambda:[loadFile(main, treeview)])
+main.config(menu=menubar)    
+    
 # History Page
-treeview=tkinter.ttk.Treeview(historyFrame, columns=["one", "two", "three","four"])
-treeview.config(height = 18)
-treeview.column("#0", width=150, anchor="center")
-treeview.heading("#0", text="날짜", anchor="center")
-treeview.column("#1", width=100, anchor="center")
-treeview.heading("one", text="수입/지출", anchor="center")
-treeview.column("#2", width=100, anchor="center")
-treeview.heading("two", text="금액", anchor="center")
-treeview.column("#3", width=100, anchor="center")
-treeview.heading("three", text="카테고리", anchor="center")
-treeview.column("#4", width=300, anchor="center")
-treeview.heading("four", text="비고", anchor="center")
+treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
+treeview.config(height = 16)
+treeview.column("dates", width=165, anchor="center")
+treeview.heading("dates", text="날짜", anchor="center")
+treeview.column("expOrInc", width=110, anchor="center")
+treeview.heading("expOrInc", text="수입/지출", anchor="center")
+treeview.column("money", width=110, anchor="center")
+treeview.heading("money", text="금액", anchor="center")
+treeview.column("types", width=115, anchor="center")
+treeview.heading("types", text="카테고리", anchor="center")
+treeview.column("otherDetails", width=305, anchor="center")
+treeview.heading("otherDetails", text="비고", anchor="center")
 
+# Style of treeview
+style = tkinter.ttk.Style()
+style.theme_use('alt')
+style.configure("Treeview.Heading", font=("나눔스퀘어 bold", 13), rowheight=20, background = "#87B3FC")
+style.configure("Treeview", font=("나눔스퀘어 bold", 11), rowheight=25)
+style.map("Treeview", background=[('selected', "#BEC6D5")], foreground=[('selected', "black")])
+
+# Only Show column headings
+treeview["show"] = "headings"
+
+# For dividing section
+blankLabel = Label(historyFrame, image=test, height=5, width=20, compound='c')
+blankLabel.grid(row=1, column=0)
+
+# Buttons on historyFrame
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
-addBtn.config(width = 5, height = 5)
-deleteBtn = Button(historyFrame, text = "삭제", font="나눔고딕 10", anchor="center")
-deleteBtn.config(width = 5, height = 5)
-treeview.grid(row=1, column=0, columnspan=4)
-deleteBtn.grid(row=2, column=2)
-addBtn.grid(row=2, column=3)
+addBtn.config(width = 3, height = 1)
+deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[clickDelButton(treeview)])
+deleteBtn.config(width = 3, height = 1)
+treeview.grid(row=2, column=0, columnspan=4)
+addBtn.place(x=780, y=410)
+deleteBtn.place(x=780, y=440)
 
 # Statistics Page
 typeLogo = Label(statisticsFrame, image=test, text="소비 성향", width=804, height=204, compound="c", background='grey')
@@ -110,8 +131,9 @@ assetsPlus = Label(assetsFrame, image=test, text="수입", width=396, height=80,
 assetsPlus.place(x=10, y=147)
 assetsMinus = Label(assetsFrame, image=test, text="지출", width=396, height=80, compound="c", background='grey')
 assetsMinus.place(x=418, y=147)
-assetsComments = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
-assetsComments.place(x=10, y=239)
+
+commentsLogo = Label(assetsFrame, image=test, text="Logo", width=804, height=244, compound="c", background='grey')
+commentsLogo.place(x=10, y=239)
 
 # Statistics and Assets Page Button
 for frameName in (statisticsFrame, assetsFrame):
