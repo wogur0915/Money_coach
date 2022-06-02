@@ -1,5 +1,5 @@
 from frameswitch import *
-from data import *
+import data
 
 # Default Windows Setting
 main = Tk()
@@ -37,7 +37,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, data.flagAM)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
@@ -180,9 +180,9 @@ week = PhotoImage(file='src/week.png')
 month = PhotoImage(file='src/month.png')
 
 for frameName in (statisticsFrame, assetsFrame):
-    weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
+    weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
     weekButton.place(x=757, y=60)
-    monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
+    monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
     monthButton.place(x=757, y=91)
 
 # Main Roop & Set First Frame
