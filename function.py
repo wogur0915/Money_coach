@@ -46,7 +46,7 @@ def addList(treeview) :
             inputMoney.delete(0,END)
             inputOthers.delete(0,END)
             tegType.delete(0,END)
-            
+        addListWin.destroy()
             
     # event function
     # combo box selection 
@@ -300,20 +300,22 @@ def loadFile(main, treeview):
     del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
 
     file = askopenfilename(initialdir="/desktop", title="가계부 데이터 파일 선택", filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
-    f = open(file,"r")
-    rd = csv.reader(f)
-    treeview.delete(*treeview.get_children())
-    treeview.update()
-    for i in rd :
-        temp.append(i)
-    if len(temp) > 1 :
-        for j in range(1, len(temp)) :
-            dates.append(temp[j][0])
-            expOrInc.append(temp[j][1])
-            money.append(temp[j][2])
-            types.append(temp[j][3])
-            otherDetails.append(temp[j][4])
-            treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
-            columns = columns + 1
-    f.close()
+    if(file == ''): pass
+    else:
+        f = open(file,"r")
+        rd = csv.reader(f)
+        treeview.delete(*treeview.get_children())
+        treeview.update()
+        for i in rd :
+            temp.append(i)
+        if len(temp) > 1 :
+            for j in range(1, len(temp)) :
+                dates.append(temp[j][0])
+                expOrInc.append(temp[j][1])
+                money.append(temp[j][2])
+                types.append(temp[j][3])
+                otherDetails.append(temp[j][4])
+                treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+                columns = columns + 1
+        f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
