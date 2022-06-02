@@ -5,7 +5,6 @@ from data import *
 import webbrowser
 import tkinter as tk
 from tkinter import ttk
-from tkinter.messagebox import showerror
 import time
 #declaring a class Message
 class Message(object):

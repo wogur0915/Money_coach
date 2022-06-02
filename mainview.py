@@ -1,6 +1,5 @@
 from function import *
 from data import *
-import time
 
 # Default Windows Setting
 main = Tk()
@@ -145,6 +144,9 @@ History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font
 History.place(x = 45, y = 105)
 Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
 Historyinfo.place(x = 190, y = 85)
+Historyphoto = Button(settingFrame, text="?", font=("나눔스퀘어", 10), width=-140, height=-140, compound = "c", fg = "red", command = lambda: openNewWindow(history, test)) 
+Historyphoto.place(x = 750, y = 75)
+popTip(Historyphoto, text = "Left click to see the visual explanation of 내역")
 
 Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
 Statistics.place(x = 55, y = 205)
