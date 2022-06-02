@@ -1,4 +1,5 @@
 from function import *
+from data import *
 
 # Load Image Files
 def load_image():
@@ -17,7 +18,11 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     frame.tkraise()
     
 # Assets Frame Switching
-def show_assets_frame(frame, commentsLogo):
+def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice):
+    if flagAM:
+        assetsPlusPrice.config(text=(str(sumIncomes())+" 원"))
+        assetsMinusPrice.config(text=(str(sumExpends())+" 원"))
+        assetsSumPrice.config(text=(str(total())+" 원"))
     if commentsLogoNum == 0:
         commentsLogo.config(image=plan0)
     elif commentsLogoNum == 1:

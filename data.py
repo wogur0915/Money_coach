@@ -13,6 +13,9 @@ totalMoney = 0
 # treeview columns
 columns = 0
 
+# Check All/Month
+flagAM = True
+
 # For Design Test
 historySum = 0
 historyPlus = 1

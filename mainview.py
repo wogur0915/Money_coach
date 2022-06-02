@@ -37,7 +37,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo)])
+    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice)])
     assetsButton.grid(row=0, column=2)
     settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
     settingButton.grid(row=0, column=3)
