@@ -1,4 +1,3 @@
-#from function import *
 from frameswitch import *
 from data import *
 
@@ -87,6 +86,8 @@ addBtn.place(x=780, y=410)
 deleteBtn.place(x=780, y=440)
 
 # Statistics Page
+
+# Load Page Images
 trophy1 = PhotoImage(file='src/goldtrophy.png')
 trophy2 = PhotoImage(file='src/silvertrophy.png')
 trophy3 = PhotoImage(file='src/bronzetrophy.png')
@@ -102,6 +103,7 @@ typeLogo.place(x=10, y=55)
 Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c", background='#e5efff')
 Graph.place(x=10, y=274)
 
+# Catagory Graph
 firstGraph = Label(statisticsFrame, image=test, text="1st", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#fff700')
 firstGraph.place(x=14, y=278)
 secondGraph = Label(statisticsFrame, image=test, text="2nd", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#dadada')
@@ -113,6 +115,7 @@ fourthGraph.place(x=14, y=413)
 fifthGraph = Label(statisticsFrame, image=test, text="5th", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#ffd584')
 fifthGraph.place(x=14, y=458)
 
+# Catagory Ranks
 firstColor = Label(statisticsFrame, image=trophy1, width=48, height=25)
 firstColor.place(x=230, y=276)
 firstCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")

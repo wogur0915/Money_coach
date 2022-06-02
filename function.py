@@ -1,7 +1,5 @@
 from module import *
 from data import *
-from tkinter.filedialog import asksaveasfile, askopenfilename, SaveAs
-import csv
 
 # Raise Frame Function
 def show_frame(frame):
