@@ -241,6 +241,10 @@ instagram.bind("<Button-1>", lambda e : callback(Ig1))
 popTip(instagram, text = "Instagram")
 instagram1 = Label(settingFrame, image=igg)
 instagram1.place(x=720, y=459) 
+instagram1.bind("<Button-1>", lambda e : callback(Ig1))
+popTip(instagram1, text = "Instagram")
+instagram2 = Label(settingFrame, image=igg)
+instagram2.place(x=720, y=479) 
 
 
 Link = Label(settingFrame, image = my_img) 
