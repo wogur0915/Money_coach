@@ -21,7 +21,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         eduPrice = eduTotal()
         carPrice = carTotal()
         etcPrice = expEtcTotal()
-        expendsAll = sumExpends()
+        expendsPrice = sumExpends()
     else:
         eatPrice = 1
         lifePrice = 1
@@ -30,7 +30,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         eduPrice = 1
         carPrice = 1
         etcPrice = 1
-        expendsAll = sumExpends()
+        expendsPrice = sumExpends()
     
     rank = [
         catagory("식비", eatPrice),
@@ -47,7 +47,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     for i in range (0,7):
         print(rank[i].name, rank[i].sum)
         
-    if expendsAll == 0:
+    if expendsPrice == 0:
         for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
             graph.config(width=1, text="( 0% )")
     else:
@@ -56,7 +56,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
             if rank[count].sum == 0:
                 graph.config(width=1)
             else:
-                sumPercent = rank[count].sum/expendsAll
+                sumPercent = rank[count].sum/expendsPrice
                 graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
             count = count+1
     
@@ -69,10 +69,24 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         sum.config(text=str(rank[count].sum)+" 원")
         count = count+1
     
-    if data.typeLogoNum == 0:
+    if expendsPrice == 0:
         typeLogo.config(image=type0)
-    elif data.typeLogoNum == 1:
+    elif rank[0].name == "식비":
         typeLogo.config(image=type0, text="1")
+    elif rank[0].name == "주거/통신":
+        typeLogo.config(image=type0, text="2")
+    elif rank[0].name == "의복/미용":
+        typeLogo.config(image=type0, text="3")
+    elif rank[0].name == "건강/문화":
+        typeLogo.config(image=type0, text="4")
+    elif rank[0].name == "교육/육아":
+        typeLogo.config(image=type0, text="5")
+    elif rank[0].name == "교통/차량":
+        typeLogo.config(image=type0, text="6")
+    elif rank[0].name == "기타":
+        typeLogo.config(image=type0, text="7")
+    else:
+        print("Type Logo Error")
     frame.tkraise()
     
 # Assets Frame Switching
@@ -111,4 +125,6 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
         commentsLogo.config(image=plan0, text="2")
     elif data.commentsLogoNum == 3:
         commentsLogo.config(image=plan0, text="3")
+    else:
+        print("Comments Logo Error")
     frame.tkraise()
