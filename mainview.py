@@ -222,6 +222,11 @@ facebook = Label(settingFrame, image=fbb)
 facebook.place(x=740, y=440) 
 facebook.bind("<Button-1>", lambda e : callback(Fb1))
 popTip(facebook, text = "Facebook")
+facebook1 = Label(settingFrame, image=fbb)
+facebook1.place(x=740, y=459) 
+facebook1.bind("<Button-1>", lambda e : callback(Fb1))
+popTip(facebook1, text = "Facebook")
+
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
