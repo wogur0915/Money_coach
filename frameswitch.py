@@ -50,10 +50,13 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         count=0
         for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
             if rank[count].sum == 0:
-                graph.config(width=1)
+                graph.config(width=1, text="( 0% )")
             else:
                 sumPercent = rank[count].sum/expendsPrice
-                graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
+                if sumPercent >= 1:
+                    graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
+                else:
+                    graph.config(width=1, text="( 0% )")
             count = count+1
     
     count=0
