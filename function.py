@@ -1,47 +1,16 @@
 from module import *
 from data import *
 
-#declaring a class Message
-    
-#A function that changes the text's color when the mouse is hovering over a button/text
-def button_hover(e, name): 
-    name["bg"] = "white"
-    
-# A function that changes the text's color when the mouse is leaving
-def button_hover_leave(e, name):
-    name["bg"] = "SystemButtonFace"
- 
-# A function that shows the user the text when the mouse is on the label    
-def label_hover(e, name, Frame): 
-    status_label = Label(Frame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
-    status_label.place(x=20, y=470)
-    name["fg"] = "green"
-
-# A function that makes the text dissappear once the mouse leaves the label      
-def label_hover_leave(e, name, Frame):
-    status_label = Label(Frame, text="                                                                           ")
-    status_label.place(x=20, y=470)
-    name["fg"] = "black"
-    
-# Function that opens a window
-def openNewWindow(info, photo):
-    newWindow = Toplevel()
-    newWindow.resizable(FALSE,FALSE)
-    newWindow.title("    ")
-    newWindow.grid
-    Label(newWindow, image = photo, text = info, fg = "red").pack()
-           
- # Function that opens URL links   
-def callback(url):
-   webbrowser.open_new_tab(url) 
-
-today = datetime.now()
-
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
+    
+# Function that opens URL links   
+def callback(url):
+   webbrowser.open_new_tab(url)
 
 # History Add Button Function
+today = datetime.now()
 def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
