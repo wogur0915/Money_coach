@@ -192,6 +192,11 @@ for frameName in (statisticsFrame, assetsFrame):
 
 design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
 design.place(x=20, y=60) 
+
+Us = Label(settingFrame, image=test, text=" To contact the developers : ",font = ("나눔스퀘어", 10), width=170, height=20, compound="c")
+Us.place(x=600, y=420) 
+hyok = Label(settingFrame, image=test, text="임재혁:",font = ("나눔스퀘어", 10), width=30, height=10, compound="c")
+
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
 Link.bind("<Enter>",lambda e: label_hover(e, Link, settingFrame))
