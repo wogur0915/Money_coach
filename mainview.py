@@ -248,8 +248,11 @@ instagram2.place(x=720, y=479)
 instagram2.bind("<Button-1>", lambda e : callback(Ig1))
 popTip(instagram2, text = "Instagram")
 
-
 mit = Image.open('src/MIT.png')
+mit = mit.resize((40, 40), Image.ANTIALIAS)
+mitt = ImageTk.PhotoImage(mit)
+license = Label(settingFrame, image=mitt)
+license.place(x=770, y=440) 
  
 
 
