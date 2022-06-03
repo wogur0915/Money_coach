@@ -23,14 +23,14 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         etcPrice = expEtcTotal()
         expendsPrice = sumExpends()
     else:
-        eatPrice = 1
-        lifePrice = 1
-        beautyPrice = 1
-        culturePrice = 1
-        eduPrice = 1
-        carPrice = 1
-        etcPrice = 1
-        expendsPrice = sumExpends()
+        eatPrice = monthEatTotal()
+        lifePrice = monthLifeTotal()
+        beautyPrice = monthBeautyTotal()
+        culturePrice = monthCultureTotal()
+        eduPrice = monthEduTotal()
+        carPrice = monthCarTotal()
+        etcPrice = monthExpEtcTotal()
+        expendsPrice = monthExpends()
     
     rank = [
         catagory("식비", eatPrice),
@@ -93,11 +93,20 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
     data.flagAM = flag
     incomesAll = sumIncomes()
     expendsAll = sumExpends()
+    incomesMonth = monthIncomes()
+    expendsMonth = monthExpends()
     moneyAll = incomesAll-expendsAll
+    moneyMonth = incomesMonth-expendsMonth
+    
     if expendsAll == 0:
-        percentAll = 2
+        percentAll = 1
     else:
         percentAll = incomesAll/expendsAll
+        
+    if expendsMonth == 0:
+        percentMonth = 1
+    else:
+        percentMonth = incomesMonth/expendsMonth
     
     if data.flagAM:
         assetsPlusPrice.config(text=(str(incomesAll)+" 원"))
@@ -112,9 +121,17 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
         else:
             data.commentsLogoNum = 3
     else:
-        assetsPlusPrice.config(text=("1 원"))
-        assetsMinusPrice.config(text=("1 원"))
-        assetsSumPrice.config(text=("1 원"))
+        assetsPlusPrice.config(text=(str(incomesMonth)+" 원"))
+        assetsMinusPrice.config(text=(str(expendsMonth)+" 원"))
+        assetsSumPrice.config(text=(str(moneyMonth)+" 원"))
+        if incomesMonth == 0 and expendsMonth == 0:
+            data.commentsLogoNum = 0
+        elif percentMonth >= 1.3:
+            data.commentsLogoNum = 1
+        elif percentMonth >= 0.7:
+            data.commentsLogoNum = 2
+        else:
+            data.commentsLogoNum = 3
         
     if data.commentsLogoNum == 0:
         commentsLogo.config(image=plan0)
