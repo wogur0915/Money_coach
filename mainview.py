@@ -233,6 +233,10 @@ popTip(facebook2, text = "Facebook")
 bom = Label(settingFrame, image=test, text="문희범:",font = ("나눔스퀘어", 10), width=30, height=10, compound="c")
 bom.place(x = 655, y = 480) 
 ig = Image.open('src/ig.png')
+ig = ig.resize((12, 12), Image.ANTIALIAS)
+igg = ImageTk.PhotoImage(ig)
+instagram = Label(settingFrame, image=igg)
+instagram.place(x=720, y=439) 
 
 
 Link = Label(settingFrame, image = my_img) 
