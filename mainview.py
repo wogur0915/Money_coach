@@ -1,5 +1,6 @@
 from frameswitch import *
 from data import *
+from PIL import ImageTk, Image
 
 # Default Windows Setting
 main = Tk()
@@ -184,6 +185,52 @@ for frameName in (statisticsFrame, assetsFrame):
     weekButton.place(x=757, y=60)
     monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
     monthButton.place(x=757, y=91)
+    
+# Setting page 
+
+design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
+design.place(x=20, y=60) 
+
+Us = Label(settingFrame, image=test, text=" To contact the developers : ",font = ("나눔스퀘어", 10), width=170, height=20, compound="c")
+Us.place(x=600, y=420) 
+
+hyokMail = Label(settingFrame, image=test, text="임재혁@gmail.com",font = ("나눔스퀘어", 10), width=88, height=10, compound="c")
+hyokMail.place(x = 650, y = 458) 
+
+andrewMail = Label(settingFrame, image=test, text="최레이@gmail.com",font = ("나눔스퀘어", 10), width=85, height=10, compound="c")
+andrewMail.place(x = 650, y = 440) 
+
+bomMail = Label(settingFrame, image=test, text="희범@gmail.com",font = ("나눔스퀘어", 10), width=85, height=10, compound="c")
+bomMail.place(x = 650, y = 478) 
+
+github = Image.open('src/github1.png')
+github = github.resize((100, 50), Image.ANTIALIAS)
+my_img = ImageTk.PhotoImage(github)
+
+Link = Label(settingFrame, image = my_img) 
+Link.place(x=50, y=420)
+
+Link = Label(settingFrame, image = my_img) 
+Link.place(x=50, y=420)
+Link.bind("<Enter>",lambda e: label_hover(e, Link, settingFrame))
+Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
+Link.bind("<Button-1>", lambda e : callback(link))
+
+History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font=("나눔스퀘어", 18), width=120, height=65, compound="c",)
+History.place(x = 45, y = 105)
+Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Historyinfo.place(x = 190, y = 85)
+
+
+Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
+Statistics.place(x = 55, y = 205)
+Statisticsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Statisticsinfo.place(x = 190, y = 185)
+
+Assets = Label(settingFrame, image= test, text="자산 \n 이용 안내", font=("나눔스퀘어", 18), width=80, height=40, compound="c",)
+Assets.place(x = 65, y = 305)
+Assetsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Assetsinfo.place(x = 190, y = 275)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
