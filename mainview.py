@@ -184,6 +184,39 @@ for frameName in (statisticsFrame, assetsFrame):
     weekButton.place(x=757, y=60)
     monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
     monthButton.place(x=757, y=91)
+    
+# Setting page 
+
+design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
+design.place(x=20, y=60) 
+   
+
+Us = Label(settingFrame, image=test, text=" To contact the developers : \n 문희범: email@site.com \n 임재혁: email@site.com \n 최안드레이: email@site.com. \n\n Our License: MIT",font = ("나눔스퀘어", 10), width=170, height=80, compound="c")
+Us.place(x=600, y=420) 
+
+Link = Button(settingFrame, text="Our GitHub repository", font=("나눔스퀘어", 15)) 
+Link.place(x=30, y=430)
+Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
+Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
+Link.bind("<Button-1>", lambda e : callback(link))
+
+History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font=("나눔스퀘어", 18), width=120, height=65, compound="c",)
+History.place(x = 45, y = 105)
+Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Historyinfo.place(x = 190, y = 85)
+Historyphoto = Button(settingFrame, text="?", font=("나눔스퀘어", 10), width=-140, height=-140, compound = "c", fg = "red") 
+Historyphoto.place(x = 750, y = 75)
+popTip(Historyphoto, text = "This window explains how to use our program.")
+
+Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
+Statistics.place(x = 55, y = 205)
+Statisticsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Statisticsinfo.place(x = 190, y = 175)
+
+Assets = Label(settingFrame, image= test, text="자산 \n 이용 안내", font=("나눔스퀘어", 18), width=80, height=40, compound="c",)
+Assets.place(x = 65, y = 305)
+Assetsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Assetsinfo.place(x = 190, y = 275)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
