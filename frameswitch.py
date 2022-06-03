@@ -40,12 +40,8 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         catagory("교육/육아", eduPrice),
         catagory("교통/차량", carPrice),
         catagory("기타", etcPrice)
-    ]
-    
+    ]    
     rank = sorted(rank, key=lambda x: x.sum, reverse=True)
-    
-    for i in range (0,7):
-        print(rank[i].name, rank[i].sum)
         
     if expendsPrice == 0:
         for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
