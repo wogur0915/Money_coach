@@ -53,7 +53,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
                 graph.config(width=1, text="( 0% )")
             else:
                 sumPercent = rank[count].sum/expendsPrice
-                if sumPercent >= 1:
+                if int(sumPercent*202) >= 1:
                     graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
                 else:
                     graph.config(width=1, text="( 0% )")
