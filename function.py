@@ -1,5 +1,5 @@
 from module import *
-from data import *
+today = datetime.now()
 
 # Raise Frame Function
 def show_frame(frame):
@@ -11,8 +11,10 @@ def addList(treeview) :
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
         global dates, money, types, otherDetails, expOrInc, columns
+        strTodate = datetime.strptime(inputDate.get(), "%Y-%m-%d")
+
         value = [
-            inputDate.get(),
+            strTodate.date(),
             inputExpOrInc.get(),
             inputMoney.get(),
             tegType.get(),
@@ -46,7 +48,7 @@ def addList(treeview) :
             inputMoney.delete(0,END)
             inputOthers.delete(0,END)
             tegType.delete(0,END)
-        addListWin.destroy()    
+        addListWin.destroy()
             
     # event function
     # combo box selection 
@@ -62,11 +64,8 @@ def addList(treeview) :
             tegType.set(incTypes[0])
         else:
             tegType.set(expTypes[0])
+            
     # Clear example function
-    def clearDateEx(event):
-        if inputDate.get() == "yyyy-mm-dd" :
-            inputDate.delete(0,END)
-            inputDate.configure(foreground="#000000")
     def clearMoneyEx(event):
         if inputMoney.get() == "숫자만 입력해주세요" :
             inputMoney.delete(0,END)
@@ -95,9 +94,7 @@ def addList(treeview) :
     incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
-    inputDate.insert(0,"yyyy-mm-dd")
-    inputDate.configure(foreground="#747474")
-    inputDate.bind("<Button-1>", clearDateEx)
+    inputDate.insert(0, today.date())
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
     inputExpOrInc.option_add('*TCombobox*Listbox.Justify', 'center')    
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
