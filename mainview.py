@@ -257,6 +257,10 @@ popTip(license, text = "License")
 
 github = Image.open('src/github1.png')
 github = github.resize((100, 50), Image.ANTIALIAS)
+my_img = ImageTk.PhotoImage(github)
+
+Link = Label(settingFrame, image = my_img) 
+Link.place(x=50, y=420)
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
