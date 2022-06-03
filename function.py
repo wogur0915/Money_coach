@@ -13,42 +13,45 @@ def addList(treeview) :
         global dates, money, types, otherDetails, expOrInc, columns
         strTodate = datetime.strptime(inputDate.get(), "%Y-%m-%d")
 
-        value = [
-            strTodate.date(),
-            inputExpOrInc.get(),
-            inputMoney.get(),
-            tegType.get(),
-            inputOthers.get()
-            ]
+        if inputMoney.get() == "숫자만 입력해주세요" :
+            warning = messagebox.showwarning("경고!", "금액이 입력되지 않았습니다!")
+        else :
+            value = [
+                strTodate.date(),
+                inputExpOrInc.get(),
+                inputMoney.get(),
+                tegType.get(),
+                inputOthers.get()
+                ]
 
-        isOK = True
-        for item in value[:4] :
-            # if empyty spaces exist
-            if not(item):
-                warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
-                isOK = False
-                addListWin.lift()
-                break
-            # no empty then
-        
-        if isOK:
-            dates.append(value[0])
-            expOrInc.append(value[1])
-            money.append(value[2])
-            types.append(value[3])
-            otherDetails.append(value[4])
+            isOK = True
+            for item in value[:4] :
+                # if empyty spaces exist
+                if not(item):
+                    warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
+                    isOK = False
+                    addListWin.lift()
+                    break
+                # no empty then
+            
+            if isOK:
+                dates.append(value[0])
+                expOrInc.append(value[1])
+                money.append(value[2])
+                types.append(value[3])
+                otherDetails.append(value[4])
 
-            treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
-            columns = columns+1
-            treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+                treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+                columns = columns+1
+                treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
 
-            # Clean After Data Add
-            inputDate.delete(0,END)
-            inputExpOrInc.delete(0,END)
-            inputMoney.delete(0,END)
-            inputOthers.delete(0,END)
-            tegType.delete(0,END)
-        addListWin.destroy()
+                # Clean After Data Add
+                inputDate.delete(0,END)
+                inputExpOrInc.delete(0,END)
+                inputMoney.delete(0,END)
+                inputOthers.delete(0,END)
+                tegType.delete(0,END)
+            addListWin.destroy()
             
     # event function
     # combo box selection 
