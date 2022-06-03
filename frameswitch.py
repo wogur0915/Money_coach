@@ -12,6 +12,15 @@ def load_image():
 # Statistics Frame Switching
 def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, flag):
     data.flagAM = flag
+    eatAll = eatTotal()
+    lifeAll = lifeTotal()
+    beautyAll = beautyTotal()
+    cultureAll = cultureTotal()
+    eduAll = eduTotal()
+    carAll = carTotal()
+    ectAll = expEctTotal()
+    incomesAll = sumIncomes()
+    expendsAll = sumExpends()
     
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
@@ -24,7 +33,7 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
     data.flagAM = flag
     incomesAll = sumIncomes()
     expendsAll = sumExpends()
-    moneyAll = total()
+    moneyAll = incomesAll-expendsAll
     if expendsAll == 0:
         percentAll = 2
     else:
