@@ -1,5 +1,5 @@
 from frameswitch import *
-import data
+from data import *
 
 # Default Windows Setting
 main = Tk()
@@ -48,6 +48,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, moreFr
 
 # Menu Bar
 menubar=tkinter.Menu(main)
+menubar.add_cascade(label="새 가계부", command=lambda:[newfile(treeview)])
 menubar.add_cascade(label="저장하기", command=lambda:[saveFile()])
 menubar.add_cascade(label="불러오기", command=lambda:[loadFile(main, treeview)])
 main.config(menu=menubar)    
@@ -192,6 +193,34 @@ assetsTotalButton = Button(assetsFrame, image=total, highlightthickness=0, bd=0,
 assetsTotalButton.place(x=757, y=60)
 assetsMonthButton = Button(assetsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
 assetsMonthButton.place(x=757, y=91)
+
+# Setting page
+information = Label(settingFrame, image=test, width=790, height=335, bd=10, relief = RIDGE)
+information.place(x=10, y=60) 
+
+contactInfo = Label(settingFrame, image=test, width=300, height=60, justify='left', text="[Developer Info]\n- 문희범: ejungto99@naver.com\n- 임재혁: wogur091511@naver.com\n- 최안드레이: test@test.com", font ="나눔스퀘어 11", compound="c")
+contactInfo.place(x=500, y=420) 
+
+testImg = PhotoImage(file='src/github1.png')
+
+#Link = Label(settingFrame, image = testImg) 
+#Link.place(x=50, y=420)
+
+History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font=("나눔스퀘어", 18), width=120, height=65, compound="c",)
+History.place(x = 45, y = 105)
+Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Historyinfo.place(x = 190, y = 85)
+
+
+Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
+Statistics.place(x = 55, y = 205)
+Statisticsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Statisticsinfo.place(x = 190, y = 185)
+
+Assets = Label(settingFrame, image= test, text="자산 \n 이용 안내", font=("나눔스퀘어", 18), width=80, height=40, compound="c",)
+Assets.place(x = 65, y = 305)
+Assetsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
+Assetsinfo.place(x = 190, y = 275)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)

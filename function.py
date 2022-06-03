@@ -1,6 +1,42 @@
 from module import *
 from data import *
 
+#declaring a class Message
+    
+#A function that changes the text's color when the mouse is hovering over a button/text
+def button_hover(e, name): 
+    name["bg"] = "white"
+    
+# A function that changes the text's color when the mouse is leaving
+def button_hover_leave(e, name):
+    name["bg"] = "SystemButtonFace"
+ 
+# A function that shows the user the text when the mouse is on the label    
+def label_hover(e, name, Frame): 
+    status_label = Label(Frame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
+    status_label.place(x=20, y=470)
+    name["fg"] = "green"
+
+# A function that makes the text dissappear once the mouse leaves the label      
+def label_hover_leave(e, name, Frame):
+    status_label = Label(Frame, text="                                                                           ")
+    status_label.place(x=20, y=470)
+    name["fg"] = "black"
+    
+# Function that opens a window
+def openNewWindow(info, photo):
+    newWindow = Toplevel()
+    newWindow.resizable(FALSE,FALSE)
+    newWindow.title("    ")
+    newWindow.grid
+    Label(newWindow, image = photo, text = info, fg = "red").pack()
+           
+ # Function that opens URL links   
+def callback(url):
+   webbrowser.open_new_tab(url) 
+
+today = datetime.now()
+
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
@@ -11,42 +47,47 @@ def addList(treeview) :
     # Return Enter Data(Global Value) to Apply History
     def incomeInputVal() :
         global dates, money, types, otherDetails, expOrInc, columns
-        value = [
-            inputDate.get(),
-            inputExpOrInc.get(),
-            inputMoney.get(),
-            tegType.get(),
-            inputOthers.get()
-            ]
+        strTodate = datetime.strptime(inputDate.get(), "%Y-%m-%d")
 
-        isOK = True
-        for item in value[:4] :
-            # if empyty spaces exist
-            if not(item):
-                warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
-                isOK = False
-                addListWin.lift()
-                break
-            # no empty then
-        
-        if isOK:
-            dates.append(value[0])
-            expOrInc.append(value[1])
-            money.append(value[2])
-            types.append(value[3])
-            otherDetails.append(value[4])
+        if inputMoney.get() == "숫자만 입력해주세요" :
+            warning = messagebox.showwarning("경고!", "금액이 입력되지 않았습니다!")
+        else :
+            value = [
+                strTodate.date(),
+                inputExpOrInc.get(),
+                inputMoney.get(),
+                tegType.get(),
+                inputOthers.get()
+                ]
 
-            treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
-            columns = columns+1
-            treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+            isOK = True
+            for item in value[:4] :
+                # if empyty spaces exist
+                if not(item):
+                    warning = messagebox.showwarning("경고!", "입력되지 않은 정보가 있습니다!")
+                    isOK = False
+                    addListWin.lift()
+                    break
+                # no empty then
+            
+            if isOK:
+                dates.append(value[0])
+                expOrInc.append(value[1])
+                money.append(value[2])
+                types.append(value[3])
+                otherDetails.append(value[4])
 
-            # Clean After Data Add
-            inputDate.delete(0,END)
-            inputExpOrInc.delete(0,END)
-            inputMoney.delete(0,END)
-            inputOthers.delete(0,END)
-            tegType.delete(0,END)
-        addListWin.destroy()
+                treeview.insert('', 'end', values=[dates[columns], expOrInc[columns], money[columns], types[columns], otherDetails[columns]], iid=str(columns))
+                columns = columns+1
+                treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+                # Clean After Data Add
+                inputDate.delete(0,END)
+                inputExpOrInc.delete(0,END)
+                inputMoney.delete(0,END)
+                inputOthers.delete(0,END)
+                tegType.delete(0,END)
+            addListWin.destroy()
             
     # event function
     # combo box selection 
@@ -62,11 +103,8 @@ def addList(treeview) :
             tegType.set(incTypes[0])
         else:
             tegType.set(expTypes[0])
+            
     # Clear example function
-    def clearDateEx(event):
-        if inputDate.get() == "yyyy-mm-dd" :
-            inputDate.delete(0,END)
-            inputDate.configure(foreground="#000000")
     def clearMoneyEx(event):
         if inputMoney.get() == "숫자만 입력해주세요" :
             inputMoney.delete(0,END)
@@ -95,9 +133,7 @@ def addList(treeview) :
     incTypes = ['경조사/회비','공과금','월급','기타']
 
     inputDate = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
-    inputDate.insert(0,"yyyy-mm-dd")
-    inputDate.configure(foreground="#747474")
-    inputDate.bind("<Button-1>", clearDateEx)
+    inputDate.insert(0, today.date())
     inputExpOrInc = Combobox(addListWin, width=17, height=10, values=expOrIncTyp, justify = "center", font=("나눔스퀘어 bold", 10), state='readonly')
     inputExpOrInc.option_add('*TCombobox*Listbox.Justify', 'center')    
     inputExpOrInc.bind("<<ComboboxSelected>>", changeSmooth)
@@ -111,7 +147,6 @@ def addList(treeview) :
     tegType.current(0)
     inputOthers = Entry(addListWin, font=("나눔스퀘어 bold", 10), justify = "center")
     confirmBtn = Button(addListWin, text = "확인", font=("나눔스퀘어 bold", 10), command = incomeInputVal)
-
 
     inputDate.grid(row=1, column=1)
     inputExpOrInc.grid(row=3, column=1)
@@ -174,7 +209,6 @@ def clickDelButton(treeview):
 # Calculation
 
 def sumExpends() :
-    global expSum
     expSum = 0
     for i in range(columns) :
         if expOrInc[i] == "지출" :
@@ -182,17 +216,11 @@ def sumExpends() :
     return expSum
 
 def sumIncomes() :
-    global incSum
     incSum = 0
     for i in range(columns) :
         if expOrInc[i] == "수입" :
             incSum += int(money[i])
     return incSum
-
-def total() :
-    global totalMoney
-    totalMoney = incSum - expSum
-    return totalMoney
 
 # Expend Type Calculate
 def eatTotal() :
@@ -273,6 +301,100 @@ def incEtcTotal() :
             etcMoney += int(money[i])
     return etcMoney
 
+#----------------------------------------------
+# Recent Month Data Calculate
+def monthExpends() :
+    expSum = 0
+    for i in range(columns) :
+        if expOrInc[i] == "지출" and dates[i].month == today.month :
+            expSum += int(money[i])
+    return expSum
+
+def monthIncomes() :
+    incSum = 0
+    for i in range(columns) :
+        if expOrInc[i] == "수입" and dates[i].month == today.month :
+            incSum += int(money[i])
+    return incSum
+
+def monthEatTotal() :
+    eatMoney = 0
+    for i in range(columns) :
+        if types[i] == "식비" and expOrInc[i] == "지출" and dates[i].month == today.month:
+            eatMoney += int(money[i])
+    return eatMoney
+
+def monthLifeTotal() :
+    lifeMoney = 0
+    for i in range(columns) :
+        if types[i] == "주거/통신" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            lifeMoney += int(money[i])
+    return lifeMoney
+
+def monthBeautyTotal() :
+    beautyMoney = 0
+    for i in range(columns) :
+        if types[i] == "의복/미용" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            beautyMoney += int(money[i])
+    return beautyMoney
+
+def monthCultureTotal() :
+    cultureMoney = 0
+    for i in range(columns) :
+        if types[i] == "건강/문화" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            cultureMoney += int(money[i])
+    return cultureMoney
+
+def monthEduTotal() :
+    eduMoney = 0
+    for i in range(columns) :
+        if types[i] == "교육/육아" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            eduMoney += int(money[i])
+    return eduMoney
+
+def monthCarTotal() :
+    carMoney = 0
+    for i in range(columns) :
+        if types[i] == "교통/차량" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            carMoney += int(money[i])
+    return carMoney
+
+def monthExpEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if types[i] == "기타" and expOrInc[i] == "지출" and dates[i].month == today.month :
+            etcMoney += int(money[i])
+    return etcMoney
+
+# Income Type Calculate
+def monthEventTotal() :
+    eventMoney = 0
+    for i in range(columns) :
+        if types[i] == "경조사/회비" and expOrInc[i] == "수입" and dates[i].month == today.month :
+            eventMoney += int(money[i])
+    return eventMoney
+
+def monthUtilTotal() :
+    utilMoney = 0
+    for i in range(columns) :
+        if types[i] == "공과금" and expOrInc[i] == "수입" and dates[i].month == today.month :
+            utilMoney += int(money[i])
+    return utilMoney
+
+def monthSalaryTotal() :
+    salaryMoney = 0
+    for i in range(columns) :
+        if types[i] == "월급" and expOrInc[i] == "수입" and dates[i].month == today.month :
+            salaryMoney += int(money[i])
+    return salaryMoney
+
+def monthIncEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if types[i] == "기타" and expOrInc[i] == "수입" and dates[i].month == today.month :
+            etcMoney += int(money[i])
+    return etcMoney
+
 #----------------------------------------------------
 # file save by using CSV
 
@@ -310,7 +432,8 @@ def loadFile(main, treeview):
             temp.append(i)
         if len(temp) > 1 :
             for j in range(1, len(temp)) :
-                dates.append(temp[j][0])
+                strTodate = datetime.strptime(temp[j][0], "%Y-%m-%d")
+                dates.append(strTodate.date())
                 expOrInc.append(temp[j][1])
                 money.append(temp[j][2])
                 types.append(temp[j][3])
@@ -319,3 +442,12 @@ def loadFile(main, treeview):
                 columns = columns + 1
         f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+def newfile(treeview) :
+    global dates, money, types, otherDetails, expOrInc, columns
+    response = messagebox.askokcancel("새로운 가계부 생성 경고", "저장하지 않은 정보는 삭제됩니다.\n새 가계부를 여시겠습니까?")
+    if response == 1 :
+        columns = 0
+        del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
+        treeview.delete(*treeview.get_children())
+        treeview.update()
