@@ -206,7 +206,10 @@ gh.bind("<Button-1>", lambda e : callback(andrewgb))
 popTip(gh, text = "Github")
 gh1 = Label(settingFrame, image=my_img1)
 gh1.place(x=694, y=459) 
-
+gh1.bind("<Button-1>", lambda e : callback(hyokgb))
+popTip(gh1, text = "Github")
+gh2 = Label(settingFrame, image=my_img1)
+gh2.place(x=694, y=479) 
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
