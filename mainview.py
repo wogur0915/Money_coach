@@ -230,6 +230,9 @@ facebook2 = Label(settingFrame, image=fbb)
 facebook2.place(x=740, y=479) 
 facebook2.bind("<Button-1>", lambda e : callback(Fb1))
 popTip(facebook2, text = "Facebook")
+bom = Label(settingFrame, image=test, text="문희범:",font = ("나눔스퀘어", 10), width=30, height=10, compound="c")
+bom.place(x = 655, y = 480) 
+ig = Image.open('src/ig.png')
 
 
 Link = Label(settingFrame, image = my_img) 
