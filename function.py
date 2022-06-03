@@ -269,6 +269,100 @@ def incEtcTotal() :
             etcMoney += int(money[i])
     return etcMoney
 
+#----------------------------------------------
+# Recent Month Data Calculate
+def monthExpends() :
+    expSum = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and expOrInc[i] == "지출" :
+            expSum += int(money[i])
+    return expSum
+
+def monthIncomes() :
+    incSum = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and expOrInc[i] == "수입" :
+            incSum += int(money[i])
+    return incSum
+
+def monthEatTotal() :
+    eatMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "식비" and expOrInc[i] == "지출":
+            eatMoney += int(money[i])
+    return eatMoney
+
+def monthLifeTotal() :
+    lifeMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "주거/통신" and expOrInc[i] == "지출" :
+            lifeMoney += int(money[i])
+    return lifeMoney
+
+def monthBeautyTotal() :
+    beautyMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "의복/미용" and expOrInc[i] == "지출" :
+            beautyMoney += int(money[i])
+    return beautyMoney
+
+def monthCultureTotal() :
+    cultureMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "건강/문화" and expOrInc[i] == "지출" :
+            cultureMoney += int(money[i])
+    return cultureMoney
+
+def monthEduTotal() :
+    eduMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "교육/육아" and expOrInc[i] == "지출" :
+            eduMoney += int(money[i])
+    return eduMoney
+
+def monthCarTotal() :
+    carMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "교통/차량" and expOrInc[i] == "지출" :
+            carMoney += int(money[i])
+    return carMoney
+
+def monthExpEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "기타" and expOrInc[i] == "지출" :
+            etcMoney += int(money[i])
+    return etcMoney
+
+# Income Type Calculate
+def monthEventTotal() :
+    eventMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "경조사/회비" and expOrInc[i] == "수입" :
+            eventMoney += int(money[i])
+    return eventMoney
+
+def monthUtilTotal() :
+    utilMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "공과금" and expOrInc[i] == "수입" :
+            utilMoney += int(money[i])
+    return utilMoney
+
+def monthSalaryTotal() :
+    salaryMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "월급" and expOrInc[i] == "수입" :
+            salaryMoney += int(money[i])
+    return salaryMoney
+
+def monthIncEtcTotal() :
+    etcMoney = 0
+    for i in range(columns) :
+        if dates[i].month == today.month and types[i] == "기타" and expOrInc[i] == "수입" :
+            etcMoney += int(money[i])
+    return etcMoney
+
 #----------------------------------------------------
 # file save by using CSV
 
