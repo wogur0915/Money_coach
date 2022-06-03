@@ -406,7 +406,7 @@ def loadFile(main, treeview):
                 columns = columns + 1
         f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
-    
+
 def newfile(treeview) :
     global dates, money, types, otherDetails, expOrInc, columns
     response = messagebox.askokcancel("새로운 가계부 생성 경고", "저장하지 않은 정보는 삭제됩니다.\n새 가계부를 여시겠습니까?")
@@ -415,9 +415,3 @@ def newfile(treeview) :
         del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
         treeview.delete(*treeview.get_children())
         treeview.update()
-    wr = csv.writer(f)
-    wr.writerow(["날짜", "수입/지출", "금액", "카테고리", "비고"])
-    for i in range(len(dates)) :
-        if dates[i] != None :
-            wr.writerow([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
-    f.close()
