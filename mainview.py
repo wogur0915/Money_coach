@@ -179,11 +179,15 @@ commentsLogo.place(x=12, y=195)
 week = PhotoImage(file='src/week.png')
 month = PhotoImage(file='src/month.png')
 
-for frameName in (statisticsFrame, assetsFrame):
-    weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
-    weekButton.place(x=757, y=60)
-    monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
-    monthButton.place(x=757, y=91)
+statisticsWeekButton = Button(statisticsFrame, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
+statisticsWeekButton.place(x=757, y=60)
+statisticsMonthButton = Button(statisticsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
+statisticsMonthButton.place(x=757, y=91)
+
+assetsWeekButton = Button(assetsFrame, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
+assetsWeekButton.place(x=757, y=60)
+assetsMonthButton = Button(assetsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
+assetsMonthButton.place(x=757, y=91)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
