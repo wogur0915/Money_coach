@@ -60,6 +60,15 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
                 graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
             count = count+1
     
+    count=0
+    for name in [firstCatagory, secondCatagory, thirdCatagory, fourthCatagory, fifthCatagory]:
+        name.config(text=rank[count].name)
+        count = count+1
+    count=0
+    for sum in [firstSum, secondSum, thirdSum, fourthSum, fifthSum]:
+        sum.config(text=str(rank[count].sum)+" 원")
+        count = count+1
+    
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
     elif data.typeLogoNum == 1:
@@ -83,9 +92,9 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
         assetsSumPrice.config(text=(str(moneyAll)+" 원"))
         if incomesAll == 0 and expendsAll == 0:
             data.commentsLogoNum = 0
-        elif percentAll >= 1.4:
+        elif percentAll >= 1.3:
             data.commentsLogoNum = 1
-        elif percentAll >= 0.6:
+        elif percentAll >= 0.7:
             data.commentsLogoNum = 2
         else:
             data.commentsLogoNum = 3
