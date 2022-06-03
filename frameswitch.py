@@ -18,9 +18,19 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     cultureAll = cultureTotal()
     eduAll = eduTotal()
     carAll = carTotal()
-    ectAll = expEctTotal()
+    etcAll = expEtcTotal()
     incomesAll = sumIncomes()
     expendsAll = sumExpends()
+    
+    rank = [
+        catagory("식비", eatAll),
+        catagory("주거/통신", lifeAll),
+        catagory("의복/미용", beautyAll),
+        catagory("건강/문화", cultureAll),
+        catagory("교육/육아", eduAll),
+        catagory("교통/차량", carAll),
+        catagory("기타", etcAll)
+    ]
     
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
