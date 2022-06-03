@@ -253,8 +253,10 @@ mit = mit.resize((40, 40), Image.ANTIALIAS)
 mitt = ImageTk.PhotoImage(mit)
 license = Label(settingFrame, image=mitt)
 license.place(x=770, y=440) 
- 
+popTip(license, text = "License")
 
+github = Image.open('src/github1.png')
+github = github.resize((100, 50), Image.ANTIALIAS)
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
