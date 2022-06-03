@@ -214,6 +214,10 @@ gh2.bind("<Button-1>", lambda e : callback(bomgb))
 popTip(gh2, text = "Github")
 
 andrew = Label(settingFrame, image=test, text="최안드레이:",font = ("나눔스퀘어", 10), width=50, height=10, compound="c")
+andrew.place(x = 640, y = 440)
+fb = Image.open('src/fb.png')
+fb = fb.resize((12, 12), Image.ANTIALIAS)
+fbb = ImageTk.PhotoImage(fb)
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
