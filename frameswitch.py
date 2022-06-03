@@ -47,11 +47,11 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     for i in range (0,7):
         print(rank[i].name, rank[i].sum)
         
-    count = 0
     if expendsAll == 0:
         for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
             graph.config(width=1, text="( 0% )")
     else:
+        count=0
         for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
             if rank[count].sum == 0:
                 graph.config(width=1)
@@ -59,7 +59,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
                 sumPercent = rank[count].sum/expendsAll
                 graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
             count = count+1
-        
+    
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
     elif data.typeLogoNum == 1:
