@@ -13,15 +13,26 @@ def load_image():
 def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, flag):
     data.flagAM = flag
     
-    eatPrice = eatTotal()
-    lifePrice = lifeTotal()
-    beautyPrice = beautyTotal()
-    culturePrice = cultureTotal()
-    eduPrice = eduTotal()
-    carPrice = carTotal()
-    etcPrice = expEtcTotal()
-    incomesPrice = sumIncomes()
-    expendsPrice = sumExpends()
+    if data.flagAM:
+        eatPrice = eatTotal()
+        lifePrice = lifeTotal()
+        beautyPrice = beautyTotal()
+        culturePrice = cultureTotal()
+        eduPrice = eduTotal()
+        carPrice = carTotal()
+        etcPrice = expEtcTotal()
+        incomesPrice = sumIncomes()
+        expendsPrice = sumExpends()
+    else:
+        eatPrice = 1
+        lifePrice = 1
+        beautyPrice = 1
+        culturePrice = 1
+        eduPrice = 1
+        carPrice = 1
+        etcPrice = 1
+        incomesPrice = 1
+        expendsPrice = 1
     
     rank = [
         catagory("식비", eatPrice),
