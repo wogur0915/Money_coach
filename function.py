@@ -4,10 +4,6 @@ from data import *
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
-    
-# Function that opens URL links   
-def callback(url):
-   webbrowser.open_new_tab(url)
 
 # History Add Button Function
 today = datetime.now()
