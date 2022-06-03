@@ -12,18 +12,34 @@ def load_image():
 # Statistics Frame Switching
 def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum):
     if data.typeLogoNum == 0:
-        typeLogo.config(image=type0, text="0")
+        typeLogo.config(image=type0)
     elif data.typeLogoNum == 1:
-        typeLogo.config(image=image, text="1")
+        typeLogo.config(image=type0, text="1")
     frame.tkraise()
     
 # Assets Frame Switching
 def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, flag):
     data.flagAM = flag
+    incomesAll = sumIncomes()
+    expendsAll = sumExpends()
+    moneyAll = total()
+    if expendsAll == 0:
+        percentAll = 2
+    else:
+        percentAll = incomesAll/expendsAll
+    
     if data.flagAM:
-        assetsPlusPrice.config(text=(str(sumIncomes())+" 원"))
-        assetsMinusPrice.config(text=(str(sumExpends())+" 원"))
-        assetsSumPrice.config(text=(str(total())+" 원"))
+        assetsPlusPrice.config(text=(str(incomesAll)+" 원"))
+        assetsMinusPrice.config(text=(str(expendsAll)+" 원"))
+        assetsSumPrice.config(text=(str(moneyAll)+" 원"))
+        if incomesAll == 0 && expendsAll == 0:
+            data.commentsLogoNum = 0
+        elif percentAll >= 1.4:
+            data.commentsLogoNum = 1
+        elif percentAll >= 0.6:
+            data.commentsLogoNum = 2
+        else:
+            data.commentsLogoNum = 3
     else:
         assetsPlusPrice.config(text=("1 원"))
         assetsMinusPrice.config(text=("1 원"))

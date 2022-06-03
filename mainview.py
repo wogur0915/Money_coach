@@ -172,7 +172,7 @@ assetsMinus.place(x=418, y=123)
 assetsMinusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyMinus)+" 원"), font="나눔스퀘어 18 bold", width=298, height=48, compound="c")
 assetsMinusPrice.place(x=506, y=129)
 
-commentsLogo = Label(assetsFrame, image=test, width=800, height=288)
+commentsLogo = Label(assetsFrame, image=test, text="0", width=800, height=288, compound="c")
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
