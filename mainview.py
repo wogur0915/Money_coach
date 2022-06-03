@@ -29,7 +29,8 @@ moreFrame.grid(row=0, column=0, sticky="nsew")
 pixelPlace=PhotoImage(file='src/1pixel.png')
 
 # Main Page And Frames
-lobbyLogo = Label(lobbyFrame, image=pixelPlace, text="Logo", width=832, height=446, compound="c", background='grey')
+mainLogo = PhotoImage(file='src/mainLogo.png')
+lobbyLogo = Label(lobbyFrame, image=mainLogo, width=832, height=448)
 lobbyLogo.grid(row=1, column=0, columnspan=20)
 
 hisotryBtn = PhotoImage(file='src/historyBtn.png')
@@ -198,7 +199,8 @@ assetsMonthButton = Button(assetsFrame, image=month, highlightthickness=0, bd=0,
 assetsMonthButton.place(x=757, y=91)
 
 # Setting page
-moreLogo = Label(moreFrame, image=pixelPlace, text="Logo", width=811, height=426, compound="c", background='grey')
+moreLogoPng = PhotoImage(file='src/moreLogo.png')
+moreLogo = Label(moreFrame, image=moreLogoPng, width=811, height=426)
 moreLogo.grid(row=1, column=0, pady=10, columnspan=20)
 
 # Main Roop & Set First Frame

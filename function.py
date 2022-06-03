@@ -362,13 +362,11 @@ def monthIncEtcTotal() :
 
 #----------------------------------------------------
 # file save by using CSV
-
 def asksaveasfile(mode = "w", **options):
     filename = SaveAs(**options).show()
     if filename:
         return open(filename, mode, newline="")
     return None
-
 def saveFile():
     f = asksaveasfile(mode="w", defaultextension=".csv",initialfile="house_hold_data.csv" , filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
     if f is None:
@@ -407,7 +405,6 @@ def loadFile(main, treeview):
                 columns = columns + 1
         f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
-
 def newfile(treeview) :
     global dates, money, types, otherDetails, expOrInc, columns
     response = messagebox.askokcancel("새로운 가계부 생성 경고", "저장하지 않은 정보는 삭제됩니다.\n새 가계부를 여시겠습니까?")
