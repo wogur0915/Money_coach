@@ -21,8 +21,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         eduPrice = eduTotal()
         carPrice = carTotal()
         etcPrice = expEtcTotal()
-        incomesPrice = sumIncomes()
-        expendsPrice = sumExpends()
+        expendsAll = sumExpends()
     else:
         eatPrice = 1
         lifePrice = 1
@@ -31,8 +30,7 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
         eduPrice = 1
         carPrice = 1
         etcPrice = 1
-        incomesPrice = 1
-        expendsPrice = 1
+        expendsAll = sumExpends()
     
     rank = [
         catagory("식비", eatPrice),
@@ -48,6 +46,19 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     
     for i in range (0,7):
         print(rank[i].name, rank[i].sum)
+        
+    count = 0
+    if expendsAll == 0:
+        for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
+            graph.config(width=1, text="( 0% )")
+    else:
+        for graph in [firstGraph, secondGraph, thirdGraph, fourthGraph, fifthGraph]:
+            if rank[count].sum == 0:
+                graph.config(width=1)
+            else:
+                sumPercent = rank[count].sum/expendsAll
+                graph.config(width=sumPercent*202, text = "( "+str(int(sumPercent*100))+"% )")
+            count = count+1
         
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
