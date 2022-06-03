@@ -170,7 +170,6 @@ def clickDelButton(treeview):
 # Calculation
 
 def sumExpends() :
-    global expSum
     expSum = 0
     for i in range(columns) :
         if expOrInc[i] == "지출" :
@@ -178,17 +177,11 @@ def sumExpends() :
     return expSum
 
 def sumIncomes() :
-    global incSum
     incSum = 0
     for i in range(columns) :
         if expOrInc[i] == "수입" :
             incSum += int(money[i])
     return incSum
-
-def total() :
-    global totalMoney
-    totalMoney = incSum - expSum
-    return totalMoney
 
 # Expend Type Calculate
 def eatTotal() :
