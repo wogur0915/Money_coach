@@ -12,26 +12,32 @@ def load_image():
 # Statistics Frame Switching
 def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, flag):
     data.flagAM = flag
-    eatAll = eatTotal()
-    lifeAll = lifeTotal()
-    beautyAll = beautyTotal()
-    cultureAll = cultureTotal()
-    eduAll = eduTotal()
-    carAll = carTotal()
-    etcAll = expEtcTotal()
-    incomesAll = sumIncomes()
-    expendsAll = sumExpends()
+    
+    eatPrice = eatTotal()
+    lifePrice = lifeTotal()
+    beautyPrice = beautyTotal()
+    culturePrice = cultureTotal()
+    eduPrice = eduTotal()
+    carPrice = carTotal()
+    etcPrice = expEtcTotal()
+    incomesPrice = sumIncomes()
+    expendsPrice = sumExpends()
     
     rank = [
-        catagory("식비", eatAll),
-        catagory("주거/통신", lifeAll),
-        catagory("의복/미용", beautyAll),
-        catagory("건강/문화", cultureAll),
-        catagory("교육/육아", eduAll),
-        catagory("교통/차량", carAll),
-        catagory("기타", etcAll)
+        catagory("식비", eatPrice),
+        catagory("주거/통신", lifePrice),
+        catagory("의복/미용", beautyPrice),
+        catagory("건강/문화", culturePrice),
+        catagory("교육/육아", eduPrice),
+        catagory("교통/차량", carPrice),
+        catagory("기타", etcPrice)
     ]
     
+    rank = sorted(rank, key=lambda x: x.sum, reverse=True)
+    
+    for i in range (0,7):
+        print(rank[i].name, rank[i].sum)
+        
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
     elif data.typeLogoNum == 1:
