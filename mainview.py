@@ -13,7 +13,7 @@ lobbyFrame = Frame(main)
 historyFrame = Frame(main)
 statisticsFrame = Frame(main)
 assetsFrame = Frame(main)
-settingFrame = Frame(main)
+moreFrame = Frame(main)
 
 # Image Load
 load_image()
@@ -23,7 +23,7 @@ lobbyFrame.grid(row=0, column=0, sticky="nsew")
 historyFrame.grid(row=0, column=0, sticky="nsew")
 statisticsFrame.grid(row=0, column=0, sticky="nsew")
 assetsFrame.grid(row=0, column=0, sticky="nsew")
-settingFrame.grid(row=0, column=0, sticky="nsew")
+moreFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
 test=PhotoImage(file='src/1pixel.png')
@@ -34,15 +34,17 @@ lobbyLogo.grid(row=1, column=0, columnspan=20)
 
 hisotryBtn = PhotoImage(file='src/historyBtn.png')
 statisticsBtn = PhotoImage(file='src/statisticsBtn.png')
-for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
+assetsBtn = PhotoImage(file='src/assetsBtn.png')
+moreBtn = PhotoImage(file='src/moreBtn.png')
+for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, moreFrame):
     historyButton = Button(frameName, image=hisotryBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
     statisticsButton = Button(frameName, image=statisticsBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, data.flagAM)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, data.flagAM)])
+    assetsButton = Button(frameName, image=assetsBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, data.flagAM)])
     assetsButton.grid(row=0, column=2)
-    settingButton = Button(frameName, image=test, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_frame(settingFrame)])
-    settingButton.grid(row=0, column=3)
+    moreButton = Button(frameName, image=moreBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_frame(moreFrame)])
+    moreButton.grid(row=0, column=3)
 
 # Menu Bar
 menubar=tkinter.Menu(main)
