@@ -13,6 +13,16 @@ totalMoney = 0
 # treeview columns
 columns = 0
 
+# For Design Test
+historySum = 0
+historyPlus = 1
+historyMinus = 2
+
+class catagory:
+    name = []
+    sum = 0
+rank = []
+
 # Global Value For Statistics Page Logo
 typeLogoNum = 0
 
