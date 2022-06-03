@@ -237,6 +237,10 @@ ig = ig.resize((12, 12), Image.ANTIALIAS)
 igg = ImageTk.PhotoImage(ig)
 instagram = Label(settingFrame, image=igg)
 instagram.place(x=720, y=439) 
+instagram.bind("<Button-1>", lambda e : callback(Ig1))
+popTip(instagram, text = "Instagram")
+instagram1 = Label(settingFrame, image=igg)
+instagram1.place(x=720, y=459) 
 
 
 Link = Label(settingFrame, image = my_img) 
