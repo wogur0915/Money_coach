@@ -45,6 +45,7 @@ for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settin
 
 # Menu Bar
 menubar=tkinter.Menu(main)
+menubar.add_cascade(label="새 가계부", command=lambda:[newfile(treeview)])
 menubar.add_cascade(label="저장하기", command=lambda:[saveFile()])
 menubar.add_cascade(label="불러오기", command=lambda:[loadFile(main, treeview)])
 main.config(menu=menubar)    
