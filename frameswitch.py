@@ -10,7 +10,9 @@ def load_image():
     type0 = PhotoImage(file='src/type0.png')
 
 # Statistics Frame Switching
-def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum):
+def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, flag):
+    data.flagAM = flag
+    
     if data.typeLogoNum == 0:
         typeLogo.config(image=type0)
     elif data.typeLogoNum == 1:
