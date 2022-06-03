@@ -180,16 +180,16 @@ commentsLogo = Label(assetsFrame, image=test, text="0", width=800, height=288, c
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
-week = PhotoImage(file='src/week.png')
+total = PhotoImage(file='src/total.png')
 month = PhotoImage(file='src/month.png')
 
-statisticsWeekButton = Button(statisticsFrame, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, True)])
-statisticsWeekButton.place(x=757, y=60)
+statisticsTotalButton = Button(statisticsFrame, image=total, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, True)])
+statisticsTotalButton.place(x=757, y=60)
 statisticsMonthButton = Button(statisticsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, False)])
 statisticsMonthButton.place(x=757, y=91)
 
-assetsWeekButton = Button(assetsFrame, image=week, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
-assetsWeekButton.place(x=757, y=60)
+assetsTotalButton = Button(assetsFrame, image=total, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
+assetsTotalButton.place(x=757, y=60)
 assetsMonthButton = Button(assetsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
 assetsMonthButton.place(x=757, y=91)
 
