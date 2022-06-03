@@ -200,6 +200,13 @@ hyok.place(x = 655, y = 460)
 github1 = Image.open('src/github1.png')
 github1 = github1.resize((25, 12), Image.ANTIALIAS)
 my_img1 = ImageTk.PhotoImage(github1)
+gh = Label(settingFrame, image=my_img1)
+gh.place(x=694, y=439) 
+gh.bind("<Button-1>", lambda e : callback(andrewgb))
+popTip(gh, text = "Github")
+gh1 = Label(settingFrame, image=my_img1)
+gh1.place(x=694, y=459) 
+
 
 Link = Label(settingFrame, image = my_img) 
 Link.place(x=50, y=420)
