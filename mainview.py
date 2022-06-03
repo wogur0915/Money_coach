@@ -1,5 +1,6 @@
 from frameswitch import *
 from data import *
+from PIL import ImageTk, Image
 
 # Default Windows Setting
 main = Tk()
@@ -7,11 +8,6 @@ main.title("House-hold Account Book System")
 main.resizable(width = False, height = False)
 main.geometry('832x500+96+144')
 #main.iconbitmap('c:/...')
-#Theme for the program
-style = ttk.Style(main)
-style.theme_names()
-current_theme = style.theme_use()
-style.theme_use("clam")
 
 # Default Frame Setting
 lobbyFrame = Frame(main)
@@ -84,8 +80,10 @@ blankLabel.grid(row=1, column=0)
 # Buttons on historyFrame
 addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
 addBtn.config(width = 3, height = 1)
+popTip(addBtn, text = "추가")
 deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[clickDelButton(treeview)])
 deleteBtn.config(width = 3, height = 1)
+popTip(deleteBtn, text = "삭제")
 treeview.grid(row=2, column=0, columnspan=4)
 addBtn.place(x=780, y=410)
 deleteBtn.place(x=780, y=440)
@@ -194,14 +192,9 @@ for frameName in (statisticsFrame, assetsFrame):
 
 design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
 design.place(x=20, y=60) 
-   
-
-Us = Label(settingFrame, image=test, text=" To contact the developers : \n 문희범: email@site.com \n 임재혁: email@site.com \n 최안드레이: email@site.com. \n\n Our License: MIT",font = ("나눔스퀘어", 10), width=170, height=80, compound="c")
-Us.place(x=600, y=420) 
-
-Link = Button(settingFrame, text="Our GitHub repository", font=("나눔스퀘어", 15)) 
-Link.place(x=30, y=430)
-Link.bind("<Enter>", lambda e: label_hover(e, Link, settingFrame))
+Link = Label(settingFrame, image = my_img) 
+Link.place(x=50, y=420)
+Link.bind("<Enter>",lambda e: label_hover(e, Link, settingFrame))
 Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
 Link.bind("<Button-1>", lambda e : callback(link))
 
@@ -209,9 +202,9 @@ History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font
 History.place(x = 45, y = 105)
 Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
 Historyinfo.place(x = 190, y = 85)
-Historyphoto = Button(settingFrame, text="?", font=("나눔스퀘어", 10), width=-140, height=-140, compound = "c", fg = "red", command = lambda: openNewWindow(history, test)) 
+Historyphoto = Button(settingFrame, text="?", font=("나눔스퀘어", 10), width=-140, height=-140, compound = "c", fg = "red") 
 Historyphoto.place(x = 750, y = 75)
-popTip(Historyphoto, text = "Left click to see the visual explanation of 내역")
+popTip(Historyphoto, text = "This window explains how to use the program.")
 
 Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
 Statistics.place(x = 55, y = 205)

@@ -1,9 +1,5 @@
 from module import *
 from data import *
-import webbrowser
-import tkinter as tk
-from tkinter import ttk
-import time
 #declaring a class Message
 class Message(object):
 
@@ -12,7 +8,7 @@ class Message(object):
         if self.tipwindow or not self.text:
             return
         x, y, cx, cy = self.tool.bbox("insert")
-        x = x + self.tool.winfo_rootx() + 60
+        x = x + self.tool.winfo_rootx() + 20
         y = y + cy + self.tool.winfo_rooty() + 23
         self.tipwindow = tw = Toplevel(self.tool)
         message = Label(tw,borderwidth=1, text=self.text, fg = "black", justify=LEFT, background = "white", font=("Times", "12"), relief=SOLID)
