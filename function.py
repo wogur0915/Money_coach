@@ -1,42 +1,6 @@
 from module import *
 from data import *
 #declaring a class Message
-class Message(object):
-
-    def show(self, text):
-        self.text = text
-        if self.tipwindow or not self.text:
-            return
-        x, y, cx, cy = self.tool.bbox("insert")
-        x = x + self.tool.winfo_rootx() + 20
-        y = y + cy + self.tool.winfo_rooty() + 23
-        self.tipwindow = tw = Toplevel(self.tool)
-        message = Label(tw,borderwidth=1, text=self.text, fg = "black", justify=LEFT, background = "white", font=("Times", "12"), relief=SOLID)
-        message.pack(ipadx=4)
-        tw.wm_overrideredirect(1)
-        tw.wm_geometry("+%d+%d" % (x, y))
-        
-    def hide(self):
-        tw = self.tipwindow
-        self.tipwindow = None
-        if tw:
-            tw.destroy()
-        
-    def __init__(self, tool):
-        self.tool = tool
-        self.tipwindow = 0
-        self.id = 0
-        self.x = self.y = 0
-
-def popTip(tool, text):
-    toolTip = Message(tool)
-    def enter(event):
-        time.sleep(0.4)
-        toolTip.show(text)
-    def leave(event):
-        toolTip.hide()
-    tool.bind('<Enter>', enter)
-    tool.bind('<Leave>', leave)
     
 #A function that changes the text's color when the mouse is hovering over a button/text
 def button_hover(e, name): 
