@@ -6,13 +6,13 @@
 * 임재혁: wogur091511@naver.com
 * 최안드레이: andrewendlesss@gmail.com
 
---
+-----
 
-#### 목적
+### 목적
 
 해당 프로그램은 사용자가 입력한 가계부 내역을 토대로 소비 성향 및 소비 플랜을 제시해주는 컴퓨터(Windows, MacOS) 기반 프로그램이다.
 
---
+-----
 
 #### Requirements
 
@@ -25,8 +25,6 @@
 ### How to use
 
 TODO
-
----
 
 ### License
 
