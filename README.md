@@ -24,7 +24,7 @@ MC(Money Coach)는 사용자가 입력한 가계부 내역을 토대로 소비 �
 ```
 [ OS ]
 Windows >= 21H1 (Windows 10)
-macOS 
+macOS Monterey >= 12.2
 
 [ Language ]
 Python >= 3.10.4
