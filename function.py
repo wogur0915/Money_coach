@@ -16,6 +16,7 @@ def addList(treeview) :
 
         if inputMoney.get() == "숫자만 입력해주세요" :
             warning = messagebox.showwarning("경고!", "금액이 입력되지 않았습니다!")
+            addListWin.lift()
         else :
             value = [
                 strTodate.date(),
@@ -362,11 +363,13 @@ def monthIncEtcTotal() :
 
 #----------------------------------------------------
 # file save by using CSV
+
 def asksaveasfile(mode = "w", **options):
     filename = SaveAs(**options).show()
     if filename:
         return open(filename, mode, newline="")
     return None
+
 def saveFile():
     f = asksaveasfile(mode="w", defaultextension=".csv",initialfile="house_hold_data.csv" , filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
     if f is None:
@@ -405,6 +408,7 @@ def loadFile(main, treeview):
                 columns = columns + 1
         f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
 def newfile(treeview) :
     global dates, money, types, otherDetails, expOrInc, columns
     response = messagebox.askokcancel("새로운 가계부 생성 경고", "저장하지 않은 정보는 삭제됩니다.\n새 가계부를 여시겠습니까?")
@@ -413,3 +417,131 @@ def newfile(treeview) :
         del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
         treeview.delete(*treeview.get_children())
         treeview.update()
+
+#----------------------------------------------------
+# Click head to sort
+
+def sortDate(treeview) :
+    global columns, dateFlag
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    valueL = []
+    arrN = []
+    columns = 0
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            valueL.append([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+
+    if dateFlag == 1 :
+        arrN = sorted(valueL, key = lambda x : x[0])
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        dateFlag = dateFlag * -1       
+    elif dateFlag == -1 :
+        arrN = sorted(valueL, key = lambda x : x[0], reverse=True)
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        dateFlag = dateFlag * -1
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+def sortIorE(treeview) :
+    global columns, iOrEFlag
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    valueL = []
+    arrN = []
+    columns = 0
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            valueL.append([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+
+    if iOrEFlag == 1 :
+        arrN = sorted(valueL, key = lambda x : x[1])
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        iOrEFlag = iOrEFlag * -1       
+    elif iOrEFlag == -1 :
+        arrN = sorted(valueL, key = lambda x : x[1], reverse=True)
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        iOrEFlag = iOrEFlag * -1
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+def sortMoney(treeview) :
+    global columns, moneyFlag
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    valueL = []
+    arrN = []
+    columns = 0
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            valueL.append([dates[i], expOrInc[i], int(money[i]), types[i], otherDetails[i]])
+
+    if moneyFlag == 1 :
+        arrN = sorted(valueL, key = lambda x : x[2])
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], str(arrN[j][2]), arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        moneyFlag = moneyFlag * -1       
+    elif moneyFlag == -1 :
+        arrN = sorted(valueL, key = lambda x : x[2], reverse=True)
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        moneyFlag = moneyFlag * -1
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+def sortTag(treeview) :
+    global columns, tagFlag
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    valueL = []
+    arrN = []
+    columns = 0
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            valueL.append([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+
+    if tagFlag == 1 :
+        arrN = sorted(valueL, key = lambda x : x[3])
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        tagFlag = tagFlag * -1       
+    elif tagFlag == -1 :
+        arrN = sorted(valueL, key = lambda x : x[3], reverse=True)
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        tagFlag = tagFlag * -1
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
+
+def sortOther(treeview) :
+    global columns, otherFlag
+    treeview.delete(*treeview.get_children())
+    treeview.update()
+    valueL = []
+    arrN = []
+    columns = 0
+    for i in range(len(dates)) :
+        if dates[i] != None :
+            valueL.append([dates[i], expOrInc[i], money[i], types[i], otherDetails[i]])
+
+    if otherFlag == 1 :
+        arrN = sorted(valueL, key = lambda x : x[4])
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        otherFlag = otherFlag * -1       
+    elif otherFlag == -1 :
+        arrN = sorted(valueL, key = lambda x : x[4], reverse=True)
+        for j in range(len(valueL)) :
+            treeview.insert('', 'end', values=[arrN[j][0], arrN[j][1], arrN[j][2], arrN[j][3], arrN[j][4]], iid=str(j))
+            columns = columns+1
+        otherFlag = otherFlag * -1
+    treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
