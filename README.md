@@ -1,6 +1,6 @@
 # Money Coach
 
-### 연락처
+## 연락처
 
 * 문희범: ejungto99@naver.com
 * 임재혁: wogur091511@naver.com
