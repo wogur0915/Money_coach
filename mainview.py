@@ -1,10 +1,9 @@
 from frameswitch import *
-from data import *
-from PIL import ImageTk, Image
+import data
 
 # Default Windows Setting
 main = Tk()
-main.title("House-hold Account Book System")
+main.title("Money Coach")
 main.resizable(width = False, height = False)
 main.geometry('832x500+96+144')
 #main.iconbitmap('c:/...')
@@ -14,7 +13,7 @@ lobbyFrame = Frame(main)
 historyFrame = Frame(main)
 statisticsFrame = Frame(main)
 assetsFrame = Frame(main)
-settingFrame = Frame(main)
+moreFrame = Frame(main)
 
 # Image Load
 load_image()
@@ -24,24 +23,29 @@ lobbyFrame.grid(row=0, column=0, sticky="nsew")
 historyFrame.grid(row=0, column=0, sticky="nsew")
 statisticsFrame.grid(row=0, column=0, sticky="nsew")
 assetsFrame.grid(row=0, column=0, sticky="nsew")
-settingFrame.grid(row=0, column=0, sticky="nsew")
+moreFrame.grid(row=0, column=0, sticky="nsew")
 
 # For Place
-test=PhotoImage(file='src/1pixel.png')
+pixelPlace=PhotoImage(file='src/1pixel.png')
 
 # Main Page And Frames
-lobbyLogo = Label(lobbyFrame, image=test, text="Logo", width=832, height=446, compound="c", background='grey')
-lobbyLogo.grid(row=1, column=0, columnspan=4)
+mainLogo = PhotoImage(file='src/mainLogo.png')
+lobbyLogo = Label(lobbyFrame, image=mainLogo, width=832, height=448)
+lobbyLogo.grid(row=1, column=0, columnspan=20)
 
-for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, settingFrame):
-    historyButton = Button(frameName, image=test, text="내역", width=200, height=40, compound="c", command=lambda:[show_frame(historyFrame)])
+hisotryBtn = PhotoImage(file='src/historyBtn.png')
+statisticsBtn = PhotoImage(file='src/statisticsBtn.png')
+assetsBtn = PhotoImage(file='src/assetsBtn.png')
+moreBtn = PhotoImage(file='src/moreBtn.png')
+for frameName in (lobbyFrame, historyFrame, statisticsFrame, assetsFrame, moreFrame):
+    historyButton = Button(frameName, image=hisotryBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_frame(historyFrame)])
     historyButton.grid(row=0, column=0)
-    statisticsButton = Button(frameName, image=test, text="통계", width=200, height=40, compound="c", command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum)])
+    statisticsButton = Button(frameName, image=statisticsBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, data.flagAM)])
     statisticsButton.grid(row=0, column=1)
-    assetsButton = Button(frameName, image=test, text="자산", width=200, height=40, compound="c", command=lambda:[show_assets_frame(assetsFrame, commentsLogo)])
+    assetsButton = Button(frameName, image=assetsBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, data.flagAM)])
     assetsButton.grid(row=0, column=2)
-    settingButton = Button(frameName, image=test, text="설정", width=200, height=40, compound="c", command=lambda:[show_frame(settingFrame)])
-    settingButton.grid(row=0, column=3)
+    moreButton = Button(frameName, image=moreBtn, width=208, height=48, highlightthickness=0, bd=0, command=lambda:[show_frame(moreFrame)])
+    moreButton.grid(row=0, column=3)
 
 # Menu Bar
 menubar=tkinter.Menu(main)
@@ -54,38 +58,41 @@ main.config(menu=menubar)
 treeview=tkinter.ttk.Treeview(historyFrame, columns=["dates", "expOrInc", "money", "types", "otherDetails"])
 treeview.config(height = 16)
 treeview.column("dates", width=165, anchor="center")
-treeview.heading("dates", text="날짜", anchor="center")
+treeview.heading("dates", text="날짜", anchor="center", command=lambda:[sortDate(treeview)])
 treeview.column("expOrInc", width=110, anchor="center")
-treeview.heading("expOrInc", text="수입/지출", anchor="center")
+treeview.heading("expOrInc", text="수입/지출", anchor="center", command=lambda:[sortIorE(treeview)])
 treeview.column("money", width=110, anchor="center")
-treeview.heading("money", text="금액", anchor="center")
+treeview.heading("money", text="금액", anchor="center", command=lambda:[sortMoney(treeview)])
 treeview.column("types", width=115, anchor="center")
-treeview.heading("types", text="카테고리", anchor="center")
+treeview.heading("types", text="카테고리", anchor="center", command=lambda:[sortTag(treeview)])
 treeview.column("otherDetails", width=305, anchor="center")
-treeview.heading("otherDetails", text="비고", anchor="center")
+treeview.heading("otherDetails", text="비고", anchor="center", command=lambda:[sortOther(treeview)])
 
 # Style of treeview
 style = tkinter.ttk.Style()
 style.theme_use('alt')
 style.configure("Treeview.Heading", font=("나눔스퀘어 bold", 13), rowheight=20, background = "#87B3FC")
-style.configure("Treeview", font=("나눔스퀘어 bold", 11), rowheight=25)
+style.configure("Treeview", font=("나눔스퀘어", 11), rowheight=25)
 style.map("Treeview", background=[('selected', "#BEC6D5")], foreground=[('selected', "black")])
 
 # Only Show column headings
 treeview["show"] = "headings"
 
 # For dividing section
-blankLabel = Label(historyFrame, image=test, height=5, width=20, compound='c')
+blankLabel = Label(historyFrame, image=pixelPlace, height=5, width=20, compound='c')
 blankLabel.grid(row=1, column=0)
 
 # Buttons on historyFrame
-addBtn = Button(historyFrame, text = "+", font="나눔고딕 10", anchor="center", command=lambda:[addList(treeview)])
-addBtn.config(width = 3, height = 1)
-deleteBtn = Button(historyFrame, text = "-", font="나눔고딕 10", anchor="center", command=lambda:[clickDelButton(treeview)])
-deleteBtn.config(width = 3, height = 1)
-treeview.grid(row=2, column=0, columnspan=4)
-addBtn.place(x=780, y=410)
-deleteBtn.place(x=780, y=440)
+addBtnPng = PhotoImage(file='src/plusBtn.png')	
+minusBtnPng = PhotoImage(file='src/minusBtn.png')	
+
+addBtn = Button(historyFrame, image=addBtnPng, highlightthickness=0, bd=0, command=lambda:[addList(treeview)])	
+addBtn.config(width = 40, height = 40)	
+deleteBtn = Button(historyFrame, image=minusBtnPng, highlightthickness=0, bd=0, command=lambda:[clickDelButton(treeview)])	
+deleteBtn.config(width = 40, height = 40)	
+treeview.grid(row=2, column=0, columnspan=4)	
+addBtn.place(x=720, y=430)	
+deleteBtn.place(x=770, y=430)
 
 # Statistics Page
 
@@ -99,58 +106,58 @@ trophy5 = PhotoImage(file='src/5thtrophy.png')
 catagory = PhotoImage(file='src/catagory.png')
 price = PhotoImage(file='src/price.png')
 
-typeLogo = Label(statisticsFrame, image=test, text="0", width=804, height=204, compound="c")
+typeLogo = Label(statisticsFrame, image=pixelPlace, text="", width=804, height=204, compound="c")
 typeLogo.place(x=10, y=55)
 
-Graph = Label(statisticsFrame, image=test, text="그래프", width=210, height=210, compound="c", background='#e5efff')
+Graph = Label(statisticsFrame, image=pixelPlace, text="", width=210, height=210, compound="c", background='#e5efff')
 Graph.place(x=10, y=274)
 
 # Catagory Graph
-firstGraph = Label(statisticsFrame, image=test, text="1st", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#fff700')
+firstGraph = Label(statisticsFrame, image=pixelPlace, text="1st", font="나눔스퀘어 10", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#fff700')
 firstGraph.place(x=14, y=278)
-secondGraph = Label(statisticsFrame, image=test, text="2nd", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#dadada')
+secondGraph = Label(statisticsFrame, image=pixelPlace, text="2nd", font="나눔스퀘어 10", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#dadada')
 secondGraph.place(x=14, y=323)
-thirdGraph = Label(statisticsFrame, image=test, text="3rd", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#e08830')
+thirdGraph = Label(statisticsFrame, image=pixelPlace, text="3rd", font="나눔스퀘어 10", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#e08830')
 thirdGraph.place(x=14, y=368)
-fourthGraph = Label(statisticsFrame, image=test, text="4th", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#6fc6ff')
+fourthGraph = Label(statisticsFrame, image=pixelPlace, text="4th", font="나눔스퀘어 10", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#6fc6ff')
 fourthGraph.place(x=14, y=413)
-fifthGraph = Label(statisticsFrame, image=test, text="5th", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#ffd584')
+fifthGraph = Label(statisticsFrame, image=pixelPlace, text="5th", font="나눔스퀘어 10", width=202, height=20, bd=1, highlightthickness=1, highlightcolor='black', highlightbackground='black', compound="c", background='#ffd584')
 fifthGraph.place(x=14, y=458)
 
 # Catagory Ranks
 firstColor = Label(statisticsFrame, image=trophy1, width=48, height=25)
 firstColor.place(x=230, y=276)
-firstCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")
+firstCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 11", width=150, height=25, compound="c")
 firstCatagory.place(x=283, y=276)
-firstSum = Label(statisticsFrame, image=price, text="금액", width=385, height=25, compound="c")
+firstSum = Label(statisticsFrame, image=price, text="금액", font="나눔스퀘어 11", width=385, height=25, compound="c")
 firstSum.place(x=428, y=276)
 
 secondColor = Label(statisticsFrame, image=trophy2, width=48, height=25)
 secondColor.place(x=230, y=321)
-secondCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")
+secondCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 11", width=150, height=25, compound="c")
 secondCatagory.place(x=283, y=321)
-secondSum = Label(statisticsFrame, image=price, text="금액", width=385, height=25, compound="c")
+secondSum = Label(statisticsFrame, image=price, text="금액", font="나눔스퀘어 11", width=385, height=25, compound="c")
 secondSum.place(x=428, y=321)
 
 thirdColor = Label(statisticsFrame, image=trophy3, width=48, height=25)
 thirdColor.place(x=230, y=366)
-thirdCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")
+thirdCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 11", width=150, height=25, compound="c")
 thirdCatagory.place(x=283, y=366)
-thirdSum = Label(statisticsFrame, image=price, text="금액", width=385, height=25, compound="c")
+thirdSum = Label(statisticsFrame, image=price, text="금액", font="나눔스퀘어 11", width=385, height=25, compound="c")
 thirdSum.place(x=428, y=366)
 
 fourthColor = Label(statisticsFrame, image=trophy4, width=48, height=25)
 fourthColor.place(x=230, y=411)
-fourthCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")
+fourthCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 11", width=150, height=25, compound="c")
 fourthCatagory.place(x=283, y=411)
-fourthSum = Label(statisticsFrame, image=price, text="금액", width=385, height=25, compound="c")
+fourthSum = Label(statisticsFrame, image=price, text="금액", font="나눔스퀘어 11", width=385, height=25, compound="c")
 fourthSum.place(x=428, y=411)
 
 fifthColor = Label(statisticsFrame, image=trophy5, width=48, height=25)
 fifthColor.place(x=230, y=456)
-fifthCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 10", width=150, height=25, compound="c")
+fifthCatagory = Label(statisticsFrame, image=catagory, text="카테고리명", font="나눔스퀘어 11", width=150, height=25, compound="c")
 fifthCatagory.place(x=283, y=456)
-fifthSum = Label(statisticsFrame, image=price, text="금액", width=385, height=25, compound="c")
+fifthSum = Label(statisticsFrame, image=price, text="금액", font="나눔스퀘어 11", width=385, height=25, compound="c")
 fifthSum.place(x=428, y=456)
 
 # Assets Page
@@ -174,64 +181,27 @@ assetsMinus.place(x=418, y=123)
 assetsMinusPrice = Label(assetsFrame, image=sumPriceBack, text=(str(historyMinus)+" 원"), font="나눔스퀘어 18 bold", width=298, height=48, compound="c")
 assetsMinusPrice.place(x=506, y=129)
 
-commentsLogo = Label(assetsFrame, image=test, width=800, height=288)
+commentsLogo = Label(assetsFrame, image=pixelPlace, text="", width=800, height=288, compound="c")
 commentsLogo.place(x=12, y=195)
 
 # Statistics and Assets Page Button
-week = PhotoImage(file='src/week.png')
+total = PhotoImage(file='src/total.png')
 month = PhotoImage(file='src/month.png')
 
-for frameName in (statisticsFrame, assetsFrame):
-    weekButton = Button(frameName, image=week, highlightthickness=0, bd=0, width=58, height=28)
-    weekButton.place(x=757, y=60)
-    monthButton = Button(frameName, image=month, highlightthickness=0, bd=0, width=58, height=28)
-    monthButton.place(x=757, y=91)
-    
-# Setting page 
+statisticsTotalButton = Button(statisticsFrame, image=total, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, True)])
+statisticsTotalButton.place(x=757, y=60)
+statisticsMonthButton = Button(statisticsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_statistics_frame(statisticsFrame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, False)])
+statisticsMonthButton.place(x=757, y=91)
 
-design = Label(settingFrame, image=test, width=740, height=335, compound="c", bd=10, relief = RIDGE)
-design.place(x=20, y=60) 
+assetsTotalButton = Button(assetsFrame, image=total, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, True)])
+assetsTotalButton.place(x=757, y=60)
+assetsMonthButton = Button(assetsFrame, image=month, highlightthickness=0, bd=0, width=58, height=28, command=lambda:[show_assets_frame(assetsFrame, commentsLogo, assetsSumPrice, assetsPlusPrice, assetsMinusPrice, False)])
+assetsMonthButton.place(x=757, y=91)
 
-Us = Label(settingFrame, image=test, text=" To contact the developers : ",font = ("나눔스퀘어", 10), width=170, height=20, compound="c")
-Us.place(x=600, y=420) 
-
-hyokMail = Label(settingFrame, image=test, text="임재혁@gmail.com",font = ("나눔스퀘어", 10), width=88, height=10, compound="c")
-hyokMail.place(x = 650, y = 458) 
-
-andrewMail = Label(settingFrame, image=test, text="최레이@gmail.com",font = ("나눔스퀘어", 10), width=85, height=10, compound="c")
-andrewMail.place(x = 650, y = 440) 
-
-bomMail = Label(settingFrame, image=test, text="희범@gmail.com",font = ("나눔스퀘어", 10), width=85, height=10, compound="c")
-bomMail.place(x = 650, y = 478) 
-
-github = Image.open('src/github1.png')
-github = github.resize((100, 50), Image.ANTIALIAS)
-my_img = ImageTk.PhotoImage(github)
-
-Link = Label(settingFrame, image = my_img) 
-Link.place(x=50, y=420)
-
-Link = Label(settingFrame, image = my_img) 
-Link.place(x=50, y=420)
-Link.bind("<Enter>",lambda e: label_hover(e, Link, settingFrame))
-Link.bind("<Leave>", lambda e: label_hover_leave(e, Link, settingFrame))
-Link.bind("<Button-1>", lambda e : callback(link))
-
-History = Label(settingFrame, image = test, text="내역 \n 이용 안내", font=("나눔스퀘어", 18), width=120, height=65, compound="c",)
-History.place(x = 45, y = 105)
-Historyinfo = Label(settingFrame, image = test, text=history, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
-Historyinfo.place(x = 190, y = 85)
-
-
-Statistics = Label(settingFrame, image= test, text="통계 \n 이용 안내", font=("나눔스퀘어", 18), width=100, height=40, compound="c",)
-Statistics.place(x = 55, y = 205)
-Statisticsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
-Statisticsinfo.place(x = 190, y = 185)
-
-Assets = Label(settingFrame, image= test, text="자산 \n 이용 안내", font=("나눔스퀘어", 18), width=80, height=40, compound="c",)
-Assets.place(x = 65, y = 305)
-Assetsinfo = Label(settingFrame, image = test, text=statistics, font=("나눔스퀘어", 12), width=520, height=100, compound="c",)
-Assetsinfo.place(x = 190, y = 275)
+# Setting page
+moreLogoPng = PhotoImage(file='src/moreLogo.png')
+moreLogo = Label(moreFrame, image=moreLogoPng, width=811, height=426)
+moreLogo.grid(row=1, column=0, pady=10, columnspan=20)
 
 # Main Roop & Set First Frame
 show_frame(lobbyFrame)
