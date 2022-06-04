@@ -5,16 +5,15 @@ types = []
 otherDetails = []
 expOrInc = []
 
-# Global Money Values
-expSum = 0
-incSum = 0
-totalMoney = 0
-
 # treeview columns
 columns = 0
 
 # Sort flag
 dateFlag = 1
+iOrEFlag = 1
+moneyFlag = 1
+tagFlag = 1
+otherFlag = 1
 
 # Check All/Month
 flagAM = True
