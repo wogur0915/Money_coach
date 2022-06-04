@@ -3,11 +3,14 @@ import data
 
 # Load Image Files
 def load_image():
-    global plan0
+    global plan0, plan1, plan2, plan3
     
     global type0, type1, type2, type3, type4, type5, type6, type7
     
     plan0 = PhotoImage(file='src/plan0.png')
+    plan1 = PhotoImage(file='src/plan1.png')
+    plan2 = PhotoImage(file='src/plan2.png')
+    plan3 = PhotoImage(file='src/plan3.png')
     
     type0 = PhotoImage(file='src/type0.png')
     type1 = PhotoImage(file='src/type1.png')
@@ -145,11 +148,11 @@ def show_assets_frame(frame, commentsLogo, assetsSumPrice, assetsPlusPrice, asse
     if data.commentsLogoNum == 0:
         commentsLogo.config(image=plan0)
     elif data.commentsLogoNum == 1:
-        commentsLogo.config(image=plan0, text="1")
+        commentsLogo.config(image=plan1)
     elif data.commentsLogoNum == 2:
-        commentsLogo.config(image=plan0, text="2")
+        commentsLogo.config(image=plan2)
     elif data.commentsLogoNum == 3:
-        commentsLogo.config(image=plan0, text="3")
+        commentsLogo.config(image=plan3)
     else:
         print("Comments Logo Error")
     frame.tkraise()
