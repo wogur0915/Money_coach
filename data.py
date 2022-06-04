@@ -13,6 +13,9 @@ totalMoney = 0
 # treeview columns
 columns = 0
 
+# Sort flag
+dateFlag = 1
+
 # Check All/Month
 flagAM = True
 
