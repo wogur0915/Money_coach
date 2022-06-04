@@ -4,10 +4,19 @@ import data
 # Load Image Files
 def load_image():
     global plan0
-    global type0
+    
+    global type0, type1, type2, type3, type4, type5, type6, type7
     
     plan0 = PhotoImage(file='src/plan0.png')
+    
     type0 = PhotoImage(file='src/type0.png')
+    type1 = PhotoImage(file='src/type1.png')
+    type2 = PhotoImage(file='src/type2.png')
+    type3 = PhotoImage(file='src/type3.png')
+    type4 = PhotoImage(file='src/type4.png')
+    type5 = PhotoImage(file='src/type5.png')
+    type6 = PhotoImage(file='src/type6.png')
+    type7 = PhotoImage(file='src/type7.png')
 
 # Statistics Frame Switching
 def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, secondGraph, secondCatagory, secondSum, thirdGraph, thirdCatagory, thirdSum, fourthGraph, fourthCatagory, fourthSum, fifthGraph, fifthCatagory, fifthSum, flag):
@@ -71,19 +80,19 @@ def show_statistics_frame(frame, typeLogo, firstGraph, firstCatagory, firstSum, 
     if expendsPrice == 0:
         typeLogo.config(image=type0)
     elif rank[0].name == "식비":
-        typeLogo.config(image=type0, text="1")
+        typeLogo.config(image=type1)
     elif rank[0].name == "주거/통신":
-        typeLogo.config(image=type0, text="2")
+        typeLogo.config(image=type2)
     elif rank[0].name == "의복/미용":
-        typeLogo.config(image=type0, text="3")
+        typeLogo.config(image=type3)
     elif rank[0].name == "건강/문화":
-        typeLogo.config(image=type0, text="4")
+        typeLogo.config(image=type4)
     elif rank[0].name == "교육/육아":
-        typeLogo.config(image=type0, text="5")
+        typeLogo.config(image=type5)
     elif rank[0].name == "교통/차량":
-        typeLogo.config(image=type0, text="6")
+        typeLogo.config(image=type6)
     elif rank[0].name == "기타":
-        typeLogo.config(image=type0, text="7")
+        typeLogo.config(image=type7)
     else:
         print("Type Logo Error")
     frame.tkraise()
