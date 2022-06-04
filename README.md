@@ -32,7 +32,14 @@ DateTime >= 4.4
 
 ## 설치 방법
 
-* ...
+#### Git 환경
+```
+git clone https://github.com/KorBasilion/OSS-Basic-Project
+```
+
+#### Windows 환경
+- Code Zip 파일 다운로드 및 압축 해제
+
 
 ## 사용 방법
 
