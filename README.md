@@ -19,15 +19,22 @@ MC(Money Coach)는 사용자가 입력한 가계부 내역을 토대로 소비 �
 
 -----
 
-#### Requirements
+### 의존성
 
-* requirements.txt 참고.
+```
+[ Language ]
+Python >= 3.10.4
 
-#### How to install
+[ Library ]
+tkinter >= 8.6
+DateTime >= 4.4 
+```
+
+### 설치 방법
 
 * ...
 
-### How to use
+### 사용 방법
 
 TODO
 
