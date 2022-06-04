@@ -106,7 +106,7 @@ trophy5 = PhotoImage(file='src/5thtrophy.png')
 catagory = PhotoImage(file='src/catagory.png')
 price = PhotoImage(file='src/price.png')
 
-typeLogo = Label(statisticsFrame, image=pixelPlace, text="0", width=804, height=204, compound="c")
+typeLogo = Label(statisticsFrame, image=pixelPlace, text="", width=804, height=204, compound="c")
 typeLogo.place(x=10, y=55)
 
 Graph = Label(statisticsFrame, image=pixelPlace, text="", width=210, height=210, compound="c", background='#e5efff')
