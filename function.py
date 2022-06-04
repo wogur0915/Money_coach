@@ -1,47 +1,12 @@
 from module import *
 from data import *
 
-#declaring a class Message
-    
-#A function that changes the text's color when the mouse is hovering over a button/text
-def button_hover(e, name): 
-    name["bg"] = "white"
-    
-# A function that changes the text's color when the mouse is leaving
-def button_hover_leave(e, name):
-    name["bg"] = "SystemButtonFace"
- 
-# A function that shows the user the text when the mouse is on the label    
-def label_hover(e, name, Frame): 
-    status_label = Label(Frame, text="https://github.com/KorBasilion/OSS-Basic-Project", font = ("Helvetica", 10))
-    status_label.place(x=20, y=470)
-    name["fg"] = "green"
-
-# A function that makes the text dissappear once the mouse leaves the label      
-def label_hover_leave(e, name, Frame):
-    status_label = Label(Frame, text="                                                                           ")
-    status_label.place(x=20, y=470)
-    name["fg"] = "black"
-    
-# Function that opens a window
-def openNewWindow(info, photo):
-    newWindow = Toplevel()
-    newWindow.resizable(FALSE,FALSE)
-    newWindow.title("    ")
-    newWindow.grid
-    Label(newWindow, image = photo, text = info, fg = "red").pack()
-           
- # Function that opens URL links   
-def callback(url):
-   webbrowser.open_new_tab(url) 
-
-today = datetime.now()
-
 # Raise Frame Function
 def show_frame(frame):
     frame.tkraise()
 
 # History Add Button Function
+today = datetime.now()
 def addList(treeview) :
 
     # Return Enter Data(Global Value) to Apply History
@@ -306,63 +271,63 @@ def incEtcTotal() :
 def monthExpends() :
     expSum = 0
     for i in range(columns) :
-        if expOrInc[i] == "지출" and dates[i].month == today.month :
+        if expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].year == today.year and dates[i].month == today.month :
             expSum += int(money[i])
     return expSum
 
 def monthIncomes() :
     incSum = 0
     for i in range(columns) :
-        if expOrInc[i] == "수입" and dates[i].month == today.month :
+        if expOrInc[i] == "수입" and dates[i].year == today.year and dates[i].year == today.year and dates[i].month == today.month :
             incSum += int(money[i])
     return incSum
 
 def monthEatTotal() :
     eatMoney = 0
     for i in range(columns) :
-        if types[i] == "식비" and expOrInc[i] == "지출" and dates[i].month == today.month:
+        if types[i] == "식비" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month:
             eatMoney += int(money[i])
     return eatMoney
 
 def monthLifeTotal() :
     lifeMoney = 0
     for i in range(columns) :
-        if types[i] == "주거/통신" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "주거/통신" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             lifeMoney += int(money[i])
     return lifeMoney
 
 def monthBeautyTotal() :
     beautyMoney = 0
     for i in range(columns) :
-        if types[i] == "의복/미용" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "의복/미용" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             beautyMoney += int(money[i])
     return beautyMoney
 
 def monthCultureTotal() :
     cultureMoney = 0
     for i in range(columns) :
-        if types[i] == "건강/문화" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "건강/문화" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             cultureMoney += int(money[i])
     return cultureMoney
 
 def monthEduTotal() :
     eduMoney = 0
     for i in range(columns) :
-        if types[i] == "교육/육아" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "교육/육아" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             eduMoney += int(money[i])
     return eduMoney
 
 def monthCarTotal() :
     carMoney = 0
     for i in range(columns) :
-        if types[i] == "교통/차량" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "교통/차량" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             carMoney += int(money[i])
     return carMoney
 
 def monthExpEtcTotal() :
     etcMoney = 0
     for i in range(columns) :
-        if types[i] == "기타" and expOrInc[i] == "지출" and dates[i].month == today.month :
+        if types[i] == "기타" and expOrInc[i] == "지출" and dates[i].year == today.year and dates[i].month == today.month :
             etcMoney += int(money[i])
     return etcMoney
 
@@ -370,40 +335,38 @@ def monthExpEtcTotal() :
 def monthEventTotal() :
     eventMoney = 0
     for i in range(columns) :
-        if types[i] == "경조사/회비" and expOrInc[i] == "수입" and dates[i].month == today.month :
+        if types[i] == "경조사/회비" and expOrInc[i] == "수입" and dates[i].year == today.year and dates[i].month == today.month :
             eventMoney += int(money[i])
     return eventMoney
 
 def monthUtilTotal() :
     utilMoney = 0
     for i in range(columns) :
-        if types[i] == "공과금" and expOrInc[i] == "수입" and dates[i].month == today.month :
+        if types[i] == "공과금" and expOrInc[i] == "수입" and dates[i].year == today.year and dates[i].month == today.month :
             utilMoney += int(money[i])
     return utilMoney
 
 def monthSalaryTotal() :
     salaryMoney = 0
     for i in range(columns) :
-        if types[i] == "월급" and expOrInc[i] == "수입" and dates[i].month == today.month :
+        if types[i] == "월급" and expOrInc[i] == "수입" and dates[i].year == today.year and dates[i].month == today.month :
             salaryMoney += int(money[i])
     return salaryMoney
 
 def monthIncEtcTotal() :
     etcMoney = 0
     for i in range(columns) :
-        if types[i] == "기타" and expOrInc[i] == "수입" and dates[i].month == today.month :
+        if types[i] == "기타" and expOrInc[i] == "수입" and dates[i].year == today.year and dates[i].month == today.month :
             etcMoney += int(money[i])
     return etcMoney
 
 #----------------------------------------------------
 # file save by using CSV
-
 def asksaveasfile(mode = "w", **options):
     filename = SaveAs(**options).show()
     if filename:
         return open(filename, mode, newline="")
     return None
-
 def saveFile():
     f = asksaveasfile(mode="w", defaultextension=".csv",initialfile="house_hold_data.csv" , filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
     if f is None:
@@ -417,13 +380,13 @@ def saveFile():
 
 def loadFile(main, treeview):
     global dates, money, types, otherDetails, expOrInc, columns
-    columns = 0
-    temp = []
-    del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
 
     file = askopenfilename(initialdir="/desktop", title="가계부 데이터 파일 선택", filetypes=(("CSV 파일", "*.csv"), ("All Files", "*.*")))
     if(file == ''): pass
     else:
+        columns = 0
+        temp = []
+        del dates[:], money[:], types[:], otherDetails[:], expOrInc[:]
         f = open(file,"r")
         rd = csv.reader(f)
         treeview.delete(*treeview.get_children())
@@ -442,7 +405,6 @@ def loadFile(main, treeview):
                 columns = columns + 1
         f.close()
     treeview.bind("<Double-1>", lambda event:[dbclickDelList(event,treeview)])
-
 def newfile(treeview) :
     global dates, money, types, otherDetails, expOrInc, columns
     response = messagebox.askokcancel("새로운 가계부 생성 경고", "저장하지 않은 정보는 삭제됩니다.\n새 가계부를 여시겠습니까?")
