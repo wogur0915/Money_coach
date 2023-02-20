@@ -51,6 +51,11 @@ git clone https://github.com/KorBasilion/OSS-Basic-Project
 - 4. 값을 입력한 후 통계, 자산에서 입력 데이터를 토대로한 수치 확인
 - 5. 입력한 값을 저장하고 싶을 때에는 상단의 저장하기 클릭
 
+## 실행화면
+
+![moneycoach_thumb](https://user-images.githubusercontent.com/34836246/219988655-0d527f2d-b993-45e0-b82b-ffd0b0fd3ab4.png)
+
+
 ## License
 
 ```
